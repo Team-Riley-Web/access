@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@config "../../tailwind.config.cjs";
+
+@layer base {
+  @font-face {
+    font-family: "Yellow Peas";
+    src: url("../assets/fonts/YellowPeas-Regular.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Yellow Peas";
+    src: url("../assets/fonts/YellowPeas-Bold.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #f9f8f6;
+    color: #141820;
+  }
+
+  ::selection {
+    background: hsl(17 48% 84%);
+    color: hsl(26 18% 11%);
+  }
+
+  [x-cloak] {
+    display: none !important;
+  }
+}

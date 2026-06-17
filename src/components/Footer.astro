@@ -1,0 +1,80 @@
+---
+import { Image } from 'astro:assets';
+import { Clock, Mail, MapPin, Phone } from '@lucide/astro';
+import logo from '../assets/images/logo.png';
+
+const navItems = [
+  { label: 'Home', href: '#home' },
+  { label: 'About', href: '#about' },
+  { label: 'Team', href: '#team' },
+  { label: 'Services', href: '#services' },
+  { label: 'Results', href: '#transformations' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<footer id="contact" class="bg-brand-900 text-white/80">
+  <div class="mx-auto grid max-w-[calc(1280px+8rem)] gap-10 border-b border-white/10 px-5 py-16 sm:px-10 lg:grid-cols-[1.5fr_0.8fr_1fr_0.9fr] lg:gap-14 lg:px-20 lg:pb-14 lg:pt-20">
+    <div>
+      <a href="#home" aria-label="Access Aesthetics home">
+        <Image
+          src={logo}
+          alt="Access Aesthetics"
+          class="mb-5 h-auto w-40 brightness-0 invert"
+          widths={[220, 320]}
+        />
+      </a>
+      <p class="max-w-sm text-sm leading-[1.7] text-white/48">
+        Medical aesthetics in Slidell, LA. Evidence-based treatments, expert care,
+        and results that look like you, only refreshed.
+      </p>
+    </div>
+
+    <div>
+      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Menu</p>
+      <div class="flex flex-col gap-2.5">
+        {
+          navItems.map((item) => (
+            <a class="text-sm text-white/62 transition hover:text-white" href={item.href}>
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Contact</p>
+      <div class="space-y-3.5 text-sm text-white/62">
+        <p class="flex items-start gap-3">
+          <MapPin class="mt-0.5 size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
+          <span>1411 Lindberg Dr<br />Slidell, LA 70548</span>
+        </p>
+        <a class="flex items-start gap-3 transition hover:text-white" href="tel:+19859605066">
+          <Phone class="mt-0.5 size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
+          <span>985-960-5066</span>
+        </a>
+        <a class="flex items-start gap-3 transition hover:text-white" href="mailto:info@accessofla.com">
+          <Mail class="mt-0.5 size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
+          <span>info@accessofla.com</span>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Hours</p>
+      <div class="flex items-start gap-3">
+        <Clock class="mt-0.5 size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
+        <div>
+          <p class="text-sm font-medium text-white/75">Mon - Fri</p>
+          <p class="mt-0.5 text-[0.85rem] text-white/45">9:00 AM - 5:00 PM</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mx-auto flex max-w-[calc(1280px+8rem)] flex-col gap-2 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-20">
+    <p class="text-[0.8rem] text-white/30">&copy; 2025 Access Aesthetics. All rights reserved.</p>
+    <p class="text-[0.8rem] text-white/30">Slidell, Louisiana</p>
+  </div>
+</footer>

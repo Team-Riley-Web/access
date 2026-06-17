@@ -1,0 +1,363 @@
+---
+import { Image } from 'astro:assets';
+import {
+  ArrowRight,
+  Check,
+  HeartPulse,
+  LockKeyhole,
+  ShieldCheck,
+  Sparkles,
+  UserRoundCheck,
+  UsersRound,
+} from '@lucide/astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import beforeAfter1 from '../assets/images/before-after-1.jpg';
+import beforeAfter2 from '../assets/images/before-after-2.jpg';
+import beforeAfter3 from '../assets/images/before-after-3.jpg';
+import homeHeroImage from '../assets/images/home-hero.png';
+import service3Image from '../assets/images/service-3.jpeg';
+import serviceImage from '../assets/images/service.png';
+import service2Image from '../assets/images/service2.png';
+import teamAmanda from '../assets/images/team-amanda.jpg';
+import teamCourtney from '../assets/images/team-courtney.jpg';
+import teamHarley from '../assets/images/team-harley.jpg';
+import teamImage from '../assets/images/team.jpg';
+import teamMelissa from '../assets/images/team-melissa.jpg';
+
+const bookingUrl = 'https://www.myaestheticspro.com/';
+
+const trustItems = [
+  { icon: ShieldCheck, title: 'Medical expertise', copy: 'Licensed aesthetic providers' },
+  { icon: Sparkles, title: 'Natural results', copy: 'Refined, never overdone' },
+  { icon: LockKeyhole, title: 'Safety first', copy: 'Personalized treatment plans' },
+  { icon: UsersRound, title: 'Trusted by patients', copy: '5 star experience' },
+];
+
+const aboutFeatures = [
+  { icon: Sparkles, label: 'Radiance Redefined' },
+  { icon: UserRoundCheck, label: 'Licensed Experts' },
+  { icon: HeartPulse, label: 'Personalized Care' },
+];
+
+const serviceGroups = [
+  {
+    kicker: 'Glowing Skin',
+    title: 'Professional care for clear, refreshed skin.',
+    copy:
+      'Aesthetic skin treatments support confidence, self-care, and long-term skin health by addressing tone, texture, acne, fine lines, and loss of elasticity.',
+    image: serviceImage,
+    imageAlt: 'Access Aesthetics treatment room',
+    items: ['Morpheus 8 RF Microneedling', 'Rejuvapen Microneedling', 'Laser Hair Removal', 'Chemical Peels & Facials'],
+  },
+  {
+    kicker: 'Restorative Beauty',
+    title: 'Subtle rejuvenation with a natural finish.',
+    copy:
+      'Restorative procedures help soften lines, restore volume, reduce sun damage, and improve tone so every treatment feels personalized and balanced.',
+    image: service2Image,
+    imageAlt: 'Aesthetic injectable treatment in progress',
+    reverse: true,
+    items: ['Neurotoxins', 'Dermal Fillers', 'IPL Therapy', 'Bio-Filler & PRP'],
+  },
+  {
+    kicker: 'Balanced Radiance',
+    title: 'Full-body aesthetic wellness for lasting confidence.',
+    copy:
+      'From advanced rejuvenation to hydration and therapeutic therapies, full-body care supports outer radiance and a renewed sense of vitality.',
+    image: service3Image,
+    imageAlt: 'Calming facial treatment at Access Aesthetics',
+    items: ['Vitamin Injections', 'Lash & Brow Services', 'Biostimulators', 'Skin Care'],
+  },
+];
+
+const team = [
+  { name: 'Amanda Clementi', image: teamAmanda },
+  { name: 'Courtney Muller', image: teamCourtney },
+  { name: 'Harley Lonardo', image: teamHarley },
+  { name: 'Melissa Holley', image: teamMelissa },
+];
+
+const transformations = [
+  { image: beforeAfter1, alt: 'Before and after aesthetic treatment result' },
+  { image: beforeAfter2, alt: 'Before and after facial rejuvenation result' },
+  { image: beforeAfter3, alt: 'Before and after skin treatment result' },
+];
+---
+
+<BaseLayout
+  title="Access Aesthetics | Medical Spa in Slidell, LA"
+  description="Access Aesthetics is a Slidell, Louisiana medical spa offering injectables, skin treatments, laser services, facials, and aesthetic wellness care."
+>
+  <Header />
+  <main id="home" class="overflow-hidden bg-[#f9f8f6] text-[#141820]">
+    <section class="bg-white pt-20">
+      <div class="relative isolate min-h-[calc(100vh-12rem)] overflow-hidden bg-white">
+        <div class="absolute inset-y-0 right-0 -z-20 h-full w-full lg:w-[62%]">
+          <Image
+            src={homeHeroImage}
+            alt="Client receiving an injectable aesthetic treatment"
+            class="h-full w-full object-cover object-[55%_25%]"
+            widths={[720, 960, 1280, 1448]}
+            sizes="(min-width: 1024px) 62vw, 100vw"
+            priority
+          />
+        </div>
+        <svg
+          class="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden h-full w-[62%] text-brand-300 lg:block"
+          viewBox="0 0 800 760"
+          preserveAspectRatio="xMidYMid slice"
+          aria-hidden="true"
+        >
+          <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
+          <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
+        </svg>
+        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
+        <div class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-white to-transparent"></div>
+
+        <div class="mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
+          <div class="max-w-[56rem]">
+          <p class="mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+            Medical aesthetics. Personalized for you.
+          </p>
+          <h1 class="font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-normal leading-[1.04] tracking-[-0.01em] text-[#141820]">
+            <span class="font-bold">Subtle work.</span> Noticeable confidence.
+          </h1>
+          <p class="mt-6 max-w-[36ch] text-[1.0625rem] leading-[1.7] text-[#5a6070]">
+            Evidence based treatments. Expert care.<br />Results that look like you, only refreshed.
+          </p>
+          <div class="mt-11 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
+            <a
+              href={bookingUrl}
+              class="inline-flex items-center gap-2 bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)]"
+            >
+              Book your consult
+            </a>
+            <a
+              href="#services"
+              class="group inline-flex items-center gap-1.5 border-b border-[#e4e0db] pb-0.5 text-[0.9375rem] text-[#141820] transition hover:border-brand-500 hover:text-brand-700"
+            >
+              Explore treatments
+              <ArrowRight class="size-4 transition group-hover:translate-x-1" aria-hidden="true" />
+            </a>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <div class="border-t border-brand-100 bg-brand-50">
+        <div class="mx-auto grid max-w-[calc(1280px+8rem)] px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:px-16">
+          {
+            trustItems.map(({ icon: Icon, title, copy }) => (
+              <div class="flex items-center gap-4 border-brand-100 py-7 lg:border-r lg:px-8 first:lg:pl-0 last:lg:border-r-0 last:lg:pr-0">
+                <Icon class="size-7 shrink-0 text-brand-700" stroke-width={1.75} aria-hidden="true" />
+                <div>
+                  <p class="mb-0.5 text-[0.9375rem] font-semibold text-[#141820]">{title}</p>
+                  <p class="text-[0.8125rem] text-[#5a6070]">{copy}</p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div class="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="overflow-hidden rounded-[2px]">
+            <Image
+              src={teamImage}
+              alt="Access Aesthetics team"
+              class="h-[300px] w-full object-cover transition duration-500 hover:scale-[1.04]"
+              widths={[480, 720, 960]}
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
+          </div>
+          <div class="mt-11 overflow-hidden rounded-[2px]">
+            <Image
+              src={service3Image}
+              alt="Relaxing aesthetic facial treatment"
+              class="h-[300px] w-full object-cover transition duration-500 hover:scale-[1.04]"
+              widths={[480, 720, 960]}
+              sizes="(min-width: 1024px) 25vw, 50vw"
+            />
+          </div>
+        </div>
+
+        <div>
+          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Welcome To Access Aesthetics</p>
+          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+            Where innovation meets beauty.
+          </h2>
+          <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+            From Plexr Plasma and Botox to injectable fillers and transformative spa therapies, licensed experts curate minimally invasive experiences that elevate your beauty with thoughtful, personalized service.
+          </p>
+          <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+            At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
+          </p>
+          <div class="mt-8 grid gap-3 sm:grid-cols-3">
+            {
+              aboutFeatures.map(({ icon: Icon, label }) => (
+                <div class="border border-[#edebe7] bg-white p-4.5">
+                  <Icon class="mb-3 size-4.5 text-brand-500" stroke-width={1.75} aria-hidden="true" />
+                  <p class="text-[0.8125rem] font-semibold text-[#141820]">{label}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-14 max-w-[600px]">
+          <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+            Premier Aesthetic Experience
+          </p>
+          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+            Treatments shaped around your skin, your goals, and your confidence.
+          </h2>
+        </div>
+
+        <div class="space-y-5">
+          {
+            serviceGroups.map((service) => (
+              <article class="grid overflow-hidden border border-[#edebe7] lg:grid-cols-2">
+                <div class:list={['relative min-h-[380px] overflow-hidden', service.reverse ? 'lg:order-2' : '']}>
+                  <Image
+                    src={service.image}
+                    alt={service.imageAlt}
+                    class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
+                    widths={[640, 960, 1280]}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
+                </div>
+                <div class:list={['flex flex-col justify-center p-8 sm:p-10 lg:p-14', service.reverse ? 'lg:order-1' : '']}>
+                  <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
+                  <h3 class="mb-4 font-display text-[clamp(1.75rem,2.4vw,2.5rem)] font-normal leading-[1.15] text-[#141820]">
+                    {service.title}
+                  </h3>
+                  <p class="mb-7 text-base leading-[1.7] text-[#5a6070]">{service.copy}</p>
+                  <div class="mb-8 grid gap-2 sm:grid-cols-2">
+                    {service.items.map((item) => (
+                      <div class="flex items-center gap-2.5 text-[0.8rem] font-semibold uppercase tracking-[0.07em] text-[#141820]">
+                        <Check class="size-4 shrink-0 text-brand-500" stroke-width={2.5} aria-hidden="true" />
+                        <span>{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                  <a
+                    href={bookingUrl}
+                    class="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.1em] text-[#141820] underline decoration-brand-300 decoration-2 underline-offset-5 transition hover:text-brand-700"
+                  >
+                    Book Now
+                    <ArrowRight class="size-3.5" aria-hidden="true" />
+                  </a>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="team" class="border-t border-brand-100 bg-brand-50 px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-14 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-16">
+          <div>
+            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Behind The Glow</p>
+            <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+              Personal touch meets the forefront of beauty technology.
+            </h2>
+            <p class="mt-5 max-w-[42ch] text-[1.0625rem] leading-[1.7] text-[#5a6070]">
+              The Access team pairs advanced training with an approachable experience, making every appointment feel considered from consultation to treatment.
+            </p>
+            <a
+              href={bookingUrl}
+              class="mt-6 inline-flex items-center gap-2 bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)]"
+            >
+              Book a consult
+              <ArrowRight class="size-3.5" aria-hidden="true" />
+            </a>
+          </div>
+          <div class="overflow-hidden rounded-[2px]">
+            <Image
+              src={teamImage}
+              alt="Access Aesthetics clinical team"
+              class="h-[400px] w-full object-cover object-top"
+              widths={[720, 960, 1280]}
+              sizes="(min-width: 1024px) 55vw, 100vw"
+            />
+          </div>
+        </div>
+
+        <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {
+            team.map((member) => (
+              <article class="overflow-hidden border border-[#edebe7] bg-white">
+                <div class="overflow-hidden">
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    class="aspect-[4/5] w-full object-cover transition duration-500 hover:scale-105"
+                    widths={[360, 520, 720]}
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                  />
+                </div>
+                <div class="p-4">
+                  <p class="text-[0.9375rem] font-semibold text-[#141820]">{member.name}</p>
+                  <p class="mt-0.5 text-[0.8125rem] text-[#5a6070]">Access Aesthetics Team</p>
+                </div>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section id="transformations" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p class="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Before and After</p>
+            <h2 class="mt-3.5 max-w-[28ch] font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+              Visible change, guided by thoughtful treatment plans.
+            </h2>
+          </div>
+          <a
+            href={bookingUrl}
+            class="inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)] sm:self-auto"
+          >
+            Start Yours
+            <ArrowRight class="size-3.5" aria-hidden="true" />
+          </a>
+        </div>
+
+        <div class="grid gap-5 md:grid-cols-3">
+          {
+            transformations.map((item) => (
+              <figure class="border border-[#edebe7] bg-[#f9f8f6] p-3">
+                <div class="overflow-hidden">
+                  <Image
+                    src={item.image}
+                    alt={item.alt}
+                    class="aspect-square w-full object-cover transition duration-500 hover:scale-[1.04]"
+                    widths={[420, 640, 960]}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                  />
+                </div>
+                <figcaption class="px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
+                  Access Transformation
+                </figcaption>
+              </figure>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
