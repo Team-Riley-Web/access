@@ -94,7 +94,7 @@ const transformations = [
   <main id="home" class="overflow-hidden bg-[#f9f8f6] text-[#141820]">
     <section class="bg-white pt-20">
       <div class="relative isolate min-h-[calc(100vh-12rem)] overflow-hidden bg-white">
-        <div class="absolute inset-y-0 right-0 -z-20 h-full w-full lg:w-[62%]">
+        <div class="absolute inset-y-0 right-0 -z-30 h-full w-full lg:w-[62%]">
           <Image
             src={homeHeroImage}
             alt="Client receiving an injectable aesthetic treatment"
@@ -105,7 +105,7 @@ const transformations = [
           />
         </div>
         <svg
-          class="pointer-events-none absolute inset-y-0 right-0 -z-10 hidden h-full w-[62%] text-brand-300 lg:block"
+          class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[62%] text-brand-300 lg:block"
           viewBox="0 0 800 760"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
@@ -113,16 +113,16 @@ const transformations = [
           <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
           <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
         </svg>
-        <div class="absolute inset-0 -z-10 bg-gradient-to-r from-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
-        <div class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-white to-transparent"></div>
+        <div class="absolute inset-0 -z-20 bg-gradient-to-r from-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
+        <div class="absolute inset-x-0 bottom-0 -z-20 h-32 bg-gradient-to-t from-white to-transparent"></div>
 
-        <div class="mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
+        <div class="relative z-10 mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
           <div class="max-w-[56rem]">
           <p class="mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Medical aesthetics. Personalized for you.
           </p>
-          <h1 class="font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-normal leading-[1.04] tracking-[-0.01em] text-[#141820]">
-            <span class="font-bold">Subtle work.</span> Noticeable confidence.
+          <h1 class="font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
+            Subtle work.<br />Noticeable confidence.
           </h1>
           <p class="mt-6 max-w-[36ch] text-[1.0625rem] leading-[1.7] text-[#5a6070]">
             Evidence based treatments. Expert care.<br />Results that look like you, only refreshed.
