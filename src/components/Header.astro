@@ -62,13 +62,13 @@ const navItems = [
       />
     </a>
 
-    <nav class="hidden items-center gap-5 xl:gap-7 lg:flex" aria-label="Primary navigation">
+    <nav class="ml-auto hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Primary navigation">
       {
         navItems.map((item) => (
           <div class="group relative">
             <a
               href={item.href}
-              class="inline-flex items-center gap-1.5 whitespace-nowrap font-logo text-[0.82rem] font-normal uppercase tracking-[0.12em] text-[#5a6070] transition hover:text-[#141820] xl:text-[0.92rem] xl:tracking-[0.14em]"
+              class="inline-flex items-center gap-1.5 whitespace-nowrap font-logo text-[0.9rem] font-normal uppercase tracking-[0.13em] text-[#5a6070] transition hover:text-[#141820] xl:text-[0.98rem] xl:tracking-[0.14em]"
             >
               <span>{item.label}</span>
               {item.children && (
@@ -101,8 +101,8 @@ const navItems = [
     <div class="flex items-center gap-3">
       <a
         href={bookingUrl}
-        class="brand-cut-button hidden whitespace-nowrap font-logo font-normal uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-px sm:inline-flex xl:tracking-[0.14em]"
-        x-bind:class="scrolled ? 'px-4 py-2 text-[0.74rem] xl:px-5 xl:text-[0.86rem]' : 'px-5 py-2.5 text-[0.82rem] xl:px-6 xl:text-base'"
+        class="brand-cut-button hidden whitespace-nowrap font-logo font-normal uppercase tracking-[0.13em] text-white transition-all duration-300 hover:-translate-y-px sm:inline-flex xl:tracking-[0.14em]"
+        x-bind:class="scrolled ? 'px-4 py-2 text-[0.9rem] xl:px-5 xl:text-[0.98rem]' : 'px-5 py-2.5 text-[0.9rem] xl:px-6 xl:text-[0.98rem]'"
       >
         Book Now
       </a>
