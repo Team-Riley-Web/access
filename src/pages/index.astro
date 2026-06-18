@@ -3,11 +3,9 @@ import { Image } from 'astro:assets';
 import {
   ArrowRight,
   Check,
-  HeartPulse,
   LockKeyhole,
   ShieldCheck,
   Sparkles,
-  UserRoundCheck,
   UsersRound,
 } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
@@ -34,12 +32,6 @@ const trustItems = [
   { icon: Sparkles, title: 'Natural results', copy: 'Refined, never overdone' },
   { icon: LockKeyhole, title: 'Safety first', copy: 'Personalized treatment plans' },
   { icon: UsersRound, title: 'Trusted by patients', copy: '5 star experience' },
-];
-
-const aboutFeatures = [
-  { icon: Sparkles, label: 'Radiance Redefined' },
-  { icon: UserRoundCheck, label: 'Licensed Experts' },
-  { icon: HeartPulse, label: 'Personalized Care' },
 ];
 
 const serviceGroups = [
@@ -197,72 +189,106 @@ const transformations = [
             </p>
             <div class="pt-8">
               <a
-                  href={bookingUrl}
-                  class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+                href={bookingUrl}
+                class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
               >
                 Book your consult
               </a>
             </div>
-            <!--<div class="mt-8 grid gap-3 sm:grid-cols-3">-->
-            <!--  {-->
-            <!--    aboutFeatures.map(({ icon: Icon, label }) => (-->
-            <!--      <div class="border border-[#edebe7] bg-white p-4.5">-->
-            <!--        <Icon class="mb-3 size-4.5 text-brand-500" stroke-width={1.75} aria-hidden="true" />-->
-            <!--        <p class="text-[0.8125rem] font-semibold text-[#141820]">{label}</p>-->
-            <!--      </div>-->
-            <!--    ))-->
-            <!--  }-->
-            <!--</div>-->
           </div>
         </div>
       </div>
     </section>
 
     <section id="services" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-14 max-w-[600px]">
+      <div class="mx-auto max-w-7xl" x-data="{ active: 0 }">
+        <div class="mb-12 max-w-[760px]">
           <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Premier Aesthetic Experience
           </p>
-          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
-            Treatments shaped around your skin, your goals, and your confidence.
+          <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.01em] text-[#141820]">
+            Curated treatments for skin, structure, and glow.
           </h2>
+          <p class="mt-6 max-w-[58ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+            Explore each service focus one at a time, then book a consult for a plan shaped around your skin, goals, and comfort.
+          </p>
         </div>
 
-        <div class="space-y-5">
+        <div class="overflow-x-auto pb-1">
+          <div class="relative flex min-w-[680px] border-b border-[#d9e2e6]" role="tablist" aria-label="Service categories">
+            {
+              serviceGroups.map((service, index) => (
+                <button
+                  type="button"
+                  class="relative flex-1 px-4 pb-6 text-center font-logo text-[1.05rem] font-normal uppercase tracking-[0.14em] transition duration-300"
+                  x-bind:class={`active === ${index} ? 'text-[#141820]' : 'text-[#8b929e] hover:text-[#141820]'`}
+                  x-bind:aria-selected={`active === ${index}`}
+                  role="tab"
+                  @click={`active = ${index}`}
+                >
+                  <span>{service.kicker}</span>
+                  <span
+                    class="absolute inset-x-0 -bottom-px h-[3px] origin-left bg-gradient-to-r from-brand-300 via-brand-500 to-brand-700 transition-transform duration-500"
+                    x-bind:class={`active === ${index} ? 'scale-x-100' : 'scale-x-0'`}
+                    aria-hidden="true"
+                  ></span>
+                </button>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class="pt-12">
           {
-            serviceGroups.map((service) => (
-              <article class="grid overflow-hidden border border-[#edebe7] lg:grid-cols-2">
-                <div class:list={['relative min-h-[380px] overflow-hidden', service.reverse ? 'lg:order-2' : '']}>
-                  <Image
-                    src={service.image}
-                    alt={service.imageAlt}
-                    class="h-full w-full object-cover transition duration-500 hover:scale-[1.03]"
-                    widths={[640, 960, 1280]}
-                    sizes="(min-width: 1024px) 50vw, 100vw"
-                  />
-                </div>
-                <div class:list={['flex flex-col justify-center p-8 sm:p-10 lg:p-14', service.reverse ? 'lg:order-1' : '']}>
-                  <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
-                  <h3 class="mb-4 font-display text-[clamp(1.75rem,2.4vw,2.5rem)] font-normal leading-[1.15] text-[#141820]">
-                    {service.title}
-                  </h3>
-                  <p class="mb-7 text-base leading-[1.7] text-[#5a6070]">{service.copy}</p>
-                  <div class="mb-8 grid gap-2 sm:grid-cols-2">
-                    {service.items.map((item) => (
-                      <div class="flex items-center gap-2.5 text-[0.8rem] font-semibold uppercase tracking-[0.07em] text-[#141820]">
-                        <Check class="size-4 shrink-0 text-brand-500" stroke-width={2.5} aria-hidden="true" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
+            serviceGroups.map((service, index) => (
+              <article
+                class="overflow-hidden bg-[#f8fbfc] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
+                x-show={`active === ${index}`}
+                x-transition:enter="transition ease-out duration-500"
+                x-transition:enter-start="opacity-0 translate-y-4"
+                x-transition:enter-end="opacity-100 translate-y-0"
+                x-cloak={index !== 0}
+                role="tabpanel"
+              >
+                <div class="grid lg:grid-cols-[2fr_3fr]">
+                  <div class="relative min-h-[320px] overflow-hidden sm:min-h-[430px] lg:min-h-[560px]">
+                    <Image
+                      src={service.image}
+                      alt={service.imageAlt}
+                      class="absolute inset-0 h-full w-full object-cover"
+                      widths={[520, 720, 960]}
+                      sizes="(min-width: 1024px) 40vw, 100vw"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#141820]/34 via-[#141820]/4 to-transparent"></div>
+                    <div class="absolute bottom-6 left-6 bg-white/94 px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-brand-700 shadow-[0_12px_32px_rgba(20,24,32,0.16)] backdrop-blur sm:left-8">
+                      {String(index + 1).padStart(2, '0')} / {String(serviceGroups.length).padStart(2, '0')}
+                    </div>
                   </div>
-                  <a
-                    href={bookingUrl}
-                    class="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold uppercase tracking-[0.1em] text-[#141820] underline decoration-brand-300 decoration-2 underline-offset-5 transition hover:text-brand-700"
-                  >
-                    Book Now
-                    <ArrowRight class="size-3.5" aria-hidden="true" />
-                  </a>
+
+                  <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-14 xl:p-16">
+                    <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
+                    <h3 class="max-w-[13ch] font-display text-[clamp(2rem,3vw,3.3rem)] font-normal leading-[1.08] text-[#141820]">
+                      {service.title}
+                    </h3>
+                    <p class="mt-6 max-w-[64ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">{service.copy}</p>
+
+                    <div class="mt-8 grid gap-3 sm:grid-cols-2">
+                      {service.items.map((item) => (
+                        <div class="flex items-start gap-2.5 text-[0.78rem] font-semibold uppercase tracking-[0.08em] text-[#141820]">
+                          <Check class="mt-0.5 size-4 shrink-0 text-brand-500" stroke-width={2.5} aria-hidden="true" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    <a
+                      href={bookingUrl}
+                      class="brand-cut-button mt-9 inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+                    >
+                      Book This Treatment
+                      <ArrowRight class="size-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
                 </div>
               </article>
             ))
