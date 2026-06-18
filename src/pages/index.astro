@@ -146,14 +146,14 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
   <Header />
   <main id="home" class="overflow-hidden bg-[#f9f8f6] text-[#141820]">
     <section class="bg-white pt-20">
-      <div class="relative isolate min-h-[calc(100vh-12rem)] overflow-hidden bg-white">
-        <div class="absolute inset-y-0 right-0 -z-30 h-full w-full lg:w-[62%]">
+      <div class="relative isolate overflow-hidden bg-white lg:min-h-[calc(100vh-12rem)]">
+        <div class="absolute inset-y-0 right-0 -z-30 hidden h-full w-[62%] lg:block">
           <Image
             src={homeHeroImage}
             alt="Client receiving an injectable aesthetic treatment"
             class="h-full w-full object-cover object-[55%_25%]"
             widths={[720, 960, 1280, 1448]}
-            sizes="(min-width: 1024px) 62vw, 100vw"
+            sizes="62vw"
             priority
           />
         </div>
@@ -166,49 +166,66 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.26" />
           <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.22" />
         </svg>
-        <!--bg-linear-to-r from-[#f3e7e9] via-[#e3eeff] to-white-->
-        <div class="absolute inset-0 -z-20 bg-gradient-to-r from-[#D6DEFA66] via-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
-        <div class="absolute inset-x-0 bottom-0 -z-20 h-32 bg-gradient-to-t from-white to-transparent"></div>
+        <div class="absolute inset-0 -z-20 hidden bg-gradient-to-r from-[#D6DEFA66] via-white from-[0%] via-white via-[49%] to-white/0 to-[78%] lg:block"></div>
+        <div class="absolute inset-x-0 bottom-0 -z-20 hidden h-32 bg-gradient-to-t from-white to-transparent lg:block"></div>
 
-        <div class="relative z-10 mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
-          <div class="max-w-[56rem]">
-          <p class="hero-text-shadow mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
-            Medical aesthetics. Personalized for you.
-          </p>
-          <h1 class="hero-text-shadow font-script text-[clamp(5rem,8vw,8.5rem)] font-normal leading-[0.82] tracking-normal text-[#141820]">
-            <!--Redefining<br /> Aesthetic Wellness-->
-            Radiance Redefined
-          </h1>
-          <!--<h1 class="hero-text-shadow font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">-->
-          <!--  Subtle work.<br />Noticeable confidence.-->
-          <!--</h1>-->
-          <!--max-w-[36ch] -->
-          <p class="hero-text-shadow mt-6
-          text-lg leading-[1.7] text-[#5a6070]">
-            <!--With Precision, Innovation & Care-->
-            Evidence based treatments. Expert care. Results that look like you, only refreshed.
-          </p>
-          <div class="mt-11 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
-            <a
-              href={bookingUrl}
-              class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
-            >
-              Book your consult
-            </a>
-            <a
-              href="#services"
-              class="group inline-flex items-center gap-1.5 border-b border-[#e4e0db] pb-0.5 text-[0.9375rem] text-[#141820] transition hover:border-brand-500 hover:text-brand-700"
-            >
-              Explore treatments
-              <ArrowRight class="size-4 transition group-hover:translate-x-1" aria-hidden="true" />
-            </a>
+        <div class="relative z-10 mx-auto flex lg:min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-10 sm:px-8 lg:px-16 lg:py-22">
+          <div class="w-full max-w-[56rem] text-center lg:text-left">
+            <p class="mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+              Medical aesthetics. Personalized for you.
+            </p>
+            <h1 class="hero-text-shadow font-script text-[clamp(4rem,8vw,8.5rem)] font-normal leading-[0.82] tracking-normal text-[#141820]">
+              Radiance Redefined
+            </h1>
+            <p class="mt-6 text-lg leading-[1.7] text-[#5a6070]">
+              Evidence based treatments. Expert care. Results that look like you, only refreshed.
+            </p>
+            <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:items-start lg:justify-start">
+              <a
+                href={bookingUrl}
+                class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+              >
+                Book your consult
+              </a>
+              <a
+                href="#services"
+                class="group inline-flex items-center gap-1.5 border-b border-[#e4e0db] pb-0.5 text-[0.9375rem] text-[#141820] transition hover:border-brand-500 hover:text-brand-700"
+              >
+                Explore treatments
+                <ArrowRight class="size-4 transition group-hover:translate-x-1" aria-hidden="true" />
+              </a>
+            </div>
           </div>
-        </div>
         </div>
       </div>
 
+      <div class="overflow-hidden lg:hidden">
+        <Image
+          src={homeHeroImage}
+          alt="Client receiving an injectable aesthetic treatment"
+          class="h-72 w-full object-cover object-[55%_25%] sm:h-96"
+          widths={[720, 960]}
+          sizes="100vw"
+        />
+      </div>
+
       <div class="border-t border-brand-100 bg-brand-50">
-        <div class="mx-auto grid max-w-[calc(1280px+8rem)] px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:px-16">
+        <div class="overflow-hidden sm:hidden">
+          <div class="animate-marquee flex w-max">
+            {
+              [...trustItems, ...trustItems].map(({ icon: Icon, title, copy }, i) => (
+                <div class="flex items-center gap-3.5 border-r border-brand-100 px-7 py-5 whitespace-nowrap">
+                  <Icon class="size-5 shrink-0 text-brand-700" stroke-width={1.75} aria-hidden="true" />
+                  <div>
+                    <p class="text-[0.875rem] font-semibold text-[#141820]">{title}</p>
+                    <p class="text-[0.75rem] text-[#5a6070]">{copy}</p>
+                  </div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+        <div class="mx-auto hidden sm:grid max-w-[calc(1280px+8rem)] px-5 sm:grid-cols-2 sm:px-8 lg:grid-cols-4 lg:px-16">
           {
             trustItems.map(({ icon: Icon, title, copy }, index) => (
               <div data-reveal data-reveal-delay={index * 110} class="flex items-center gap-4 border-brand-100 py-7 lg:border-r lg:px-8 first:lg:pl-0 last:lg:border-r-0 last:lg:pr-0">
@@ -226,7 +243,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
 
     <section id="about" class="overflow-hidden bg-[#0f1d29]">
       <div class="grid lg:grid-cols-2">
-        <div class="relative min-h-[420px] overflow-hidden lg:min-h-[680px]">
+        <div class="order-2 lg:order-1 relative min-h-[420px] overflow-hidden lg:min-h-[680px]">
           <Image
             src={meetingImage}
             alt="Access Aesthetics team meeting with a new client"
@@ -237,7 +254,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           <div class="absolute inset-0 bg-gradient-to-r from-[#0f1d29]/10 via-transparent to-[#0f1d29]/70 lg:bg-gradient-to-l"></div>
         </div>
 
-        <div class="relative flex w-full items-center overflow-hidden px-6 py-16 sm:px-10 lg:px-16 lg:py-32">
+        <div class="order-1 lg:order-2 relative flex w-full items-center overflow-hidden px-6 py-16 sm:px-10 lg:px-16 lg:py-32">
           <div class="absolute -right-24 top-20 h-72 w-72 rounded-full bg-brand-500/18 blur-3xl"></div>
           <div class="absolute bottom-0 left-12 h-56 w-56 rounded-full bg-brand-300/10 blur-3xl"></div>
           <div data-reveal class="relative mx-auto max-w-2xl">
@@ -271,7 +288,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
     >
       <div class="absolute inset-0 bg-white/42"></div>
       <div class="absolute inset-0 bg-gradient-to-b from-white/58 via-white/32 to-[#eef7fb]/38"></div>
-      <div class="relative mx-auto max-w-7xl" x-data="{ active: 0 }">
+      <div class="relative mx-auto max-w-7xl" x-data="{ active: 0, _tx: 0 }">
         <div data-reveal class="mb-12">
           <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Treatments for skin, structure, and glow.
@@ -284,7 +301,8 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           </p>
         </div>
 
-        <div data-reveal data-reveal-delay="130" class="overflow-x-auto pb-1">
+        <div data-reveal data-reveal-delay="130" class="relative">
+          <div class="no-scrollbar overflow-x-auto pb-1">
           <div class="relative flex min-w-[680px] border-b border-[#d9e2e6]" role="tablist" aria-label="Service categories">
             {
               serviceGroups.map((service, index) => (
@@ -306,9 +324,13 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
               ))
             }
           </div>
+          </div>
         </div>
 
-        <div data-reveal data-reveal-delay="220" class="grid pt-12">
+        <div data-reveal data-reveal-delay="220" class="grid pt-12 bg-white"
+          @touchstart.passive="_tx = $event.touches[0].clientX"
+          @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 50) active = dx < 0 ? Math.min(active + 1, 2) : Math.max(active - 1, 0)"
+        >
           {
             serviceGroups.map((service, index) => (
               <article
@@ -354,7 +376,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
 
                     <a
                       href={bookingUrl}
-                      class="brand-cut-button mt-9 inline-flex self-start items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+                      class="brand-cut-button mt-9 inline-flex self-center lg:self-start items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
                     >
                       Book This Treatment
                       <ArrowRight class="size-3.5" aria-hidden="true" />
@@ -396,6 +418,16 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
               sizes="(min-width: 1024px) 80vw, 100vw"
             />
           </div>
+          <div class="mt-6 flex justify-center lg:hidden">
+            <a
+              href="https://www.accessofla.com"
+              class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+            >
+              Learn More
+              <ArrowRight class="size-3.5" aria-hidden="true" />
+            </a>
+          </div>
+
           <div class="pointer-events-none absolute inset-0 z-10 hidden lg:block">
             {
               teamHotspots.map((hotspot) => (
@@ -491,7 +523,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           </div>
           <a
             href={bookingUrl}
-            class="brand-cut-button inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px sm:self-auto"
+            class="brand-cut-button hidden sm:inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px sm:self-auto"
           >
             Start Yours
             <ArrowRight class="size-3.5" aria-hidden="true" />
@@ -501,7 +533,58 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
         <div
           data-reveal
           data-reveal-delay="160"
-          class="overflow-hidden"
+          class="md:hidden"
+          x-data="{ mActive: 0, mPaused: false, _tx: 0 }"
+          x-init="setInterval(() => { if (!mPaused) mActive = (mActive + 1) % 9 }, 4200)"
+        >
+          <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false"
+            @touchstart.passive="_tx = $event.touches[0].clientX"
+            @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % 9 : (mActive - 1 + 9) % 9"
+          >
+            <div
+              class="flex transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              x-bind:style="`transform: translateX(-${mActive * 100}%)`"
+            >
+              {
+                transformations.map((item, index) => (
+                  <div class="min-w-full">
+                    <figure>
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        class="aspect-square w-full object-cover"
+                        widths={[420, 640]}
+                        sizes="100vw"
+                      />
+                      <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
+                        <span>{item.label}</span>
+                        <span>{String(index + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                ))
+              }
+            </div>
+          </div>
+          <div class="mt-5 flex items-center gap-2">
+            {
+              transformations.map((_, index) => (
+                <button
+                  type="button"
+                  class="h-2 rounded-full transition-all duration-500"
+                  x-bind:class={`mActive === ${index} ? 'w-8 bg-brand-600' : 'w-2 bg-[#9aa8b1]/55'`}
+                  aria-label={`Show transformation ${index + 1}`}
+                  @click={`mActive = ${index}`}
+                />
+              ))
+            }
+          </div>
+        </div>
+
+        <div
+          data-reveal
+          data-reveal-delay="160"
+          class="hidden overflow-hidden md:block"
           @mouseenter="paused = true"
           @mouseleave="paused = false"
         >
@@ -540,7 +623,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           </div>
         </div>
 
-        <div class="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+        <div class="mt-7 hidden flex-col gap-5 md:flex md:flex-row md:items-center md:justify-between">
           <div class="flex items-center gap-2">
             {
               transformationSlides.map((_, index) => (
@@ -573,6 +656,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
               <ArrowRight class="size-4" aria-hidden="true" />
             </button>
           </div>
+        </div>
         </div>
 
         <div
@@ -611,7 +695,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
         </div>
       </div>
     </section>
-    <section class="bg-[#f9f8f6] px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+    <section class="bg-linear-to-b from-white to-[#f9f8f6] px-5 pb-12 sm:px-10 lg:px-20 lg:py-16">
       <div
         data-reveal
         class="relative overflow-hidden rounded-3xl shadow-[0_40px_110px_rgba(5,17,28,0.28),0_3px_12px_rgba(5,17,28,0.12)]"

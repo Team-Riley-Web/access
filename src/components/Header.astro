@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ChevronDown, Menu, X } from '@lucide/astro';
+import { ChevronDown, Menu, Phone, X } from '@lucide/astro';
 import logo from '../assets/images/logo.png';
 
 const bookingUrl = 'https://www.myaestheticspro.com/';
@@ -98,13 +98,20 @@ const navItems = [
       }
     </nav>
 
-    <div class="flex items-center gap-3">
+    <div class="ml-6 flex items-center gap-3 xl:ml-10">
       <a
         href={bookingUrl}
         class="brand-cut-button hidden whitespace-nowrap font-logo font-normal uppercase tracking-[0.13em] text-white transition-all duration-300 hover:-translate-y-px sm:inline-flex xl:tracking-[0.14em]"
         x-bind:class="scrolled ? 'px-4 py-2 text-[0.9rem] xl:px-5 xl:text-[0.98rem]' : 'px-5 py-2.5 text-[0.9rem] xl:px-6 xl:text-[0.98rem]'"
       >
         Book Now
+      </a>
+      <a
+        href="tel:+19859605066"
+        class="inline-flex size-11 items-center justify-center border border-brand-200 text-brand-700 transition hover:border-brand-400 hover:text-brand-500 lg:hidden"
+        aria-label="Call us"
+      >
+        <Phone class="size-4" stroke-width={1.75} aria-hidden="true" />
       </a>
       <button
         type="button"
@@ -120,24 +127,43 @@ const navItems = [
   </div>
 
   <div class="lg:hidden" x-show="open" x-cloak x-transition @click.outside="open = false">
-    <nav class="mx-5 mb-5 bg-white p-3 shadow-soft" aria-label="Mobile navigation">
+    <nav class="border-t border-brand-100 bg-white shadow-[0_8px_24px_rgba(20,24,32,0.08)]" aria-label="Mobile navigation">
       {
         navItems.map((item) => (
-          <div>
-            <a
-              href={item.href}
-              class="flex items-center justify-between px-4 py-3 font-logo text-base font-normal uppercase tracking-[0.14em] text-[#5a6070] transition hover:bg-brand-50 hover:text-[#141820]"
-              @click="open = false"
-            >
-              <span>{item.label}</span>
-              {item.children && <ChevronDown class="size-3.5 text-[#8b929e]/65" stroke-width={1.7} aria-hidden="true" />}
-            </a>
+          <div x-data={item.children ? "{ expanded: false }" : "{}"} class="border-b border-brand-50">
+            {item.children ? (
+              <div class="flex items-center">
+                <a
+                  href={item.href}
+                  class="flex-1 px-5 py-3.5 font-logo text-base font-normal uppercase tracking-[0.14em] text-[#5a6070] transition hover:text-[#141820]"
+                  @click="open = false"
+                >
+                  {item.label}
+                </a>
+                <button
+                  type="button"
+                  class="px-5 py-3.5 text-[#8b929e]/65 transition hover:text-brand-600"
+                  @click="expanded = !expanded"
+                  :aria-expanded="expanded.toString()"
+                >
+                  <ChevronDown class="size-4 transition duration-300" x-bind:class="expanded ? 'rotate-180' : ''" stroke-width={1.7} aria-hidden="true" />
+                </button>
+              </div>
+            ) : (
+              <a
+                href={item.href}
+                class="flex items-center px-5 py-3.5 font-logo text-base font-normal uppercase tracking-[0.14em] text-[#5a6070] transition hover:text-[#141820]"
+                @click="open = false"
+              >
+                {item.label}
+              </a>
+            )}
             {item.children && (
-              <div class="pb-2 pl-7">
+              <div x-show="expanded" x-cloak x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-1" x-transition:enter-end="opacity-100 translate-y-0">
                 {item.children.map((child) => (
                   <a
                     href={child.href}
-                    class="block px-4 py-2 font-logo text-sm font-normal uppercase tracking-[0.12em] text-[#5a6070] transition hover:bg-brand-50 hover:text-[#141820]"
+                    class="block bg-brand-50 px-5 py-2.5 font-logo text-sm font-normal uppercase tracking-[0.12em] text-[#5a6070] transition hover:bg-brand-100 hover:text-[#141820]"
                     @click="open = false"
                   >
                     {child.label}
@@ -148,12 +174,14 @@ const navItems = [
           </div>
         ))
       }
-      <a
-        href={bookingUrl}
-        class="brand-cut-button mt-3 flex items-center justify-center px-5 py-3 font-logo text-base font-normal uppercase tracking-[0.14em] text-white"
-      >
-        Book your consult
-      </a>
+      <div class="px-5 py-4">
+        <a
+          href={bookingUrl}
+          class="brand-cut-button flex items-center justify-center px-5 py-3 font-logo text-base font-normal uppercase tracking-[0.14em] text-white"
+        >
+          Book your consult
+        </a>
+      </div>
     </nav>
   </div>
 </header>
