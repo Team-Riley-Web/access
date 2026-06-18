@@ -25,6 +25,7 @@ import teamCourtney from '../assets/images/team-courtney.jpg';
 import teamHarley from '../assets/images/team-harley.jpg';
 import teamImage from '../assets/images/team.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
+import meetingImage from '../assets/images/meeting.jpeg';
 
 const bookingUrl = 'https://www.myaestheticspro.com/';
 
@@ -105,32 +106,39 @@ const transformations = [
           />
         </div>
         <svg
-          class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[62%] text-brand-300 lg:block"
+          class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[62%] text-brand-300 [mask-image:linear-gradient(to_right,black_0%,black_52%,transparent_78%)] lg:block"
           viewBox="0 0 800 760"
           preserveAspectRatio="xMidYMid slice"
           aria-hidden="true"
         >
-          <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
-          <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.25" />
+          <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.26" />
+          <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.22" />
         </svg>
         <div class="absolute inset-0 -z-20 bg-gradient-to-r from-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
         <div class="absolute inset-x-0 bottom-0 -z-20 h-32 bg-gradient-to-t from-white to-transparent"></div>
 
         <div class="relative z-10 mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
           <div class="max-w-[56rem]">
-          <p class="mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+          <p class="hero-text-shadow mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Medical aesthetics. Personalized for you.
           </p>
-          <h1 class="font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
-            Subtle work.<br />Noticeable confidence.
+          <h1 class="hero-text-shadow lg:bg-white font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
+            <!--Redefining<br /> Aesthetic Wellness-->
+            Radiance Redefined
           </h1>
-          <p class="mt-6 max-w-[36ch] text-[1.0625rem] leading-[1.7] text-[#5a6070]">
-            Evidence based treatments. Expert care.<br />Results that look like you, only refreshed.
+          <!--<h1 class="hero-text-shadow font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">-->
+          <!--  Subtle work.<br />Noticeable confidence.-->
+          <!--</h1>-->
+          <!--max-w-[36ch] -->
+          <p class="hero-text-shadow mt-6
+          text-lg leading-[1.7] text-[#5a6070]">
+            <!--With Precision, Innovation & Care-->
+            Evidence based treatments. Expert care. Results that look like you, only refreshed.
           </p>
           <div class="mt-11 flex flex-col items-start gap-6 sm:flex-row sm:items-center">
             <a
               href={bookingUrl}
-              class="inline-flex items-center gap-2 bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)]"
+              class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
             >
               Book your consult
             </a>
@@ -163,49 +171,48 @@ const transformations = [
       </div>
     </section>
 
-    <section id="about" class="px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div class="mx-auto grid max-w-7xl gap-16 lg:grid-cols-2 lg:items-center lg:gap-20">
-        <div class="grid grid-cols-2 gap-4">
-          <div class="overflow-hidden rounded-[2px]">
-            <Image
-              src={teamImage}
-              alt="Access Aesthetics team"
-              class="h-[300px] w-full object-cover transition duration-500 hover:scale-[1.04]"
-              widths={[480, 720, 960]}
-              sizes="(min-width: 1024px) 25vw, 50vw"
-            />
-          </div>
-          <div class="mt-11 overflow-hidden rounded-[2px]">
-            <Image
-              src={service3Image}
-              alt="Relaxing aesthetic facial treatment"
-              class="h-[300px] w-full object-cover transition duration-500 hover:scale-[1.04]"
-              widths={[480, 720, 960]}
-              sizes="(min-width: 1024px) 25vw, 50vw"
-            />
-          </div>
+    <section id="about" class="overflow-hidden bg-[#e5f2ef2b]">
+      <div class="grid lg:grid-cols-2">
+        <div class="relative min-h-[420px] overflow-hidden lg:min-h-[680px]">
+          <Image
+            src={meetingImage}
+            alt="Access Aesthetics team meeting with a new client"
+            class="absolute inset-0 h-full w-full object-cover object-top"
+            widths={[720, 960, 1280]}
+            sizes="(min-width: 1024px) 50vw, 100vw"
+          />
         </div>
 
-        <div>
-          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Welcome To Access Aesthetics</p>
-          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
-            Where innovation meets beauty.
-          </h2>
-          <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
-            From Plexr Plasma and Botox to injectable fillers and transformative spa therapies, licensed experts curate minimally invasive experiences that elevate your beauty with thoughtful, personalized service.
-          </p>
-          <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
-            At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
-          </p>
-          <div class="mt-8 grid gap-3 sm:grid-cols-3">
-            {
-              aboutFeatures.map(({ icon: Icon, label }) => (
-                <div class="border border-[#edebe7] bg-white p-4.5">
-                  <Icon class="mb-3 size-4.5 text-brand-500" stroke-width={1.75} aria-hidden="true" />
-                  <p class="text-[0.8125rem] font-semibold text-[#141820]">{label}</p>
-                </div>
-              ))
-            }
+        <div class="flex w-full items-center px-6 py-16 sm:px-10 lg:px-16 lg:py-32">
+          <div class="mx-auto max-w-2xl">
+            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Welcome To Access Aesthetics</p>
+            <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+              Where innovation meets beauty.
+            </h2>
+            <p class="mt-6 text-lg leading-[1.75] text-[#5a6070]">
+              From Plexr Plasma and Botox to injectable fillers and transformative spa therapies, licensed experts curate minimally invasive experiences that elevate your beauty with thoughtful, personalized service.
+            </p>
+            <p class="mt-4 text-lg leading-[1.75] text-[#5a6070]">
+              At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
+            </p>
+            <div class="pt-8">
+              <a
+                  href={bookingUrl}
+                  class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+              >
+                Book your consult
+              </a>
+            </div>
+            <!--<div class="mt-8 grid gap-3 sm:grid-cols-3">-->
+            <!--  {-->
+            <!--    aboutFeatures.map(({ icon: Icon, label }) => (-->
+            <!--      <div class="border border-[#edebe7] bg-white p-4.5">-->
+            <!--        <Icon class="mb-3 size-4.5 text-brand-500" stroke-width={1.75} aria-hidden="true" />-->
+            <!--        <p class="text-[0.8125rem] font-semibold text-[#141820]">{label}</p>-->
+            <!--      </div>-->
+            <!--    ))-->
+            <!--  }-->
+            <!--</div>-->
           </div>
         </div>
       </div>
@@ -277,7 +284,7 @@ const transformations = [
             </p>
             <a
               href={bookingUrl}
-              class="mt-6 inline-flex items-center gap-2 bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)]"
+              class="brand-cut-button mt-6 inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
             >
               Book a consult
               <ArrowRight class="size-3.5" aria-hidden="true" />
@@ -329,7 +336,7 @@ const transformations = [
           </div>
           <a
             href={bookingUrl}
-            class="inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap bg-brand-700 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-800 hover:shadow-[0_10px_30px_rgba(0,85,143,0.28)] sm:self-auto"
+            class="brand-cut-button inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px sm:self-auto"
           >
             Start Yours
             <ArrowRight class="size-3.5" aria-hidden="true" />
