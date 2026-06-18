@@ -119,15 +119,15 @@ const teamHotspots = [
 ];
 
 const transformations = [
-  { image: beforeAfter1, alt: 'Before and after aesthetic treatment result' },
-  { image: beforeAfter2, alt: 'Before and after facial rejuvenation result' },
-  { image: beforeAfter3, alt: 'Before and after skin treatment result' },
-  { image: beforeAfter4, alt: 'Before and after skin rejuvenation result' },
-  { image: beforeAfter5, alt: 'Before and after facial treatment result' },
-  { image: beforeAfter6, alt: 'Before and after aesthetic care result' },
-  { image: beforeAfter7, alt: 'Before and after complexion treatment result' },
-  { image: beforeAfter8, alt: 'Before and after refreshed skin result' },
-  { image: beforeAfter9, alt: 'Before and after Access Aesthetics result' },
+  { image: beforeAfter1, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
+  { image: beforeAfter2, alt: 'Before and after neck treatment result', label: 'Neck Transformation' },
+  { image: beforeAfter3, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
+  { image: beforeAfter4, alt: 'Before and after skin rejuvenation result', label: 'Skin Transformation' },
+  { image: beforeAfter5, alt: 'Before and after eye treatment result', label: 'Eye Transformation' },
+  { image: beforeAfter6, alt: 'Before and after eyebrow treatment result', label: 'Eyebrow Transformation' },
+  { image: beforeAfter7, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
+  { image: beforeAfter8, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
+  { image: beforeAfter9, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
 ];
 
 const transformationSlides = Array.from({ length: Math.ceil(transformations.length / 3) }, (_, index) =>
@@ -510,7 +510,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
             transformationSlides.map((slide) => (
               <div class="grid min-w-full gap-5 md:grid-cols-3">
                 {slide.map((item) => (
-                  <figure class="bg-white/82 p-3 shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)] backdrop-blur">
+                  <figure class="bg-transparent">
                     <button
                       type="button"
                       class="group block w-full overflow-hidden"
@@ -526,7 +526,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
                       />
                     </button>
                     <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
-                      <span>Access Transformation</span>
+                      <span>{item.label}</span>
                       <span>{String(item.originalIndex + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
                     </figcaption>
                   </figure>
