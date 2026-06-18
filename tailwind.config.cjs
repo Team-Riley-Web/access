@@ -60,6 +60,7 @@ module.exports = {
         sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
         display: ['Cormorant Garamond', 'Iowan Old Style', 'Georgia', 'serif'],
         logo: ['Yellow Peas', 'Georgia', 'serif'],
+        script: ['Gorgeous Pen', 'Yellow Peas', 'Georgia', 'serif'],
       },
     },
   },

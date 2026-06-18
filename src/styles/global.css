@@ -18,6 +18,14 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: "Gorgeous Pen";
+    src: url("../assets/fonts/Gorgeouspen-Demo-BF648e3c9f1421e.otf") format("opentype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
   html {
     scroll-behavior: smooth;
   }

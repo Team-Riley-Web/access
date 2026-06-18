@@ -14,6 +14,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import beforeAfter1 from '../assets/images/before-after-1.jpg';
 import beforeAfter2 from '../assets/images/before-after-2.jpg';
 import beforeAfter3 from '../assets/images/before-after-3.jpg';
+import beforeAfter4 from '../assets/images/before-after-4.jpg';
+import beforeAfter5 from '../assets/images/before-after-5.jpg';
+import beforeAfter6 from '../assets/images/before-after-6.jpg';
+import beforeAfter7 from '../assets/images/before-after-7.jpg';
+import beforeAfter8 from '../assets/images/before-after-8.jpg';
+import beforeAfter9 from '../assets/images/before-after-9.jpg';
 import marbleBackground from '../assets/images/bg.jpg';
 import homeHeroImage from '../assets/images/home-hero.png';
 import service3Image from '../assets/images/service-3.jpeg';
@@ -22,6 +28,7 @@ import service2Image from '../assets/images/service2.png';
 import teamAmanda from '../assets/images/team-amanda.jpg';
 import teamCourtney from '../assets/images/team-courtney.jpg';
 import teamHarley from '../assets/images/team-harley.jpg';
+import teamImage from '../assets/images/team.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
 import meetingImage from '../assets/images/meeting.jpeg';
 
@@ -108,7 +115,20 @@ const transformations = [
   { image: beforeAfter1, alt: 'Before and after aesthetic treatment result' },
   { image: beforeAfter2, alt: 'Before and after facial rejuvenation result' },
   { image: beforeAfter3, alt: 'Before and after skin treatment result' },
+  { image: beforeAfter4, alt: 'Before and after skin rejuvenation result' },
+  { image: beforeAfter5, alt: 'Before and after facial treatment result' },
+  { image: beforeAfter6, alt: 'Before and after aesthetic care result' },
+  { image: beforeAfter7, alt: 'Before and after complexion treatment result' },
+  { image: beforeAfter8, alt: 'Before and after refreshed skin result' },
+  { image: beforeAfter9, alt: 'Before and after Access Aesthetics result' },
 ];
+
+const transformationSlides = Array.from({ length: Math.ceil(transformations.length / 3) }, (_, index) =>
+  transformations.slice(index * 3, index * 3 + 3).map((item, itemIndex) => ({
+    ...item,
+    originalIndex: index * 3 + itemIndex,
+  }))
+);
 ---
 
 <BaseLayout
@@ -147,7 +167,7 @@ const transformations = [
           <p class="hero-text-shadow mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Medical aesthetics. Personalized for you.
           </p>
-          <h1 class="hero-text-shadow  font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
+          <h1 class="hero-text-shadow font-script text-[clamp(5rem,8vw,8.5rem)] font-normal leading-[0.82] tracking-normal text-[#141820]">
             <!--Redefining<br /> Aesthetic Wellness-->
             Radiance Redefined
           </h1>
@@ -236,8 +256,14 @@ const transformations = [
       </div>
     </section>
 
-    <section id="services" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div class="mx-auto max-w-7xl" x-data="{ active: 0 }">
+    <section
+      id="services"
+      class="relative overflow-hidden border-t border-[#edebe7] px-5 py-20 sm:px-10 lg:px-20 lg:py-28"
+      style={`background-image: url(${marbleBackground.src}); background-size: cover; background-position: center;`}
+    >
+      <div class="absolute inset-0 bg-white/42"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/58 via-white/32 to-[#eef7fb]/38"></div>
+      <div class="relative mx-auto max-w-7xl" x-data="{ active: 0 }">
         <div class="mb-12">
           <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Treatments for skin, structure, and glow.
@@ -336,11 +362,11 @@ const transformations = [
 
     <section
       id="team"
-      class="relative overflow-hidden border-t border-[#1f6f9d]/30 bg-[#102536] px-5 py-20 sm:px-10 lg:px-20 lg:py-28"
-      style={`background-image: url(${marbleBackground.src}); background-size: cover; background-position: center;`}
+      class="relative overflow-hidden border-t border-[#1f6f9d]/30 bg-[#0f1d29] px-5 py-20 sm:px-10 lg:px-20 lg:py-28"
     >
-      <div class="absolute inset-0 bg-[#102536]/72 mix-blend-multiply"></div>
-      <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-[#102536]/18 to-[#102536]/70"></div>
+      <div class="absolute -right-28 top-16 h-80 w-80 rounded-full bg-brand-500/18 blur-3xl"></div>
+      <div class="absolute bottom-0 left-10 h-72 w-72 rounded-full bg-brand-300/10 blur-3xl"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#07121b]/48"></div>
       <div class="relative mx-auto max-w-7xl">
         <div class="mx-auto mb-14 max-w-3xl text-center">
           <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">Behind The Glow</p>
@@ -350,6 +376,16 @@ const transformations = [
           <p class="mt-5 text-[1.0625rem] leading-[1.75] text-[#d6e3ea]">
             At Access Aesthetics, our team brings together clinical expertise and a passion for personalized care to help each client look and feel their absolute best. With a commitment to precision, safety, and genuine care, our team is here to guide you on your journey to radiance and self-confidence.
           </p>
+        </div>
+
+        <div class="mb-10 overflow-hidden rounded-2xl shadow-[0_32px_95px_rgba(5,17,28,0.34),0_3px_10px_rgba(5,17,28,0.16)]">
+          <Image
+            src={teamImage}
+            alt="Access Aesthetics clinical team"
+            class="h-[320px] w-full object-cover object-top sm:h-[420px] lg:h-[500px]"
+            widths={[720, 960, 1280, 1600]}
+            sizes="(min-width: 1024px) 80vw, 100vw"
+          />
         </div>
 
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -384,8 +420,29 @@ const transformations = [
       </div>
     </section>
 
-    <section id="transformations" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div class="mx-auto max-w-7xl">
+    <section
+      id="transformations"
+      class="relative overflow-hidden border-t border-[#edebe7] px-5 py-20 sm:px-10 lg:px-20 lg:py-28"
+    >
+      <div
+        class="absolute inset-0 scale-x-[-1] scale-y-[-1] bg-cover bg-center"
+        style={`background-image: url(${marbleBackground.src});`}
+      ></div>
+      <div class="absolute inset-0 bg-white/34"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-[#eef7fb]/28 via-white/22 to-white/44"></div>
+      <div
+        class="relative mx-auto max-w-7xl"
+        x-data={`{
+          active: 0,
+          lightbox: null,
+          paused: false,
+          total: ${transformationSlides.length},
+          next() { this.active = (this.active + 1) % this.total },
+          prev() { this.active = (this.active - 1 + this.total) % this.total }
+        }`}
+        x-init="setInterval(() => { if (!paused && lightbox === null) next() }, 4200)"
+        @keydown.window.escape="lightbox = null"
+      >
         <div class="mb-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Before and After</p>
@@ -402,23 +459,112 @@ const transformations = [
           </a>
         </div>
 
-        <div class="grid gap-5 md:grid-cols-3">
+        <div
+          class="overflow-hidden"
+          @mouseenter="paused = true"
+          @mouseleave="paused = false"
+        >
+          <div
+            class="flex transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+            x-bind:style="`transform: translateX(-${active * 100}%);`"
+          >
           {
-            transformations.map((item) => (
-              <figure class="border border-[#edebe7] bg-[#f9f8f6] p-3">
-                <div class="overflow-hidden">
+            transformationSlides.map((slide) => (
+              <div class="grid min-w-full gap-5 md:grid-cols-3">
+                {slide.map((item) => (
+                  <figure class="bg-white/82 p-3 shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)] backdrop-blur">
+                    <button
+                      type="button"
+                      class="group block w-full overflow-hidden"
+                      aria-label={`Open transformation ${item.originalIndex + 1}`}
+                      @click={`lightbox = ${item.originalIndex}`}
+                    >
+                      <Image
+                        src={item.image}
+                        alt={item.alt}
+                        class="aspect-square w-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                        widths={[420, 640, 960]}
+                        sizes="(min-width: 768px) 33vw, 100vw"
+                      />
+                    </button>
+                    <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
+                      <span>Access Transformation</span>
+                      <span>{String(item.originalIndex + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+            ))
+          }
+          </div>
+        </div>
+
+        <div class="mt-7 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+          <div class="flex items-center gap-2">
+            {
+              transformationSlides.map((_, index) => (
+                <button
+                  type="button"
+                  class="h-2.5 rounded-full transition-all duration-500"
+                  x-bind:class={`active === ${index} ? 'w-10 bg-brand-600' : 'w-2.5 bg-[#9aa8b1]/55 hover:bg-brand-400'`}
+                  aria-label={`Show transformation group ${index + 1}`}
+                  @click={`active = ${index}`}
+                ></button>
+              ))
+            }
+          </div>
+
+          <div class="flex items-center gap-3">
+            <button
+              type="button"
+              class="inline-flex size-11 items-center justify-center bg-white/82 text-brand-700 shadow-[0_14px_35px_rgba(20,24,32,0.1)] transition hover:bg-white hover:text-brand-500"
+              aria-label="Previous transformation"
+              @click="prev()"
+            >
+              <ArrowRight class="size-4 rotate-180" aria-hidden="true" />
+            </button>
+            <button
+              type="button"
+              class="inline-flex size-11 items-center justify-center bg-white/82 text-brand-700 shadow-[0_14px_35px_rgba(20,24,32,0.1)] transition hover:bg-white hover:text-brand-500"
+              aria-label="Next transformation"
+              @click="next()"
+            >
+              <ArrowRight class="size-4" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+
+        <div
+          class="fixed inset-0 z-[100] flex items-center justify-center bg-[#07121b]/88 p-4 backdrop-blur-sm"
+          x-show="lightbox !== null"
+          x-cloak
+          x-transition.opacity.duration.300ms
+          @click.self="lightbox = null"
+        >
+          {
+            transformations.map((item, index) => (
+              <div
+                class="max-h-[90vh] w-full max-w-5xl"
+                x-show={`lightbox === ${index}`}
+                x-transition.opacity.duration.300ms
+              >
+                <div class="relative bg-white p-3 shadow-[0_32px_100px_rgba(0,0,0,0.42)]">
+                  <button
+                    type="button"
+                    class="absolute right-4 top-4 z-10 bg-white/92 px-4 py-2 font-logo text-sm uppercase tracking-[0.14em] text-[#141820] shadow-[0_12px_30px_rgba(20,24,32,0.16)] transition hover:text-brand-700"
+                    @click="lightbox = null"
+                  >
+                    Close
+                  </button>
                   <Image
                     src={item.image}
                     alt={item.alt}
-                    class="aspect-square w-full object-cover transition duration-500 hover:scale-[1.04]"
-                    widths={[420, 640, 960]}
-                    sizes="(min-width: 768px) 33vw, 100vw"
+                    class="max-h-[82vh] w-full object-contain"
+                    widths={[720, 960, 1280, 1440]}
+                    sizes="90vw"
                   />
                 </div>
-                <figcaption class="px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
-                  Access Transformation
-                </figcaption>
-              </figure>
+              </div>
             ))
           }
         </div>
