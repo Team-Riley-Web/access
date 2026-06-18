@@ -58,9 +58,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
-        display: ['Cormorant Garamond', 'Iowan Old Style', 'Georgia', 'serif'],
+        display: ['Playfair Display', 'Georgia', 'serif'],
+        playfair: ['Playfair Display', 'Georgia', 'serif'],
         logo: ['Yellow Peas', 'Georgia', 'serif'],
-        script: ['Gorgeous Pen', 'Yellow Peas', 'Georgia', 'serif'],
+        script: ['Playfair Display', 'Georgia', 'serif'],
       },
     },
   },

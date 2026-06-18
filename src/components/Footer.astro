@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { Clock, Mail, MapPin, Phone } from '@lucide/astro';
+import { Clock, Heart, Mail, MapPin, Phone } from '@lucide/astro';
 import logo from '../assets/images/logo.png';
 
 const navItems = [
@@ -75,6 +75,15 @@ const navItems = [
 
   <div class="mx-auto flex max-w-[calc(1280px+8rem)] flex-col gap-2 px-5 py-6 sm:flex-row sm:items-center sm:justify-between sm:px-10 lg:px-20">
     <p class="text-[0.8rem] text-white/30">&copy; 2025 Access Aesthetics. All rights reserved.</p>
-    <p class="text-[0.8rem] text-white/30">Slidell, Louisiana</p>
+    <a
+      href="https://teamrileyweb.com"
+      target="_blank"
+      rel="noreferrer"
+      class="flex items-center gap-1.5 text-[0.8rem] text-white/30 transition hover:text-white"
+    >
+      Crafted with
+      <Heart class="size-3.5 shrink-0 text-brand-300 fill-brand-300" stroke-width={1.75} aria-hidden="true" />
+      by Team Riley
+    </a>
   </div>
 </footer>
