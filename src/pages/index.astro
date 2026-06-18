@@ -106,7 +106,8 @@ const transformations = [
           <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.26" />
           <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.22" />
         </svg>
-        <div class="absolute inset-0 -z-20 bg-gradient-to-r from-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
+        <!--bg-linear-to-r from-[#f3e7e9] via-[#e3eeff] to-white-->
+        <div class="absolute inset-0 -z-20 bg-gradient-to-r from-[#D6DEFA66] via-white from-[0%] via-white via-[49%] to-white/0 to-[78%]"></div>
         <div class="absolute inset-x-0 bottom-0 -z-20 h-32 bg-gradient-to-t from-white to-transparent"></div>
 
         <div class="relative z-10 mx-auto flex min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-16 sm:px-8 lg:px-16 lg:py-22">
@@ -114,7 +115,7 @@ const transformations = [
           <p class="hero-text-shadow mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
             Medical aesthetics. Personalized for you.
           </p>
-          <h1 class="hero-text-shadow lg:bg-white font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
+          <h1 class="hero-text-shadow  font-display text-[clamp(3.5rem,5.15vw,5.8rem)] font-bold leading-[1.04] tracking-[-0.01em] text-[#141820]">
             <!--Redefining<br /> Aesthetic Wellness-->
             Radiance Redefined
           </h1>
@@ -163,7 +164,7 @@ const transformations = [
       </div>
     </section>
 
-    <section id="about" class="overflow-hidden bg-[#e5f2ef2b]">
+    <section id="about" class="overflow-hidden bg-[#0f1d29]">
       <div class="grid lg:grid-cols-2">
         <div class="relative min-h-[420px] overflow-hidden lg:min-h-[680px]">
           <Image
@@ -173,18 +174,21 @@ const transformations = [
             widths={[720, 960, 1280]}
             sizes="(min-width: 1024px) 50vw, 100vw"
           />
+          <div class="absolute inset-0 bg-gradient-to-r from-[#0f1d29]/10 via-transparent to-[#0f1d29]/70 lg:bg-gradient-to-l"></div>
         </div>
 
-        <div class="flex w-full items-center px-6 py-16 sm:px-10 lg:px-16 lg:py-32">
-          <div class="mx-auto max-w-2xl">
-            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Welcome To Access Aesthetics</p>
-            <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+        <div class="relative flex w-full items-center overflow-hidden px-6 py-16 sm:px-10 lg:px-16 lg:py-32">
+          <div class="absolute -right-24 top-20 h-72 w-72 rounded-full bg-brand-500/18 blur-3xl"></div>
+          <div class="absolute bottom-0 left-12 h-56 w-56 rounded-full bg-brand-300/10 blur-3xl"></div>
+          <div class="relative mx-auto max-w-2xl">
+            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">Welcome To Access Aesthetics</p>
+            <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
               Where innovation meets beauty.
             </h2>
-            <p class="mt-6 text-lg leading-[1.75] text-[#5a6070]">
+            <p class="mt-6 text-lg leading-[1.75] text-[#d6e3ea]">
               From Plexr Plasma and Botox to injectable fillers and transformative spa therapies, licensed experts curate minimally invasive experiences that elevate your beauty with thoughtful, personalized service.
             </p>
-            <p class="mt-4 text-lg leading-[1.75] text-[#5a6070]">
+            <p class="mt-4 text-lg leading-[1.75] text-[#b9cbd5]">
               At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
             </p>
             <div class="pt-8">
@@ -202,14 +206,14 @@ const transformations = [
 
     <section id="services" class="border-t border-[#edebe7] bg-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
       <div class="mx-auto max-w-7xl" x-data="{ active: 0 }">
-        <div class="mb-12 max-w-[760px]">
+        <div class="mb-12">
           <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
-            Premier Aesthetic Experience
+            Treatments for skin, structure, and glow.
           </p>
           <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.01em] text-[#141820]">
-            Curated treatments for skin, structure, and glow.
+            Premier Aesthetic Experience
           </h2>
-          <p class="mt-6 max-w-[58ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+          <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
             Explore each service focus one at a time, then book a consult for a plan shaped around your skin, goals, and comfort.
           </p>
         </div>
@@ -238,15 +242,18 @@ const transformations = [
           </div>
         </div>
 
-        <div class="pt-12">
+        <div class="grid pt-12">
           {
             serviceGroups.map((service, index) => (
               <article
-                class="overflow-hidden bg-[#f8fbfc] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
+                class="col-start-1 row-start-1 overflow-hidden bg-[#D6DEFA66] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
                 x-show={`active === ${index}`}
-                x-transition:enter="transition ease-out duration-500"
-                x-transition:enter-start="opacity-0 translate-y-4"
-                x-transition:enter-end="opacity-100 translate-y-0"
+                x-transition:enter="transition-opacity ease-out duration-700"
+                x-transition:enter-start="opacity-0"
+                x-transition:enter-end="opacity-100"
+                x-transition:leave="transition-opacity ease-in duration-300"
+                x-transition:leave-start="opacity-100"
+                x-transition:leave-end="opacity-0"
                 x-cloak={index !== 0}
                 role="tabpanel"
               >
@@ -258,16 +265,14 @@ const transformations = [
                       class="absolute inset-0 h-full w-full object-cover"
                       widths={[520, 720, 960]}
                       sizes="(min-width: 1024px) 40vw, 100vw"
+                      loading="eager"
                     />
                     <div class="absolute inset-0 bg-gradient-to-t from-[#141820]/34 via-[#141820]/4 to-transparent"></div>
-                    <div class="absolute bottom-6 left-6 bg-white/94 px-4 py-3 text-[0.72rem] font-semibold uppercase tracking-[0.16em] text-brand-700 shadow-[0_12px_32px_rgba(20,24,32,0.16)] backdrop-blur sm:left-8">
-                      {String(index + 1).padStart(2, '0')} / {String(serviceGroups.length).padStart(2, '0')}
-                    </div>
                   </div>
 
                   <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-14 xl:p-16">
                     <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
-                    <h3 class="max-w-[13ch] font-display text-[clamp(2rem,3vw,3.3rem)] font-normal leading-[1.08] text-[#141820]">
+                    <h3 class="font-display text-[clamp(2rem,3vw,3.3rem)] font-normal leading-[1.08] text-[#141820]">
                       {service.title}
                     </h3>
                     <p class="mt-6 max-w-[64ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">{service.copy}</p>
@@ -283,7 +288,7 @@ const transformations = [
 
                     <a
                       href={bookingUrl}
-                      class="brand-cut-button mt-9 inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+                      class="brand-cut-button mt-9 inline-flex self-start items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
                     >
                       Book This Treatment
                       <ArrowRight class="size-3.5" aria-hidden="true" />

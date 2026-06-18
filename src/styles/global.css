@@ -48,6 +48,7 @@
   }
 
   .brand-cut-button::before {
+    color: rgb(214 222 250 / 0.4);
     content: "";
     position: absolute;
     inset: 0;

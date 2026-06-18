@@ -55,7 +55,7 @@ const navItems = [
 
 <header
   class="fixed inset-x-0 top-0 z-50 bg-white/94 backdrop-blur-xl transition-all duration-300"
-  x-bind:class="scrolled ? 'h-14' : 'h-20'"
+  x-bind:class="scrolled ? 'h-14 shadow-[0_10px_30px_rgba(20,24,32,0.08),0_1px_0_rgba(98,196,243,0.22)]' : 'h-20 shadow-none'"
   x-data="{ open: false, scrolled: false }"
   x-init="
     scrolled = window.scrollY > 24;
@@ -112,7 +112,8 @@ const navItems = [
     <div class="flex items-center gap-3">
       <a
         href={bookingUrl}
-        class="brand-cut-button hidden whitespace-nowrap px-5 py-2.5 font-logo text-[0.82rem] font-normal uppercase tracking-[0.12em] text-white transition hover:-translate-y-px sm:inline-flex xl:px-6 xl:text-base xl:tracking-[0.14em]"
+        class="brand-cut-button hidden whitespace-nowrap font-logo font-normal uppercase tracking-[0.12em] text-white transition-all duration-300 hover:-translate-y-px sm:inline-flex xl:tracking-[0.14em]"
+        x-bind:class="scrolled ? 'px-4 py-2 text-[0.74rem] xl:px-5 xl:text-[0.86rem]' : 'px-5 py-2.5 text-[0.82rem] xl:px-6 xl:text-base'"
       >
         Book your consult
       </a>
