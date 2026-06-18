@@ -14,6 +14,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import beforeAfter1 from '../assets/images/before-after-1.jpg';
 import beforeAfter2 from '../assets/images/before-after-2.jpg';
 import beforeAfter3 from '../assets/images/before-after-3.jpg';
+import marbleBackground from '../assets/images/bg.jpg';
 import homeHeroImage from '../assets/images/home-hero.png';
 import service3Image from '../assets/images/service-3.jpeg';
 import serviceImage from '../assets/images/service.png';
@@ -21,7 +22,6 @@ import service2Image from '../assets/images/service2.png';
 import teamAmanda from '../assets/images/team-amanda.jpg';
 import teamCourtney from '../assets/images/team-courtney.jpg';
 import teamHarley from '../assets/images/team-harley.jpg';
-import teamImage from '../assets/images/team.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
 import meetingImage from '../assets/images/meeting.jpeg';
 
@@ -66,10 +66,42 @@ const serviceGroups = [
 ];
 
 const team = [
-  { name: 'Amanda Clementi', image: teamAmanda },
-  { name: 'Courtney Muller', image: teamCourtney },
-  { name: 'Harley Lonardo', image: teamHarley },
-  { name: 'Melissa Holley', image: teamMelissa },
+  {
+    name: 'Amanda Clementi',
+    title: 'Director of Aesthetics & Health and Wellness',
+    copy:
+      'Amanda’s goal at Access Aesthetics is to empower clients to feel confident and rejuvenated through high-quality, personalized beauty and wellness treatments.',
+    image: teamAmanda,
+    href: 'https://www.accessofla.com/amanda-clementi',
+    cta: 'Meet Amanda',
+  },
+  {
+    name: 'Courtney Muller',
+    title: 'MSN, APRN, FNP-C',
+    copy:
+      'With over 13 years of experience, Courtney brings enthusiasm, compassion, and a warm personality to every client relationship.',
+    image: teamCourtney,
+    href: 'https://www.accessofla.com/courtney-miller',
+    cta: 'Meet Courtney',
+  },
+  {
+    name: 'Harley Lonardo',
+    title: 'Advanced Medical Esthetician',
+    copy:
+      'Harley excels in both medical and beauty aesthetic services, tailoring each treatment to her client’s needs with skill and care.',
+    image: teamHarley,
+    href: 'https://www.accessofla.com/harley-lonardo',
+    cta: 'Meet Harley',
+  },
+  {
+    name: 'Melissa Holley',
+    title: 'Medical Esthetician',
+    copy:
+      'Melissa has spent more than 20 years helping women love their skin and create plans that support their goals.',
+    image: teamMelissa,
+    href: 'https://www.accessofla.com/melissa-holley',
+    cta: 'Meet Melissa',
+  },
 ];
 
 const transformations = [
@@ -246,7 +278,7 @@ const transformations = [
           {
             serviceGroups.map((service, index) => (
               <article
-                class="col-start-1 row-start-1 overflow-hidden bg-[#D6DEFA66] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
+                class="col-start-1 row-start-1 overflow-hidden bg-[radial-gradient(circle_at_66%_32%,rgba(255,255,255,0.88),rgba(255,255,255,0.42)_28%,transparent_52%),radial-gradient(circle_at_6%_96%,rgba(214,222,250,0.72),transparent_42%),radial-gradient(circle_at_86%_14%,rgba(98,196,243,0.24),transparent_32%),linear-gradient(135deg,rgba(98,196,243,0.14)_0%,rgba(238,247,251,0.9)_42%,rgba(214,222,250,0.48)_100%)] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
                 x-show={`active === ${index}`}
                 x-transition:enter="transition-opacity ease-out duration-700"
                 x-transition:enter-start="opacity-0"
@@ -302,40 +334,28 @@ const transformations = [
       </div>
     </section>
 
-    <section id="team" class="border-t border-brand-100 bg-brand-50 px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
-      <div class="mx-auto max-w-7xl">
-        <div class="mb-14 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-end lg:gap-16">
-          <div>
-            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Behind The Glow</p>
-            <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
-              Personal touch meets the forefront of beauty technology.
-            </h2>
-            <p class="mt-5 max-w-[42ch] text-[1.0625rem] leading-[1.7] text-[#5a6070]">
-              The Access team pairs advanced training with an approachable experience, making every appointment feel considered from consultation to treatment.
-            </p>
-            <a
-              href={bookingUrl}
-              class="brand-cut-button mt-6 inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
-            >
-              Book a consult
-              <ArrowRight class="size-3.5" aria-hidden="true" />
-            </a>
-          </div>
-          <div class="overflow-hidden rounded-[2px]">
-            <Image
-              src={teamImage}
-              alt="Access Aesthetics clinical team"
-              class="h-[400px] w-full object-cover object-top"
-              widths={[720, 960, 1280]}
-              sizes="(min-width: 1024px) 55vw, 100vw"
-            />
-          </div>
+    <section
+      id="team"
+      class="relative overflow-hidden border-t border-[#1f6f9d]/30 bg-[#102536] px-5 py-20 sm:px-10 lg:px-20 lg:py-28"
+      style={`background-image: url(${marbleBackground.src}); background-size: cover; background-position: center;`}
+    >
+      <div class="absolute inset-0 bg-[#102536]/72 mix-blend-multiply"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-white/10 via-[#102536]/18 to-[#102536]/70"></div>
+      <div class="relative mx-auto max-w-7xl">
+        <div class="mx-auto mb-14 max-w-3xl text-center">
+          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">Behind The Glow</p>
+          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
+            Meet Our Team
+          </h2>
+          <p class="mt-5 text-[1.0625rem] leading-[1.75] text-[#d6e3ea]">
+            At Access Aesthetics, our team brings together clinical expertise and a passion for personalized care to help each client look and feel their absolute best. With a commitment to precision, safety, and genuine care, our team is here to guide you on your journey to radiance and self-confidence.
+          </p>
         </div>
 
         <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {
             team.map((member) => (
-              <article class="overflow-hidden border border-[#edebe7] bg-white">
+              <article class="flex flex-col overflow-hidden bg-white shadow-[0_28px_80px_rgba(5,17,28,0.28),0_2px_8px_rgba(5,17,28,0.14)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_34px_95px_rgba(5,17,28,0.34),0_3px_10px_rgba(5,17,28,0.16)]">
                 <div class="overflow-hidden">
                   <Image
                     src={member.image}
@@ -345,9 +365,17 @@ const transformations = [
                     sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
                   />
                 </div>
-                <div class="p-4">
-                  <p class="text-[0.9375rem] font-semibold text-[#141820]">{member.name}</p>
-                  <p class="mt-0.5 text-[0.8125rem] text-[#5a6070]">Access Aesthetics Team</p>
+                <div class="flex flex-1 flex-col items-center p-6 text-center">
+                  <h3 class="font-display text-[1.65rem] font-normal leading-[1.1] text-[#141820]">{member.name}</h3>
+                  <p class="mt-2 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-600">{member.title}</p>
+                  <p class="mt-4 flex-1 text-[0.95rem] leading-[1.65] text-[#5a6070]">{member.copy}</p>
+                  <a
+                    href={member.href}
+                    class="mt-6 inline-flex items-center gap-1.5 text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-brand-700 underline decoration-brand-300 decoration-2 underline-offset-5 transition hover:text-brand-500"
+                  >
+                    {member.cta}
+                    <ArrowRight class="size-3.5" aria-hidden="true" />
+                  </a>
                 </div>
               </article>
             ))
