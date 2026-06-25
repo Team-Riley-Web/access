@@ -6,39 +6,46 @@ import logo from '../assets/images/logo.png';
 const bookingUrl = 'https://www.myaestheticspro.com/';
 
 const navItems = [
-  // { label: 'Home', href: '#home' },
+  { label: 'Home', href: '/' },
   {
     label: 'About',
-    href: '#about',
+    href: '/about',
     children: [
-      { label: 'Team', href: '#team' },
-      { label: 'Access Awareness', href: '#contact' },
+      { label: 'Team', href: '/team' },
+      { label: 'Amanda Clementi', href: '/amanda-clementi' },
+      { label: 'Courtney Muller', href: '/courtney-miller' },
+      { label: 'Harley Lonardo', href: '/harley-lonardo' },
+      { label: 'Melissa Holley', href: '/melissa-holley' },
+      { label: 'Access Awareness', href: '/access-awareness' },
     ],
   },
   {
     label: 'Services',
-    href: '#services',
+    href: '/services',
     children: [
-      { label: 'Neurotoxins', href: '#services' },
-      { label: 'Morpheus 8 RF Microneedling', href: '#services' },
-      { label: 'IPL (Intense Pulsed Light Therapy)', href: '#services' },
-      { label: 'Laser Hair Removal', href: '#services' },
-      { label: 'Fillers', href: '#services' },
-      { label: 'Rejuvapen Microneedling', href: '#services' },
-      { label: 'Biostimulators', href: '#services' },
-      { label: 'Chemical Peels', href: '#services' },
-      { label: 'Biofiller and PRP', href: '#services' },
-      { label: 'Facials', href: '#services' },
-      { label: 'Lash and Brow Services', href: '#services' },
-      { label: 'Vitamin Injections', href: '#services' },
-      { label: 'ZO Skincare', href: '#services' },
-      { label: 'Epicutis Skincare', href: '#services' },
-      { label: 'Revision Skincare', href: '#services' },
-      { label: 'EltaMD Sunscreen', href: '#services' },
+      { label: 'Neurotoxins', href: '/neurotoxins' },
+      { label: 'Morpheus 8 RF Microneedling', href: '/morpheus-8-microneedling' },
+      { label: 'IPL (Intense Pulsed Light Therapy)', href: '/intense-pulse-light-therapy' },
+      { label: 'Laser Hair Removal', href: '/laser-hair-removal' },
+      { label: 'Fillers', href: '/fillers' },
+      { label: 'Rejuvapen Microneedling', href: '/rejuvapen-microneedling' },
+      { label: 'Biostimulators', href: '/biostimulators' },
+      { label: 'Chemical Peels', href: '/chemical-peels' },
+      { label: 'Biofiller and PRP', href: '/biofiller-and-prp' },
+      { label: 'Facials', href: '/facials' },
+      { label: 'Lash and Brow Services', href: '/lash-and-brow-services' },
+      { label: 'Vitamin Injections', href: '/vitamin-injections' },
+      { label: 'ZO Skincare', href: '/zo-skincare' },
+      { label: 'Epicutis Skincare', href: '/epicutis-skincare' },
+      { label: 'Revision Skincare', href: '/revision-skincare' },
+      { label: 'EltaMD Sunscreen', href: '/elta-md-sunscreen' },
     ],
   },
-  { label: 'Transformations', href: '#transformations' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Transformations', href: '/transformations' },
+  { label: 'Contact', href: '/contact', children: [
+    { label: 'Memberships', href: '/memberships' },
+    { label: 'Prepare For Your Appointment', href: '/prepare-for-your-appointment' },
+  ] },
 ];
 ---
 
@@ -52,7 +59,7 @@ const navItems = [
   "
 >
   <div class="mx-auto flex h-full max-w-[calc(1280px+8rem)] items-center justify-between px-5 sm:px-8 lg:px-16">
-    <a href="#home" class="flex w-40 items-center sm:w-44" aria-label="Access Aesthetics home">
+    <a href="/" class="flex w-40 items-center sm:w-44" aria-label="Access Aesthetics home">
       <Image
         src={logo}
         alt="Access Aesthetics"
@@ -62,7 +69,7 @@ const navItems = [
       />
     </a>
 
-    <nav class="ml-auto hidden items-center gap-4 xl:gap-5 lg:flex" aria-label="Primary navigation">
+    <nav class="ml-auto hidden items-center gap-4 xl:flex 2xl:gap-5" aria-label="Primary navigation">
       {
         navItems.map((item) => (
           <div class="group relative">
@@ -108,14 +115,14 @@ const navItems = [
       </a>
       <a
         href="tel:+19859605066"
-        class="inline-flex size-11 items-center justify-center border border-brand-200 text-brand-700 transition hover:border-brand-400 hover:text-brand-500 lg:hidden"
+        class="inline-flex size-11 items-center justify-center border border-brand-200 text-brand-700 transition hover:border-brand-400 hover:text-brand-500 xl:hidden"
         aria-label="Call us"
       >
         <Phone class="size-4" stroke-width={1.75} aria-hidden="true" />
       </a>
       <button
         type="button"
-        class="brand-cut-button inline-flex size-11 items-center justify-center text-white lg:hidden"
+        class="brand-cut-button inline-flex size-11 items-center justify-center text-white xl:hidden"
         aria-label="Toggle menu"
         :aria-expanded="open.toString()"
         @click="open = !open"
@@ -126,7 +133,7 @@ const navItems = [
     </div>
   </div>
 
-  <div class="lg:hidden" x-show="open" x-cloak x-transition @click.outside="open = false">
+  <div class="xl:hidden" x-show="open" x-cloak x-transition @click.outside="open = false">
     <nav class="border-t border-brand-100 bg-white shadow-[0_8px_24px_rgba(20,24,32,0.08)]" aria-label="Mobile navigation">
       {
         navItems.map((item) => (

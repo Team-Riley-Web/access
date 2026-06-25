@@ -1,0 +1,432 @@
+import beforeAfter1 from '../assets/images/before-after-1.jpg';
+import beforeAfter2 from '../assets/images/before-after-2.jpg';
+import beforeAfter3 from '../assets/images/before-after-3.jpg';
+import beforeAfter4 from '../assets/images/before-after-4.jpg';
+import beforeAfter5 from '../assets/images/before-after-5.jpg';
+import beforeAfter6 from '../assets/images/before-after-6.jpg';
+import beforeAfter7 from '../assets/images/before-after-7.jpg';
+import beforeAfter8 from '../assets/images/before-after-8.jpg';
+import beforeAfter9 from '../assets/images/before-after-9.jpg';
+import bg2Image from '../assets/images/bg-2.png';
+import homeHeroImage from '../assets/images/home-hero.png';
+import meetingImage from '../assets/images/meeting.jpeg';
+import serviceImage from '../assets/images/service.png';
+import service2Image from '../assets/images/service2.png';
+import service3Image from '../assets/images/service-3.jpeg';
+import teamImage from '../assets/images/team.jpg';
+import teamAmanda from '../assets/images/team-amanda.jpg';
+import teamCourtney from '../assets/images/team-courtney.jpg';
+import teamHarley from '../assets/images/team-harley.jpg';
+import teamMelissa from '../assets/images/team-melissa.jpg';
+
+export const bookingUrl = 'https://www.myaestheticspro.com/';
+
+export const servicePages = [
+  {
+    slug: 'neurotoxins',
+    title: 'Neurotoxins',
+    kicker: 'Injectables',
+    summary:
+      'A refined treatment for softening expression lines while preserving natural movement and balance.',
+    copy: [
+      'Neurotoxin treatments can soften the appearance of fine lines and wrinkles by temporarily relaxing targeted facial muscles. Each appointment begins with a careful consultation so the dose, placement, and treatment plan support your natural features.',
+      "At Access Aesthetics, the goal is a refreshed look that still feels like you. Common treatment areas include the forehead, frown lines, crow's feet, and other areas discussed during your provider consultation.",
+    ],
+    image: service2Image,
+    imageAlt: 'Aesthetic injectable treatment at Access Aesthetics',
+  },
+  {
+    slug: 'morpheus-8-microneedling',
+    title: 'Morpheus8 RF Microneedling',
+    kicker: 'Skin Tightening',
+    summary:
+      'Radiofrequency microneedling designed to support firmer, smoother, more youthful-looking skin.',
+    copy: [
+      'Morpheus8 combines microneedling with radiofrequency energy to remodel skin from within and encourage fresh collagen and elastin. It can help improve texture, tone, fine lines, acne scarring, enlarged pores, and mild laxity.',
+      'Treatments can be customized for the face, neck, and body. Your provider will walk through goals, downtime, and the recommended series so the plan feels clear and supportive from the start.',
+    ],
+    image: serviceImage,
+    imageAlt: 'Morpheus8 RF microneedling treatment room',
+  },
+  {
+    slug: 'intense-pulse-light-therapy',
+    title: 'IPL Intense Pulsed Light Therapy',
+    kicker: 'Brightening',
+    summary:
+      'Light-based treatment for sun damage, redness, discoloration, and uneven texture.',
+    copy: [
+      'IPL uses precise pulses of light to target visible discoloration, age spots, redness, and uneven tone while supporting smoother, brighter-looking skin. It is a strong option for clients who want visible radiance with minimal disruption.',
+      'Each treatment is tailored to your skin and goals. Your provider will explain preparation, aftercare, and realistic expectations before treatment begins.',
+    ],
+    image: service3Image,
+    imageAlt: 'IPL skin treatment at Access Aesthetics',
+  },
+  {
+    slug: 'laser-hair-removal',
+    title: 'Laser Hair Removal',
+    kicker: 'Smooth Skin',
+    summary:
+      'A low-maintenance approach to reducing unwanted hair on the face and body.',
+    copy: [
+      'Laser hair removal targets unwanted hair at the root to reduce the need for shaving, waxing, and constant touch-ups. It can be used on areas such as legs, underarms, bikini line, and face depending on your consultation.',
+      'The process is planned as a series for best results. Access Aesthetics keeps the experience comfortable, personalized, and straightforward from first visit through maintenance.',
+    ],
+    image: service3Image,
+    imageAlt: 'Laser hair removal treatment at Access Aesthetics',
+  },
+  {
+    slug: 'fillers',
+    title: 'Fillers',
+    kicker: 'Volume and Contour',
+    summary:
+      'Thoughtful injectable filler treatments for structure, balance, and subtle rejuvenation.',
+    copy: [
+      'Dermal fillers can restore volume, refine facial contours, and soften signs of aging in a way that feels polished and natural. Treatment areas and product choices are selected only after your provider understands your anatomy and goals.',
+      'The Access approach favors balance over excess. Your plan may focus on lips, cheeks, chin, jawline, or other areas discussed during consultation.',
+    ],
+    image: service2Image,
+    imageAlt: 'Dermal filler treatment at Access Aesthetics',
+  },
+  {
+    slug: 'rejuvapen-microneedling',
+    title: 'Rejuvapen Microneedling',
+    kicker: 'Texture Renewal',
+    summary:
+      'Collagen-stimulating microneedling for smoother texture and renewed radiance.',
+    copy: [
+      "Rejuvapen microneedling creates controlled microchannels that encourage the skin's natural repair process. It can help improve the look of texture, fine lines, pores, and post-acne marks over a planned treatment series.",
+      'Your provider will personalize depth, timing, and aftercare so the treatment supports your skin condition and comfort level.',
+    ],
+    image: serviceImage,
+    imageAlt: 'Microneedling skin treatment at Access Aesthetics',
+  },
+  {
+    slug: 'biostimulators',
+    title: 'Biostimulators',
+    kicker: 'Collagen Support',
+    summary:
+      'Treatments that encourage gradual collagen renewal for natural-looking firmness and volume.',
+    copy: [
+      'Biostimulators are designed to support collagen production over time. Instead of an instant overfilled look, these treatments can help improve firmness, structure, and skin quality through gradual, refined change.',
+      'Your provider will discuss whether biostimulators fit your goals, timeline, and treatment history during consultation.',
+    ],
+    image: service2Image,
+    imageAlt: 'Biostimulator injectable consultation',
+  },
+  {
+    slug: 'chemical-peels',
+    title: 'Chemical Peels',
+    kicker: 'Resurfacing',
+    summary:
+      'Professional exfoliation treatments for clearer tone, smoother texture, and a refreshed glow.',
+    copy: [
+      'Chemical peels use professional resurfacing solutions to improve dullness, uneven tone, clogged pores, texture, and visible signs of sun damage. Peel strength and downtime vary based on your skin and goals.',
+      'Access Aesthetics will help you choose the right peel and aftercare plan so your skin is supported before and after treatment.',
+    ],
+    image: service3Image,
+    imageAlt: 'Chemical peel skin treatment at Access Aesthetics',
+  },
+  {
+    slug: 'biofiller-and-prp',
+    title: 'Biofiller and PRP',
+    kicker: 'Regenerative Care',
+    summary:
+      'A regenerative treatment option that uses your own plasma to support refreshed skin quality.',
+    copy: [
+      'Biofiller and PRP treatments use platelet-rich plasma drawn from your own blood to support skin rejuvenation and a refreshed appearance. These options can complement a broader plan for tone, texture, and natural-looking vitality.',
+      'Your provider will explain candidacy, processing, placement, and expected treatment timing during your appointment.',
+    ],
+    image: service2Image,
+    imageAlt: 'PRP treatment preparation at Access Aesthetics',
+  },
+  {
+    slug: 'facials',
+    title: 'Facials',
+    kicker: 'Skin Health',
+    summary:
+      'Customized facial treatments for hydration, clarity, comfort, and glow.',
+    copy: [
+      'Facials at Access Aesthetics are tailored to what your skin needs that day, from deep cleansing and exfoliation to calming support and hydration. They are a practical foundation for ongoing skin health.',
+      'Your provider can recommend a cadence and at-home routine to help extend your results between visits.',
+    ],
+    image: service3Image,
+    imageAlt: 'Relaxing facial treatment at Access Aesthetics',
+  },
+  {
+    slug: 'lash-and-brow-services',
+    title: 'Lash and Brow Services',
+    kicker: 'Finishing Details',
+    summary:
+      'Detail-focused lash and brow services that frame the face and simplify daily routines.',
+    copy: [
+      'Lash and brow services help define your features with polished, low-maintenance results. Treatment recommendations depend on your natural lashes, brows, preferences, and maintenance goals.',
+      'The team focuses on balanced shaping and enhancement so the final result feels clean, flattering, and easy to wear.',
+    ],
+    image: service3Image,
+    imageAlt: 'Lash and brow service at Access Aesthetics',
+  },
+  {
+    slug: 'vitamin-injections',
+    title: 'Vitamin Injections',
+    kicker: 'Wellness Boost',
+    summary:
+      'Quick nutrient injections designed to support energy, wellness, and glow from within.',
+    copy: [
+      'Vitamin injections can provide targeted nutrients and antioxidants in a quick appointment. Depending on the option selected, they may support energy, immune wellness, skin health, hair, and nails.',
+      'Your provider will help select the right injection based on your goals and wellness history.',
+    ],
+    image: service2Image,
+    imageAlt: 'Vitamin injection at Access Aesthetics',
+  },
+  {
+    slug: 'zo-skincare',
+    title: 'ZO Skincare',
+    kicker: 'Professional Skincare',
+    summary:
+      'Professional skincare guidance using ZO products selected around your goals.',
+    copy: [
+      'ZO Skincare routines can support concerns such as aging, discoloration, acne, texture, and overall skin health. The best regimen is the one selected for your skin, not a one-size-fits-all shelf.',
+      'Ask the Access team for a product plan that complements your treatments and daily routine.',
+    ],
+    image: service3Image,
+    imageAlt: 'Professional skincare products at Access Aesthetics',
+  },
+  {
+    slug: 'epicutis-skincare',
+    title: 'Epicutis Skincare',
+    kicker: 'Calming Support',
+    summary:
+      'Elevated skincare options selected to support barrier health and visible radiance.',
+    copy: [
+      'Epicutis Skincare can be integrated into a thoughtful skin plan focused on hydration, comfort, and a healthy-looking glow. Your provider can help determine where it fits in your routine.',
+      'Professional guidance keeps product selection simple and aligned with your treatments.',
+    ],
+    image: service3Image,
+    imageAlt: 'Epicutis skincare consultation',
+  },
+  {
+    slug: 'revision-skincare',
+    title: 'Revision Skincare',
+    kicker: 'Daily Results',
+    summary:
+      'Professional skincare products recommended to support tone, texture, and long-term skin goals.',
+    copy: [
+      'Revision Skincare can help support a consistent at-home routine for brightness, hydration, firmness, and overall skin quality. Access Aesthetics can help pair products with your in-office treatment plan.',
+      'A provider-guided regimen gives you a clearer path than guessing product by product.',
+    ],
+    image: service3Image,
+    imageAlt: 'Revision skincare products at Access Aesthetics',
+  },
+  {
+    slug: 'elta-md-sunscreen',
+    title: 'EltaMD Sunscreen',
+    kicker: 'Daily Protection',
+    summary:
+      'Provider-recommended sun protection to help preserve treatment results and skin health.',
+    copy: [
+      'Daily sunscreen is one of the most important parts of any aesthetic plan. EltaMD options can help protect against UV damage while supporting skin that feels comfortable enough for everyday use.',
+      'Your provider can recommend the right SPF option for your skin type, tone, and daily routine.',
+    ],
+    image: service3Image,
+    imageAlt: 'EltaMD sunscreen consultation',
+  },
+] as const;
+
+export const teamMembers = [
+  {
+    slug: 'amanda-clementi',
+    name: 'Amanda Clementi',
+    title: 'Director of Aesthetics & Health and Wellness',
+    email: 'amanda@accessofla.com',
+    image: teamAmanda,
+    imageAlt: 'Amanda Clementi at Access Aesthetics',
+    summary:
+      'Amanda brings nearly 20 years of healthcare experience, leadership, entrepreneurship, and a strong commitment to uplifting the Slidell community.',
+    copy: [
+      'As Director of Aesthetics and Health and Wellness, Amanda Clementi blends healthcare experience with a warm entrepreneurial spirit. She and her husband opened their first business, 2BTan, nearly two decades ago, and that passion for helping people feel confident now continues through Access Aesthetics.',
+      'Amanda is a proud wife and mom of four who believes beauty and wellness are about feeling amazing from the inside out. Her goal is to create a caring, inspiring environment where clients feel welcomed, refreshed, and empowered.',
+    ],
+  },
+  {
+    slug: 'courtney-miller',
+    name: 'Courtney Muller',
+    title: 'MSN, APRN, FNP-C',
+    email: 'courtney@accessofla.com',
+    image: teamCourtney,
+    imageAlt: 'Courtney Muller at Access Aesthetics',
+    summary:
+      'Courtney is a Slidell native and nurse practitioner known for compassion, enthusiasm, and more than 13 years of healthcare experience.',
+    copy: [
+      'Courtney Muller earned her Bachelor of Science in Nursing and Master of Science in Nursing as a Family Nurse Practitioner, building a career around meaningful patient experiences and genuine connection.',
+      'Her healthcare perspective, family-first values, and advocacy for wellness help her make every client feel seen and cared for. At Access Aesthetics, she combines clinical expertise with a bright, welcoming presence.',
+    ],
+  },
+  {
+    slug: 'harley-lonardo',
+    name: 'Harley Lonardo',
+    title: 'Advanced Medical Esthetician',
+    email: 'info@accessofla.com',
+    image: teamHarley,
+    imageAlt: 'Harley Lonardo at Access Aesthetics',
+    summary:
+      'Harley provides both medical and beauty aesthetic services with a detailed, client-centered approach.',
+    copy: [
+      'Harley Lonardo is an Advanced Medical Esthetician with a passion for helping clients feel confident in their skin. Her work spans medical and beauty aesthetic services, giving clients a comprehensive approach to skin health and glow.',
+      "She tailors each treatment to the person in front of her, focusing on comfort, education, and results that support each client's goals.",
+    ],
+  },
+  {
+    slug: 'melissa-holley',
+    name: 'Melissa Holley',
+    title: 'Medical Esthetician',
+    email: 'info@accessofla.com',
+    image: teamMelissa,
+    imageAlt: 'Melissa Holley at Access Aesthetics',
+    summary:
+      'Melissa has spent more than 20 years helping women understand their skin and build plans around their goals.',
+    copy: [
+      'Melissa Holley is a Medical Esthetician whose passion is helping women love their skin. With more than 20 years of experience, she brings patience, education, and practical planning to every appointment.',
+      'She helps clients identify what bothers them most about their skin and build a clear path toward improvement through professional treatments and consistent care.',
+    ],
+  },
+] as const;
+
+export const transformations = [
+  { image: beforeAfter1, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
+  { image: beforeAfter2, alt: 'Before and after neck treatment result', label: 'Neck Transformation' },
+  { image: beforeAfter3, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
+  { image: beforeAfter4, alt: 'Before and after skin rejuvenation result', label: 'Skin Transformation' },
+  { image: beforeAfter5, alt: 'Before and after eye treatment result', label: 'Eye Transformation' },
+  { image: beforeAfter6, alt: 'Before and after eyebrow treatment result', label: 'Eyebrow Transformation' },
+  { image: beforeAfter7, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
+  { image: beforeAfter8, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
+  { image: beforeAfter9, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
+] as const;
+
+export const contentPages = [
+  {
+    slug: 'about',
+    title: 'About Access Aesthetics',
+    kicker: 'Our Mission',
+    summary:
+      'A refined, welcoming medical spa where advanced aesthetic treatments are guided by personalized care.',
+    image: meetingImage,
+    imageAlt: 'Access Aesthetics consultation area',
+    copy: [
+      'Access Aesthetics exists to elevate natural beauty with cutting-edge treatments delivered in a refined and comfortable environment. The team focuses on personal care, thoughtful education, and results that help clients feel confident at every step.',
+      'As an InMode Center of Excellence, Access brings advanced treatment technology together with a team that values listening first. Every plan is shaped around individual goals because beauty is never one-size-fits-all.',
+    ],
+    highlights: ['Exceptional team of experts', 'Advanced treatment technology', 'Personalized plans', 'Welcoming, judgment-free care'],
+  },
+  {
+    slug: 'team',
+    title: 'Meet Our Team',
+    kicker: 'Behind The Glow',
+    summary:
+      'Clinical expertise, personalized care, and a shared commitment to helping every client feel confident.',
+    image: teamImage,
+    imageAlt: 'Access Aesthetics clinical team',
+    copy: [
+      'The Access Aesthetics team brings together clinical skill and a passion for individualized care. Each provider helps create a welcoming environment where confidence, self-care, and wellness stay at the center of every visit.',
+      'Explore the team below to learn more about the people behind the treatments.',
+    ],
+    type: 'team',
+  },
+  {
+    slug: 'services',
+    title: 'Our Services',
+    kicker: 'Treatments',
+    summary:
+      'Aesthetic treatments for skin, structure, wellness, and everyday confidence.',
+    image: serviceImage,
+    imageAlt: 'Access Aesthetics service treatment room',
+    copy: [
+      'Access Aesthetics offers injectables, advanced skin rejuvenation, laser treatments, facials, lash and brow services, vitamin injections, and professional skincare. A consultation helps match the right services to your goals.',
+      'Browse the linked treatment pages to learn more about each option before booking.',
+    ],
+    type: 'services',
+  },
+  {
+    slug: 'transformations',
+    title: 'Transformations',
+    kicker: 'Before and After',
+    summary:
+      'Visible change guided by thoughtful aesthetic treatment plans.',
+    image: homeHeroImage,
+    imageAlt: 'Access Aesthetics treatment result gallery',
+    copy: [
+      'Every transformation begins with a conversation about your goals, timeline, and comfort level. These results show the kind of refreshed, confidence-building changes possible with a personalized plan.',
+    ],
+    type: 'transformations',
+  },
+  {
+    slug: 'access-awareness',
+    title: 'Access Awareness',
+    kicker: 'Client Education',
+    summary:
+      'Helpful guidance for preparing, choosing, and caring for aesthetic treatments.',
+    image: bg2Image,
+    imageAlt: 'Access Aesthetics medical spa interior',
+    copy: [
+      'Access Awareness is a client education space for treatment guidance, skincare reminders, and practical aesthetic wellness information. It is designed to help clients feel informed before and after their appointments.',
+      'More educational posts can be added here as the team expands this resource.',
+    ],
+    highlights: ['Treatment education', 'Skincare support', 'Before and aftercare guidance', 'Confidence through clarity'],
+  },
+  {
+    slug: 'contact',
+    title: 'Contact Access Aesthetics',
+    kicker: 'Visit Us',
+    summary:
+      'Book your experience or reach the Slidell team with questions about treatments and appointments.',
+    image: bg2Image,
+    imageAlt: 'Access Aesthetics building and interior',
+    copy: ['1411 Lindberg Dr, Slidell, LA 70548', '985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'],
+    type: 'contact',
+  },
+  {
+    slug: 'memberships',
+    title: 'Memberships',
+    kicker: 'Consistent Care',
+    summary:
+      'Membership options for clients who want regular treatments, skincare support, and ongoing value.',
+    image: service3Image,
+    imageAlt: 'Access Aesthetics relaxing treatment room',
+    copy: [
+      'Memberships help make consistent self-care easier by pairing recurring visits with thoughtful value. This page is ready for final membership names, pricing, and included benefits from the Access Aesthetics team.',
+      'Until those details are confirmed, clients can contact the team or book a consultation to ask about current membership availability.',
+    ],
+    highlights: ['Recurring aesthetic care', 'Skincare support', 'Member-focused value', 'Personalized recommendations'],
+  },
+  {
+    slug: 'prepare-for-your-appointment',
+    title: 'Prepare For Your Appointment',
+    kicker: 'Before You Visit',
+    summary:
+      'Simple appointment preparation guidance to help your treatment day feel smooth and informed.',
+    image: meetingImage,
+    imageAlt: 'Access Aesthetics consultation before treatment',
+    copy: [
+      'Arrive with your treatment goals, medical history, current medications, and skincare routine ready to discuss. Your provider will review candidacy, timing, aftercare, and any treatment-specific instructions during the visit.',
+      'For injectables, lasers, peels, microneedling, and other advanced services, preparation may vary. Contact Access Aesthetics before your appointment if you have questions about products, sun exposure, medications, or recent procedures.',
+    ],
+    highlights: ['Bring current skincare and medication details', 'Avoid guessing about treatment restrictions', 'Ask questions before treatment begins', 'Follow provider-specific aftercare'],
+  },
+] as const;
+
+export const allPages = [
+  ...contentPages.map((page) => ({ type: 'standard' as const, ...page })),
+  ...servicePages.map((page) => ({ ...page, type: 'service' as const })),
+  ...teamMembers.map((member) => ({
+    slug: member.slug,
+    title: member.name,
+    kicker: 'Team',
+    summary: member.summary,
+    image: member.image,
+    imageAlt: member.imageAlt,
+    copy: member.copy,
+    type: 'team-member' as const,
+    role: member.title,
+    email: member.email,
+  })),
+];

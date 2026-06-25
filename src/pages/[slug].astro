@@ -1,0 +1,211 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Check, Mail, MapPin, Phone, Sparkles } from '@lucide/astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import {
+  allPages,
+  bookingUrl,
+  servicePages,
+  teamMembers,
+  transformations,
+} from '../data/site';
+
+export function getStaticPaths() {
+  return allPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+const title = `${page.title} | Access Aesthetics`;
+const description = page.summary;
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="overflow-hidden bg-[#f9f8f6] pt-20 text-[#141820]">
+    <section class="relative isolate overflow-hidden bg-[#0f1d29]">
+      <div class="absolute inset-0 -z-20">
+        <Image
+          src={page.image}
+          alt={page.imageAlt}
+          class="h-full w-full object-cover opacity-42"
+          widths={[720, 960, 1280, 1600]}
+          sizes="100vw"
+          priority
+        />
+      </div>
+      <div class="absolute inset-0 -z-10 bg-gradient-to-r from-[#07121b]/94 via-[#0f1d29]/78 to-[#0f1d29]/36"></div>
+      <div class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-t from-[#f9f8f6] to-transparent"></div>
+      <div class="mx-auto flex min-h-[520px] max-w-[calc(1280px+8rem)] items-end px-5 pb-16 pt-24 sm:px-8 lg:min-h-[640px] lg:px-16 lg:pb-24">
+        <div data-reveal class="max-w-3xl">
+          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">{page.kicker}</p>
+          <h1 class="font-display text-[clamp(2.75rem,6vw,6.25rem)] font-normal leading-[0.98] tracking-normal text-white">
+            {page.title}
+          </h1>
+          {'role' in page && <p class="mt-5 text-[0.82rem] font-semibold uppercase tracking-[0.16em] text-brand-200">{page.role}</p>}
+          <p class="mt-6 max-w-[60ch] text-[1.125rem] leading-[1.75] text-[#d6e3ea]">
+            {page.summary}
+          </p>
+          <div class="mt-9 flex flex-col gap-4 sm:flex-row">
+            <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+              Book Your Experience
+              <ArrowRight class="size-3.5" aria-hidden="true" />
+            </a>
+            <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-white/25 pb-1 text-[0.875rem] font-semibold uppercase tracking-[0.14em] text-white/82 transition hover:border-brand-300 hover:text-white">
+              Explore Services
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.45fr] lg:gap-16">
+        <aside data-reveal class="lg:sticky lg:top-24 lg:self-start">
+          <div class="bg-white p-6 shadow-soft">
+            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Access Aesthetics</p>
+            <div class="space-y-3 text-sm leading-relaxed text-[#5a6070]">
+              <p class="flex gap-3">
+                <MapPin class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <span>1411 Lindberg Dr, Slidell, LA 70548</span>
+              </p>
+              <p class="flex gap-3">
+                <Phone class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="tel:+19859605066" class="transition hover:text-brand-700">985-960-5066</a>
+              </p>
+              <p class="flex gap-3">
+                <Mail class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="mailto:info@accessofla.com" class="transition hover:text-brand-700">{'email' in page ? page.email : 'info@accessofla.com'}</a>
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div data-reveal data-reveal-delay="120">
+          <div class="space-y-6 text-[1.0625rem] leading-[1.78] text-[#5a6070]">
+            {page.copy.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+
+          {'highlights' in page && page.highlights && (
+            <div class="mt-10 grid gap-3 sm:grid-cols-2">
+              {page.highlights.map((item) => (
+                <div class="flex items-start gap-3 bg-white p-5 shadow-[0_16px_42px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)]">
+                  <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
+                  <span class="text-[0.8rem] font-semibold uppercase tracking-[0.11em] text-[#141820]">{item}</span>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {page.type === 'contact' && (
+            <form name="contact" method="POST" data-netlify="true" class="mt-10 bg-white p-6 shadow-soft sm:p-8">
+              <input type="hidden" name="form-name" value="contact" />
+              <div class="grid gap-5 sm:grid-cols-2">
+                <label class="block">
+                  <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Name</span>
+                  <input name="name" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
+                </label>
+                <label class="block">
+                  <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Email</span>
+                  <input type="email" name="email" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
+                </label>
+              </div>
+              <label class="mt-5 block">
+                <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Message</span>
+                <textarea name="message" rows="5" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300"></textarea>
+              </label>
+              <button type="submit" class="brand-cut-button mt-6 inline-flex px-7 py-3.5 text-[0.875rem] font-medium text-white">
+                Send Message
+              </button>
+            </form>
+          )}
+        </div>
+      </div>
+    </section>
+
+    {page.type === 'services' && (
+      <section class="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div class="mx-auto max-w-7xl">
+          <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {servicePages.map((service) => (
+              <a href={`/${service.slug}`} class="group block bg-[#f9f8f6] p-6 shadow-[0_18px_48px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)] transition hover:-translate-y-1 hover:shadow-soft">
+                <Sparkles class="mb-5 size-5 text-brand-600" aria-hidden="true" />
+                <p class="mb-2 text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-500">{service.kicker}</p>
+                <h2 class="font-display text-2xl leading-tight text-[#141820]">{service.title}</h2>
+                <p class="mt-4 text-sm leading-[1.7] text-[#5a6070]">{service.summary}</p>
+                <span class="mt-6 inline-flex items-center gap-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-700 underline decoration-brand-300 decoration-2 underline-offset-4">
+                  View Treatment
+                  <ArrowRight class="size-3.5 transition group-hover:translate-x-1" aria-hidden="true" />
+                </span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+
+    {page.type === 'team' && (
+      <section class="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-4">
+          {teamMembers.map((member) => (
+            <article class="flex flex-col bg-[#f9f8f6] shadow-[0_18px_48px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)]">
+              <Image src={member.image} alt={member.imageAlt} class="aspect-[4/5] w-full object-cover" widths={[360, 520, 720]} sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw" />
+              <div class="flex flex-1 flex-col p-6">
+                <h2 class="font-display text-2xl leading-tight text-[#141820]">{member.name}</h2>
+                <p class="mt-2 text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-brand-600">{member.title}</p>
+                <p class="mt-4 flex-1 text-sm leading-[1.7] text-[#5a6070]">{member.summary}</p>
+                <a href={`/${member.slug}`} class="mt-6 inline-flex items-center gap-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-brand-700 underline decoration-brand-300 decoration-2 underline-offset-4">
+                  Meet {member.name.split(' ')[0]}
+                  <ArrowRight class="size-3.5" aria-hidden="true" />
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {page.type === 'transformations' && (
+      <section class="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {transformations.map((item, index) => (
+            <figure class="bg-[#f9f8f6] p-3 shadow-[0_18px_48px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)]">
+              <Image src={item.image} alt={item.alt} class="aspect-square w-full object-cover" widths={[420, 640, 960]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+              <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
+                <span>{item.label}</span>
+                <span>{String(index + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+    )}
+
+    {page.type === 'service' && (
+      <section class="bg-[#eef7fb] px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1fr_1.2fr] lg:items-center">
+          <div>
+            <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-600">Treatment Plan</p>
+            <h2 class="font-display text-[clamp(2rem,3vw,3.25rem)] leading-tight text-[#141820]">Start with a consultation built around your goals.</h2>
+            <p class="mt-5 max-w-[62ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+              Your provider will review candidacy, timing, comfort, expected results, and aftercare before recommending a treatment plan.
+            </p>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2">
+            {['Personalized assessment', 'Treatment education', 'Clear aftercare', 'Natural-looking goals'].map((item) => (
+              <div class="flex items-start gap-3 bg-white p-5 shadow-[0_16px_42px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)]">
+                <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
+                <span class="text-[0.8rem] font-semibold uppercase tracking-[0.11em] text-[#141820]">{item}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    )}
+  </main>
+  <Footer />
+</BaseLayout>
