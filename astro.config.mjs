@@ -24,6 +24,7 @@ const retiredServiceSlugs = [
 const retiredTeamMemberSlugs = ['amanda-clementi', 'courtney-miller', 'harley-lonardo', 'melissa-holley'];
 
 export default defineConfig({
+  site: 'https://accessofla.com',
   integrations: [
     alpinejs({ entrypoint: '/src/alpine' }),
   ],
@@ -34,5 +35,8 @@ export default defineConfig({
     ...Object.fromEntries(retiredServiceSlugs.map((slug) => [`/${slug}`, `/services#${slug}`])),
     ...Object.fromEntries(retiredTeamMemberSlugs.map((slug) => [`/${slug}`, `/about#${slug}`])),
     '/team': '/about#meet-our-team',
+    '/memberships': '/contact#memberships',
+    '/prepare-for-your-appointment': '/contact#prepare-for-your-appointment',
+    '/access-awareness': '/about#access-awareness',
   },
 });

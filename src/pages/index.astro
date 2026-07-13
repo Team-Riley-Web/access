@@ -379,7 +379,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
           <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">
             Treatments for skin, structure, and glow.
           </p>
-          <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.01em] text-ink">
+          <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-medium leading-[1.05] tracking-[-0.01em] text-ink">
             Premier Aesthetic Experience
           </h2>
           <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
@@ -487,7 +487,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
       <div class="relative mx-auto max-w-7xl">
         <div data-reveal class="mx-auto mb-14 max-w-3xl text-center">
           <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">Behind The Glow</p>
-          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
+          <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-medium leading-[1.1] tracking-[-0.01em] text-white">
             Meet Our Team
           </h2>
           <p class="mt-5 text-[1.0625rem] leading-[1.75] text-[#d6e3ea]">
@@ -604,7 +604,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
         <div data-reveal class="mb-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <p class="text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Before and After</p>
-            <h2 class="mt-3.5 max-w-[28ch] font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink">
+            <h2 class="mt-3.5 font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink">
               Visible change, guided by thoughtful treatment plans.
             </h2>
           </div>
@@ -787,8 +787,8 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
       <div class="mx-auto max-w-7xl">
         <div data-reveal class="max-w-[620px]">
           <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Reviews &amp; Recognition</p>
-          <h2 class="font-display text-[clamp(2rem,3vw,3rem)] font-normal leading-[1.12] tracking-[-0.02em] text-ink">
-            Five stars on Google. The Northshore&rsquo;s Best.
+          <h2 class="font-display text-[clamp(2rem,3vw,3rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink">
+            Five stars on Google.<br class="hidden sm:block" /> The Northshore&rsquo;s Best.
           </h2>
         </div>
 
@@ -803,7 +803,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
             next() { this.active = (this.active + 1) % this.total },
             prev() { this.active = (this.active - 1 + this.total) % this.total }
           }`}
-          x-init="setInterval(() => { if (!paused) next() }, 6500)"
+          x-init="setInterval(() => { if (!paused) next() }, 9500)"
         >
           <div class="mb-7 flex flex-wrap items-center gap-[1.125rem]">
             <svg class="size-10 shrink-0" viewBox="0 0 24 24" aria-label="Google">
@@ -830,14 +830,14 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
           <div
             class="md:hidden"
             x-data="{ mActive: 0, mPaused: false, _tx: 0 }"
-            x-init={`setInterval(() => { if (!mPaused) mActive = (mActive + 1) % ${googleReviews.length} }, 6500)`}
+            x-init={`setInterval(() => { if (!mPaused) mActive = (mActive + 1) % ${googleReviews.length} }, 9500)`}
           >
             <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false"
               @touchstart.passive="_tx = $event.touches[0].clientX"
               @touchend.passive={`let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % ${googleReviews.length} : (mActive - 1 + ${googleReviews.length}) % ${googleReviews.length}`}
             >
               <div
-                class="flex transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                class="flex transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 x-bind:style="`transform: translateX(-${mActive * 100}%)`"
               >
                 {googleReviews.map((review, index) => (
@@ -882,7 +882,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
             @mouseleave="paused = false"
           >
             <div
-              class="flex transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              class="flex transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               x-bind:style="`transform: translateX(-${active * 100}%);`"
             >
               {reviewSlides.map((slide, slideIndex) => (

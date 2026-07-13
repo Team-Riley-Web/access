@@ -7,9 +7,6 @@ import beforeAfter6 from '../assets/images/before-after-6.jpg';
 import beforeAfter7 from '../assets/images/before-after-7.jpg';
 import beforeAfter8 from '../assets/images/before-after-8.jpg';
 import beforeAfter9 from '../assets/images/before-after-9.jpg';
-import bg2Image from '../assets/images/bg-2.png';
-import homeHeroImage from '../assets/images/home-hero.png';
-import meetingImage from '../assets/images/meeting.jpeg';
 import serviceImage from '../assets/images/service.png';
 import service2Image from '../assets/images/service2.png';
 import service3Image from '../assets/images/service-3.jpeg';
@@ -19,6 +16,10 @@ import teamAmanda from '../assets/images/team-amanda.jpg';
 import teamCourtney from '../assets/images/team-courtney.jpg';
 import teamHarley from '../assets/images/team-harley.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
+import aboutHeroImage from '../assets/images/services/smile.jpg';
+import transformationsHeroImage from '../assets/images/services/peak.jpg';
+import contactHeroImage from '../assets/images/services/mirror.jpg';
+import accessAwarenessImage from '../assets/images/services/man.jpg';
 
 export const bookingUrl = 'https://www.myaestheticspro.com/';
 
@@ -338,8 +339,8 @@ export const contentPages = [
     kicker: 'Our Mission',
     summary:
       'A refined, welcoming medical spa where advanced aesthetic treatments are guided by personalized care.',
-    image: meetingImage,
-    imageAlt: 'Access Aesthetics consultation area',
+    image: aboutHeroImage,
+    imageAlt: 'Access Aesthetics provider treating a client',
     copy: [
       'Access Aesthetics exists to elevate natural beauty with cutting-edge treatments delivered in a refined and comfortable environment. The team focuses on personal care, thoughtful education, and results that help clients feel confident at every step.',
       'As an InMode Center of Excellence, Access brings advanced treatment technology together with a team that values listening first. Every plan is shaped around individual goals because beauty is never one-size-fits-all.',
@@ -380,26 +381,12 @@ export const contentPages = [
     kicker: 'Before and After',
     summary:
       'Visible change guided by thoughtful aesthetic treatment plans.',
-    image: homeHeroImage,
-    imageAlt: 'Access Aesthetics treatment result gallery',
+    image: transformationsHeroImage,
+    imageAlt: 'Aesthetic laser treatment in progress at Access Aesthetics',
     copy: [
       'Every transformation begins with a conversation about your goals, timeline, and comfort level. These results show the kind of refreshed, confidence-building changes possible with a personalized plan.',
     ],
     type: 'transformations',
-  },
-  {
-    slug: 'access-awareness',
-    title: 'Access Awareness',
-    kicker: 'Client Education',
-    summary:
-      'Helpful guidance for preparing, choosing, and caring for aesthetic treatments.',
-    image: bg2Image,
-    imageAlt: 'Access Aesthetics medical spa interior',
-    copy: [
-      'Access Awareness is a client education space for treatment guidance, skincare reminders, and practical aesthetic wellness information. It is designed to help clients feel informed before and after their appointments.',
-      'More educational posts can be added here as the team expands this resource.',
-    ],
-    highlights: ['Treatment education', 'Skincare support', 'Before and aftercare guidance', 'Confidence through clarity'],
   },
   {
     slug: 'contact',
@@ -407,19 +394,37 @@ export const contentPages = [
     kicker: 'Visit Us',
     summary:
       'Book your experience or reach the Slidell team with questions about treatments and appointments.',
-    image: bg2Image,
-    imageAlt: 'Access Aesthetics building and interior',
+    image: contactHeroImage,
+    imageAlt: 'Access Aesthetics provider and client consultation with a mirror',
     copy: ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'],
     type: 'contact',
   },
+] as const;
+
+export const aboutAddenda = [
+  {
+    slug: 'access-awareness',
+    title: 'Access Awareness',
+    kicker: 'Client Education',
+    summary:
+      'Helpful guidance for preparing, choosing, and caring for aesthetic treatments.',
+    image: accessAwarenessImage,
+    imageAlt: 'Provider consulting with a client at Access Aesthetics',
+    copy: [
+      'Access Awareness is a client education space for treatment guidance, skincare reminders, and practical aesthetic wellness information. It is designed to help clients feel informed before and after their appointments.',
+      'More educational posts can be added here as the team expands this resource.',
+    ],
+    highlights: ['Treatment education', 'Skincare support', 'Before and aftercare guidance', 'Confidence through clarity'],
+  },
+] as const;
+
+export const contactAddenda = [
   {
     slug: 'memberships',
     title: 'Memberships',
     kicker: 'Consistent Care',
     summary:
       'Membership options for clients who want regular treatments, skincare support, and ongoing value.',
-    image: service3Image,
-    imageAlt: 'Access Aesthetics relaxing treatment room',
     copy: [
       'Memberships help make consistent self-care easier by pairing recurring visits with thoughtful value. This page is ready for final membership names, pricing, and included benefits from the Access Aesthetics team.',
       'Until those details are confirmed, clients can contact the team or book a consultation to ask about current membership availability.',
@@ -432,8 +437,6 @@ export const contentPages = [
     kicker: 'Before You Visit',
     summary:
       'Simple appointment preparation guidance to help your treatment day feel smooth and informed.',
-    image: meetingImage,
-    imageAlt: 'Access Aesthetics consultation before treatment',
     copy: [
       'Arrive with your treatment goals, medical history, current medications, and skincare routine ready to discuss. Your provider will review candidacy, timing, aftercare, and any treatment-specific instructions during the visit.',
       'For injectables, lasers, peels, microneedling, and other advanced services, preparation may vary. Contact Access Aesthetics before your appointment if you have questions about products, sun exposure, medications, or recent procedures.',

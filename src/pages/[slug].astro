@@ -5,8 +5,10 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import {
+  aboutAddenda,
   allPages,
   bookingUrl,
+  contactAddenda,
   contentPages,
   serviceCategories,
   serviceCategoryOrder,
@@ -45,7 +47,8 @@ const description = page.summary;
     class="bg-[#f9f8f6] pt-20 text-[#141820]"
     x-data="{ selected: null, activeCat: null }"
     x-init="
-      const h = window.location.hash.slice(1); if (h) selected = h;
+      const h = window.location.hash.slice(1);
+      if (h && document.querySelector(`[data-modal-slug='${h}']`)) selected = h;
       const catSections = Array.from(document.querySelectorAll('[data-cat-section]'));
       if (catSections.length) {
         activeCat = catSections[0].id;
@@ -152,6 +155,31 @@ const description = page.summary;
               </form>
             )}
           </div>
+        </div>
+      </section>
+    )}
+
+    {page.slug === 'contact' && (
+      <section class="border-t border-[#edebe7] bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+        <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2">
+          {contactAddenda.map((addendum) => (
+            <div id={addendum.slug} data-reveal class="scroll-mt-28">
+              <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{addendum.kicker}</p>
+              <h2 class="font-display text-2xl leading-tight text-ink sm:text-3xl">{addendum.title}</h2>
+              <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">{addendum.summary}</p>
+              <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.75] text-[#5a6070]">
+                {addendum.copy.map((paragraph) => <p>{paragraph}</p>)}
+              </div>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                {addendum.highlights.map((item) => (
+                  <div class="flex items-start gap-3 bg-[#f9f8f6] p-4 shadow-[0_16px_42px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)]">
+                    <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
+                    <span class="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[#141820]">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
     )}
@@ -304,6 +332,39 @@ const description = page.summary;
     )}
 
     {page.slug === 'about' && (
+      <section class="border-t border-[#edebe7] bg-[#f9f8f6]">
+        {aboutAddenda.map((addendum) => (
+          <div id={addendum.slug} data-reveal class="grid scroll-mt-28 lg:grid-cols-2">
+            <div
+              class="min-h-[320px] bg-white lg:min-h-[560px]"
+              style={`background-image: url(${addendum.image.src}); background-size: contain; background-repeat: no-repeat; background-position: center;`}
+              role="img"
+              aria-label={addendum.imageAlt}
+            ></div>
+            <div class="flex flex-col justify-center px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+              <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{addendum.kicker}</p>
+              <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink">
+                {addendum.title}
+              </h2>
+              <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">{addendum.summary}</p>
+              <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.75] text-[#5a6070]">
+                {addendum.copy.map((paragraph) => <p>{paragraph}</p>)}
+              </div>
+              <div class="mt-6 grid gap-3 sm:grid-cols-2">
+                {addendum.highlights.map((item) => (
+                  <div class="flex items-start gap-3 bg-white p-4 shadow-[0_16px_42px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)]">
+                    <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
+                    <span class="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[#141820]">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+    )}
+
+    {page.slug === 'about' && (
       <section id="meet-our-team" class="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
         <div class="mx-auto max-w-7xl">
           <div class="mx-auto mb-12 max-w-3xl text-center">
@@ -368,6 +429,7 @@ const description = page.summary;
 
         {servicePages.map((service) => (
           <div
+            data-modal-slug={service.slug}
             x-show={`selected === '${service.slug}'`}
             x-cloak
             x-transition:enter="transition ease-out duration-200"
@@ -418,6 +480,7 @@ const description = page.summary;
 
         {teamMembers.map((member) => (
           <div
+            data-modal-slug={member.slug}
             x-show={`selected === '${member.slug}'`}
             x-cloak
             x-transition:enter="transition ease-out duration-200"
