@@ -40,6 +40,63 @@ const bookingUrl = 'https://www.myaestheticspro.com/';
 
 const starPath = 'M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.3l7.1-.7z';
 
+const googleReviews = [
+  {
+    name: 'Kathy Giusti',
+    meta: '1 review',
+    time: '9 months ago',
+    text: "I had an excellent experience at Access Aesthetics with Harley Lonardo and Courtney Muller, NP. Harley was professional and knowledgeable, recommending the perfect IPL treatment for my dark spots and sun damage-I'm thrilled with the results. Courtney did amazing work with my lip fillers and Botox, giving me a natural, refreshed look. I also love the ZO skincare products Harley suggested for my daily routine. Highly recommend!",
+  },
+  {
+    name: 'Tiffany Woods',
+    meta: '5 reviews · 2 photos',
+    time: '9 months ago',
+    text: 'I was very skeptical of Aesthetic clinics and researched so many before choosing Access Aesthetics. The fact that they have a Nurse Practitioner performing services really impressed me. Courtney Muller, NP is amazing!!! She takes time to explain procedures and will answer any question you have! Due to having a connective tissue disorder I was full of questions. Courtney has gone above and beyond by making sure I underwent the treatments best for me! The entire Access Aesthetics team is a joy to interact with and make visits so easy!',
+  },
+  {
+    name: 'Kaitlin Melton',
+    meta: '4 reviews · 3 photos',
+    time: '10 months ago',
+    text: 'I love my access family! Only company I would trust to do anything. Courtney & Harley are both AMAZING! The process is sooo easy and they walk you through every step specially if you are newer to the treatments. 100/10 recommend!!!',
+  },
+  {
+    name: 'Megan Hellbach',
+    meta: '3 reviews · 3 photos',
+    time: '10 months ago',
+    text: '10/10 experience every time! Harley is truly a master of her craft (i mean just look at the transformation of my nonexistent brows to perfectly sculpted ones!) takes time to listen and provide exactly what you want/ask for. amanda and courtney are always the most welcoming! they truly care about your satisfaction, and creating lasting relationships with their clients! i literally recommend them to everyone!',
+  },
+  {
+    name: 'Madison Kadinger Macaluso',
+    meta: '9 reviews',
+    time: '9 months ago',
+    text: 'Courtney is the best! It was my first time getting Botox and I was so nervous. She calmed my nerves and made sure I felt comfortable the whole time. Would highly recommend Access Aesthetics and Courtney!',
+  },
+  {
+    name: 'Allexxandra Neyland',
+    meta: '2 reviews',
+    time: '9 months ago',
+    text: 'Courtney Muller did a great job at putting me at ease during my Botox appointment! She was very informative also! I had a painless experience! I will definitely be returning to see her for more Botox and other services!',
+  },
+  {
+    name: 'Cameron Bryant-Echols',
+    meta: '1 review',
+    time: '9 months ago',
+    text: "Loveee coming here, the entire staff is soo friendly. Harley never misses a beat with my eyebrows, a LITERAL QUEEN. And Courtney the NP, seriously don't trust anyone else with my Botox. She has the best bedside manner and her work is amazing",
+  },
+  {
+    name: 'Madison Wuertz',
+    meta: '2 reviews',
+    time: 'Edited 9 months ago',
+    text: 'The staff at Access is TOP TIER! From the moment you walk in you feel apart of their family! Courtney has my skin feeling vibrant and as healthy as my teenage years! Love going to see the Access girls!!💙💙💙',
+  },
+  {
+    name: 'Shannon Lipps',
+    meta: '5 reviews',
+    time: '8 months ago',
+    text: "I have to say, getting a facial or any treatment from Melissa is an absolute pleasure. As a landscape contractor with 25 years of experience, I've seen a lot, but Melissa has truly transformed my sun damaged skin into beautiful, healthy skin—and for me, now in my mid-40s, every time I get a treatment from her, I feel like I look younger and younger. She's sweet, funny, friendly, and incredibly knowledgeable in her field, always bringing a positive attitude. I genuinely love my appointments with her and can't recommend her enough!",
+  },
+];
+
 const recognitions = [
   { image: northshoresBestBadge, alt: "The Northshore's Best 2025 seal", title: "The Northshore's Best 2025", source: 'Sophisticated Woman Magazine' },
   { image: morpheus8TopProviderBadge, alt: 'Morpheus8 Top Provider 2025 badge', title: 'Morpheus8 Top Provider 2025', source: 'InMode' },
@@ -147,6 +204,10 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
     ...item,
     originalIndex: index * 3 + itemIndex,
   }))
+);
+
+const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) }, (_, index) =>
+  googleReviews.slice(index * 3, index * 3 + 3)
 );
 ---
 
@@ -722,7 +783,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
       </div>
     </section>
 
-    <section id="reviews" class="border-t border-[#edebe7] bg-[#f9f8f6] px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+    <section id="reviews" class="border-t border-[#edebe7] bg-gradient-to-b from-[#f9f8f6] to-white px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
       <div class="mx-auto max-w-7xl">
         <div data-reveal class="max-w-[620px]">
           <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Reviews &amp; Recognition</p>
@@ -731,7 +792,19 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           </h2>
         </div>
 
-        <div data-reveal data-reveal-delay="120" class="mt-11">
+        <div
+          data-reveal
+          data-reveal-delay="120"
+          class="mt-11"
+          x-data={`{
+            active: 0,
+            paused: false,
+            total: ${reviewSlides.length},
+            next() { this.active = (this.active + 1) % this.total },
+            prev() { this.active = (this.active - 1 + this.total) % this.total }
+          }`}
+          x-init="setInterval(() => { if (!paused) next() }, 6500)"
+        >
           <div class="mb-7 flex flex-wrap items-center gap-[1.125rem]">
             <svg class="size-10 shrink-0" viewBox="0 0 24 24" aria-label="Google">
               <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
@@ -754,28 +827,121 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
             </div>
           </div>
 
-          <div class="grid gap-5 sm:grid-cols-3">
-            {Array.from({ length: 3 }).map((_, index) => (
-              <article class="bg-white p-[1.625rem_1.75rem]" data-od-id={`review-card-${index + 1}`}>
-                <div class="flex gap-0.5" aria-hidden="true">
-                  {Array.from({ length: 5 }).map(() => (
-                    <svg class="size-3.5 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
+          <div
+            class="md:hidden"
+            x-data="{ mActive: 0, mPaused: false, _tx: 0 }"
+            x-init={`setInterval(() => { if (!mPaused) mActive = (mActive + 1) % ${googleReviews.length} }, 6500)`}
+          >
+            <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false"
+              @touchstart.passive="_tx = $event.touches[0].clientX"
+              @touchend.passive={`let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % ${googleReviews.length} : (mActive - 1 + ${googleReviews.length}) % ${googleReviews.length}`}
+            >
+              <div
+                class="flex transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+                x-bind:style="`transform: translateX(-${mActive * 100}%)`"
+              >
+                {googleReviews.map((review, index) => (
+                  <div class="min-w-full">
+                    <article class="flex h-full flex-col bg-white p-[1.625rem_1.75rem]" data-od-id={`review-card-mobile-${index + 1}`}>
+                      <div class="flex gap-0.5" aria-hidden="true">
+                        {Array.from({ length: 5 }).map(() => (
+                          <svg class="size-3.5 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
+                        ))}
+                      </div>
+                      <p class="my-4 flex-1 text-[0.9rem] leading-[1.65] text-[#5a6070]">{review.text}</p>
+                      <div class="flex items-center gap-3">
+                        <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-[0.8rem] font-semibold text-brand-700">
+                          {review.name.charAt(0)}
+                        </span>
+                        <div class="flex-1">
+                          <p class="text-[0.85rem] font-semibold text-[#141820]">{review.name}</p>
+                          <p class="text-[0.75rem] text-[#8b929e]">{review.meta} &middot; {review.time}</p>
+                        </div>
+                      </div>
+                    </article>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div class="mt-5 flex items-center justify-center gap-2">
+              {googleReviews.map((_, index) => (
+                <button
+                  type="button"
+                  class="h-2 rounded-full transition-all duration-500"
+                  x-bind:class={`mActive === ${index} ? 'w-8 bg-brand-600' : 'w-2 bg-[#9aa8b1]/55'`}
+                  aria-label={`Show review ${index + 1}`}
+                  @click={`mActive = ${index}`}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div
+            class="hidden overflow-hidden md:block"
+            @mouseenter="paused = true"
+            @mouseleave="paused = false"
+          >
+            <div
+              class="flex transition-transform duration-[900ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
+              x-bind:style="`transform: translateX(-${active * 100}%);`"
+            >
+              {reviewSlides.map((slide, slideIndex) => (
+                <div class="grid min-w-full gap-5 md:grid-cols-3">
+                  {slide.map((review, i) => (
+                    <article class="flex flex-col bg-white p-[1.625rem_1.75rem]" data-od-id={`review-card-${slideIndex * 3 + i + 1}`}>
+                      <div class="flex gap-0.5" aria-hidden="true">
+                        {Array.from({ length: 5 }).map(() => (
+                          <svg class="size-3.5 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
+                        ))}
+                      </div>
+                      <p class="my-4 flex-1 text-[0.9rem] leading-[1.65] text-[#5a6070]">{review.text}</p>
+                      <div class="flex items-center gap-3">
+                        <span class="flex size-8 shrink-0 items-center justify-center rounded-full bg-brand-100 text-[0.8rem] font-semibold text-brand-700">
+                          {review.name.charAt(0)}
+                        </span>
+                        <div class="flex-1">
+                          <p class="text-[0.85rem] font-semibold text-[#141820]">{review.name}</p>
+                          <p class="text-[0.75rem] text-[#8b929e]">{review.meta} &middot; {review.time}</p>
+                        </div>
+                      </div>
+                    </article>
                   ))}
                 </div>
-                <div class="my-4 flex flex-col gap-[0.55rem]" aria-label="Review text pending">
-                  <span class="h-[0.6rem] w-full rounded-sm bg-[#edebe7]"></span>
-                  <span class="h-[0.6rem] w-[92%] rounded-sm bg-[#edebe7]"></span>
-                  <span class="h-[0.6rem] w-[68%] rounded-sm bg-[#edebe7]"></span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="size-8 shrink-0 rounded-full bg-brand-100"></span>
-                  <div class="flex flex-1 flex-col gap-1.5">
-                    <span class="h-2 w-[55%] rounded-sm bg-[#edebe7]"></span>
-                    <span class="h-2 w-[35%] rounded-sm bg-[#edebe7]"></span>
-                  </div>
-                </div>
-              </article>
-            ))}
+              ))}
+            </div>
+          </div>
+
+          <div class="mt-7 hidden items-center justify-between md:flex">
+            <div class="flex items-center gap-2">
+              {reviewSlides.map((_, index) => (
+                <button
+                  type="button"
+                  class="h-2.5 rounded-full transition-all duration-500"
+                  x-bind:class={`active === ${index} ? 'w-10 bg-brand-600' : 'w-2.5 bg-[#9aa8b1]/55 hover:bg-brand-400'`}
+                  aria-label={`Show review group ${index + 1}`}
+                  @click={`active = ${index}`}
+                ></button>
+              ))}
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                type="button"
+                class="inline-flex size-11 items-center justify-center bg-white/82 text-brand-700 shadow-[0_14px_35px_rgba(20,24,32,0.1)] transition hover:bg-white hover:text-brand-500"
+                aria-label="Previous reviews"
+                @click="prev()"
+              >
+                <ArrowRight class="size-4 rotate-180" aria-hidden="true" />
+              </button>
+              <button
+                type="button"
+                class="inline-flex size-11 items-center justify-center bg-white/82 text-brand-700 shadow-[0_14px_35px_rgba(20,24,32,0.1)] transition hover:bg-white hover:text-brand-500"
+                aria-label="Next reviews"
+                @click="next()"
+              >
+                <ArrowRight class="size-4" aria-hidden="true" />
+              </button>
+            </div>
           </div>
         </div>
 
