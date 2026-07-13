@@ -13,6 +13,7 @@ import meetingImage from '../assets/images/meeting.jpeg';
 import serviceImage from '../assets/images/service.png';
 import service2Image from '../assets/images/service2.png';
 import service3Image from '../assets/images/service-3.jpeg';
+import servicesFacialImage from '../assets/images/services-facial.jpg';
 import teamImage from '../assets/images/team.jpg';
 import teamAmanda from '../assets/images/team-amanda.jpg';
 import teamCourtney from '../assets/images/team-courtney.jpg';
@@ -27,10 +28,10 @@ export const servicePages = [
     title: 'Neurotoxins',
     kicker: 'Injectables',
     summary:
-      'A refined treatment for softening expression lines while preserving natural movement and balance.',
+      'Smooth fine lines and wrinkles with FDA-approved neuromodulators Botox, Dysport, and Xeomin. Results typically appear within a few days and last 3-4 months.',
     copy: [
-      'Neurotoxin treatments can soften the appearance of fine lines and wrinkles by temporarily relaxing targeted facial muscles. Each appointment begins with a careful consultation so the dose, placement, and treatment plan support your natural features.',
-      "At Access Aesthetics, the goal is a refreshed look that still feels like you. Common treatment areas include the forehead, frown lines, crow's feet, and other areas discussed during your provider consultation.",
+      "At Access Aesthetics, we proudly offer both Botox and Dysport, two trusted, FDA-approved neurotoxins that help smooth fine lines and wrinkles for a refreshed, natural look. Both work by gently relaxing the muscles that cause expression lines, softening areas like the forehead, frown lines, and crow's feet while still allowing you to express yourself. Botox is well known for its precision and consistent results, while Dysport has a slightly quicker onset and can diffuse more easily, making it a great option for larger treatment areas. Most clients begin to see results within a few days, with the full effect visible in about two weeks, and both treatments typically last three to four months. Whether you choose Botox or Dysport, our skilled team will tailor your treatment to your unique features, helping you look and feel your most confident and radiant.",
+      "Your journey to a smoother, more refreshed appearance can start today, and we're here to make it effortless. At Access Aesthetics, our friendly, experienced team will take the time to understand your goals and design a personalized treatment plan that's all about enhancing your natural beauty. Whether you're curious about Botox, Dysport, or simply exploring your options, your consultation is the perfect first step. Let us help you look as vibrant and confident on the outside as you feel on the inside. Schedule your appointment today, and discover just how radiant your best self can be.",
     ],
     image: service2Image,
     imageAlt: 'Aesthetic injectable treatment at Access Aesthetics',
@@ -40,7 +41,7 @@ export const servicePages = [
     title: 'Morpheus8 RF Microneedling',
     kicker: 'Skin Tightening',
     summary:
-      'Radiofrequency microneedling designed to support firmer, smoother, more youthful-looking skin.',
+      'This advanced treatment combines microneedling with radiofrequency energy to tighten skin, reduce wrinkles, improve texture, and contour the face or body.',
     copy: [
       'Morpheus8 combines microneedling with radiofrequency energy to remodel skin from within and encourage fresh collagen and elastin. It can help improve texture, tone, fine lines, acne scarring, enlarged pores, and mild laxity.',
       'Treatments can be customized for the face, neck, and body. Your provider will walk through goals, downtime, and the recommended series so the plan feels clear and supportive from the start.',
@@ -53,7 +54,7 @@ export const servicePages = [
     title: 'IPL Intense Pulsed Light Therapy',
     kicker: 'Brightening',
     summary:
-      'Light-based treatment for sun damage, redness, discoloration, and uneven texture.',
+      'This non-invasive light-based therapy safely penetrates the skin to improve clarity and restore a more even, youthful complexion over a series of treatments.',
     copy: [
       'IPL uses precise pulses of light to target visible discoloration, age spots, redness, and uneven tone while supporting smoother, brighter-looking skin. It is a strong option for clients who want visible radiance with minimal disruption.',
       'Each treatment is tailored to your skin and goals. Your provider will explain preparation, aftercare, and realistic expectations before treatment begins.',
@@ -66,7 +67,7 @@ export const servicePages = [
     title: 'Laser Hair Removal',
     kicker: 'Smooth Skin',
     summary:
-      'A low-maintenance approach to reducing unwanted hair on the face and body.',
+      'This long-term solution reduces unwanted hair on the face or body with minimal discomfort and no downtime.',
     copy: [
       'Laser hair removal targets unwanted hair at the root to reduce the need for shaving, waxing, and constant touch-ups. It can be used on areas such as legs, underarms, bikini line, and face depending on your consultation.',
       'The process is planned as a series for best results. Access Aesthetics keeps the experience comfortable, personalized, and straightforward from first visit through maintenance.',
@@ -79,7 +80,7 @@ export const servicePages = [
     title: 'Fillers',
     kicker: 'Volume and Contour',
     summary:
-      'Thoughtful injectable filler treatments for structure, balance, and subtle rejuvenation.',
+      'Dermal fillers restore volume, smooth deep lines, and enhance facial features like lips and cheeks.',
     copy: [
       'Dermal fillers can restore volume, refine facial contours, and soften signs of aging in a way that feels polished and natural. Treatment areas and product choices are selected only after your provider understands your anatomy and goals.',
       'The Access approach favors balance over excess. Your plan may focus on lips, cheeks, chin, jawline, or other areas discussed during consultation.',
@@ -92,7 +93,7 @@ export const servicePages = [
     title: 'Rejuvapen Microneedling',
     kicker: 'Texture Renewal',
     summary:
-      'Collagen-stimulating microneedling for smoother texture and renewed radiance.',
+      "Rejuvapen microneedling stimulates the skin's natural healing process to improve fine lines, scarring, and texture.",
     copy: [
       "Rejuvapen microneedling creates controlled microchannels that encourage the skin's natural repair process. It can help improve the look of texture, fine lines, pores, and post-acne marks over a planned treatment series.",
       'Your provider will personalize depth, timing, and aftercare so the treatment supports your skin condition and comfort level.',
@@ -105,7 +106,7 @@ export const servicePages = [
     title: 'Biostimulators',
     kicker: 'Collagen Support',
     summary:
-      'Treatments that encourage gradual collagen renewal for natural-looking firmness and volume.',
+      "Unlike traditional fillers, biostimulators like Radiesse and Sculptra work by stimulating your body's collagen production for long-lasting skin rejuvenation.",
     copy: [
       'Biostimulators are designed to support collagen production over time. Instead of an instant overfilled look, these treatments can help improve firmness, structure, and skin quality through gradual, refined change.',
       'Your provider will discuss whether biostimulators fit your goals, timeline, and treatment history during consultation.',
@@ -118,7 +119,7 @@ export const servicePages = [
     title: 'Chemical Peels',
     kicker: 'Resurfacing',
     summary:
-      'Professional exfoliation treatments for clearer tone, smoother texture, and a refreshed glow.',
+      'Reveal fresher, smoother skin with our professional-grade peels, customized to your skin type and concerns.',
     copy: [
       'Chemical peels use professional resurfacing solutions to improve dullness, uneven tone, clogged pores, texture, and visible signs of sun damage. Peel strength and downtime vary based on your skin and goals.',
       'Access Aesthetics will help you choose the right peel and aftercare plan so your skin is supported before and after treatment.',
@@ -131,7 +132,7 @@ export const servicePages = [
     title: 'Biofiller and PRP',
     kicker: 'Regenerative Care',
     summary:
-      'A regenerative treatment option that uses your own plasma to support refreshed skin quality.',
+      "PureBiofiller combines your body's own platelet-rich plasma (PRP) with a natural filler for safe, regenerative volume enhancement.",
     copy: [
       'Biofiller and PRP treatments use platelet-rich plasma drawn from your own blood to support skin rejuvenation and a refreshed appearance. These options can complement a broader plan for tone, texture, and natural-looking vitality.',
       'Your provider will explain candidacy, processing, placement, and expected treatment timing during your appointment.',
@@ -144,7 +145,7 @@ export const servicePages = [
     title: 'Facials',
     kicker: 'Skin Health',
     summary:
-      'Customized facial treatments for hydration, clarity, comfort, and glow.',
+      "Our medical-grade facials are tailored to your skin's unique needs. Whether you're seeking hydration, acne control, or a glow boost.",
     copy: [
       'Facials at Access Aesthetics are tailored to what your skin needs that day, from deep cleansing and exfoliation to calming support and hydration. They are a practical foundation for ongoing skin health.',
       'Your provider can recommend a cadence and at-home routine to help extend your results between visits.',
@@ -157,7 +158,7 @@ export const servicePages = [
     title: 'Lash and Brow Services',
     kicker: 'Finishing Details',
     summary:
-      'Detail-focused lash and brow services that frame the face and simplify daily routines.',
+      'Enhance your natural beauty with lash lifts, brow shaping, tinting, and brow lamination. Perfect for creating a polished, low-maintenance look.',
     copy: [
       'Lash and brow services help define your features with polished, low-maintenance results. Treatment recommendations depend on your natural lashes, brows, preferences, and maintenance goals.',
       'The team focuses on balanced shaping and enhancement so the final result feels clean, flattering, and easy to wear.',
@@ -170,7 +171,7 @@ export const servicePages = [
     title: 'Vitamin Injections',
     kicker: 'Wellness Boost',
     summary:
-      'Quick nutrient injections designed to support energy, wellness, and glow from within.',
+      'Boost your energy, mood, metabolism, and overall wellness with our fast-acting vitamin injections. We have many options to choose from.',
     copy: [
       'Vitamin injections can provide targeted nutrients and antioxidants in a quick appointment. Depending on the option selected, they may support energy, immune wellness, skin health, hair, and nails.',
       'Your provider will help select the right injection based on your goals and wellness history.',
@@ -183,7 +184,7 @@ export const servicePages = [
     title: 'ZO Skincare',
     kicker: 'Professional Skincare',
     summary:
-      'Professional skincare guidance using ZO products selected around your goals.',
+      'We proudly carry ZO Skin Health, a medical-grade skincare line founded by Dr. Zein Obagi. From acne to anti-aging, ZO products are science-backed and results-driven.',
     copy: [
       'ZO Skincare routines can support concerns such as aging, discoloration, acne, texture, and overall skin health. The best regimen is the one selected for your skin, not a one-size-fits-all shelf.',
       'Ask the Access team for a product plan that complements your treatments and daily routine.',
@@ -196,7 +197,7 @@ export const servicePages = [
     title: 'Epicutis Skincare',
     kicker: 'Calming Support',
     summary:
-      'Elevated skincare options selected to support barrier health and visible radiance.',
+      'Skincare that works smarter, not harder. It makes your skin feel like silk, keeps it hydrated all day, and gives that fresh, lit-from-within glow we all love.',
     copy: [
       'Epicutis Skincare can be integrated into a thoughtful skin plan focused on hydration, comfort, and a healthy-looking glow. Your provider can help determine where it fits in your routine.',
       'Professional guidance keeps product selection simple and aligned with your treatments.',
@@ -209,7 +210,7 @@ export const servicePages = [
     title: 'Revision Skincare',
     kicker: 'Daily Results',
     summary:
-      'Professional skincare products recommended to support tone, texture, and long-term skin goals.',
+      'Revision Skincare is a physician-exclusive line focused on age-defying innovation. Revision balances science and luxury for powerful, visible results.',
     copy: [
       'Revision Skincare can help support a consistent at-home routine for brightness, hydration, firmness, and overall skin quality. Access Aesthetics can help pair products with your in-office treatment plan.',
       'A provider-guided regimen gives you a clearer path than guessing product by product.',
@@ -222,7 +223,7 @@ export const servicePages = [
     title: 'EltaMD Sunscreen',
     kicker: 'Daily Protection',
     summary:
-      'Provider-recommended sun protection to help preserve treatment results and skin health.',
+      "EltaMD offers dermatologist-recommended sunscreens for every skin type, including sensitive and acne-prone skin. Perfect for daily wear to protect and preserve your skin's health.",
     copy: [
       'Daily sunscreen is one of the most important parts of any aesthetic plan. EltaMD options can help protect against UV damage while supporting skin that feels comfortable enough for everyday use.',
       'Your provider can recommend the right SPF option for your skin type, tone, and daily routine.',
@@ -231,6 +232,33 @@ export const servicePages = [
     imageAlt: 'EltaMD sunscreen consultation',
   },
 ] as const;
+
+export const serviceCategoryOrder = [
+  'Injectables & Fillers',
+  'Skin Renewal & Resurfacing',
+  'Hair & Body',
+  'Wellness',
+  'Skincare Retail',
+] as const;
+
+export const serviceCategories: Record<(typeof servicePages)[number]['slug'], (typeof serviceCategoryOrder)[number]> = {
+  neurotoxins: 'Injectables & Fillers',
+  fillers: 'Injectables & Fillers',
+  biostimulators: 'Injectables & Fillers',
+  'biofiller-and-prp': 'Injectables & Fillers',
+  'morpheus-8-microneedling': 'Skin Renewal & Resurfacing',
+  'rejuvapen-microneedling': 'Skin Renewal & Resurfacing',
+  'intense-pulse-light-therapy': 'Skin Renewal & Resurfacing',
+  'chemical-peels': 'Skin Renewal & Resurfacing',
+  facials: 'Skin Renewal & Resurfacing',
+  'laser-hair-removal': 'Hair & Body',
+  'lash-and-brow-services': 'Hair & Body',
+  'vitamin-injections': 'Wellness',
+  'zo-skincare': 'Skincare Retail',
+  'epicutis-skincare': 'Skincare Retail',
+  'revision-skincare': 'Skincare Retail',
+  'elta-md-sunscreen': 'Skincare Retail',
+};
 
 export const teamMembers = [
   {
@@ -338,12 +366,12 @@ export const contentPages = [
     kicker: 'Treatments',
     summary:
       'Aesthetic treatments for skin, structure, wellness, and everyday confidence.',
-    image: serviceImage,
-    imageAlt: 'Access Aesthetics service treatment room',
+    imageAlt: 'Access Aesthetics facial treatment',
     copy: [
-      'Access Aesthetics offers injectables, advanced skin rejuvenation, laser treatments, facials, lash and brow services, vitamin injections, and professional skincare. A consultation helps match the right services to your goals.',
-      'Browse the linked treatment pages to learn more about each option before booking.',
+      'At Access Aesthetics, our signature treatments combine cutting-edge technology with expert clinical artistry to deliver natural, transformative results. From advanced injectables and skin rejuvenation to personalized treatment plans, each service is designed to enhance your unique features while supporting long-term skin health and confidence.',
+      'Experience the perfect blend of innovation, precision, and care where modern aesthetics meet timeless beauty.',
     ],
+    image: servicesFacialImage,
     type: 'services',
   },
   {
@@ -381,7 +409,7 @@ export const contentPages = [
       'Book your experience or reach the Slidell team with questions about treatments and appointments.',
     image: bg2Image,
     imageAlt: 'Access Aesthetics building and interior',
-    copy: ['1411 Lindberg Dr, Slidell, LA 70548', '985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'],
+    copy: ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'],
     type: 'contact',
   },
   {

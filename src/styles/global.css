@@ -40,26 +40,10 @@
 @layer components {
   .brand-cut-button {
     position: relative;
-    isolation: isolate;
     text-transform: uppercase;
     letter-spacing: 0.14em;
     background-image: linear-gradient(115deg, #62c4f3 0%, #3d92bc 42%, #00558f 100%);
     box-shadow: 0 10px 28px rgba(0, 85, 143, 0.22);
-  }
-
-  .brand-cut-button::before {
-    color: rgb(214 222 250 / 0.4);
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    background-image: linear-gradient(115deg, #00558f 0%, #3d92bc 48%, #62c4f3 100%);
-    opacity: 0;
-    transition: opacity 650ms ease;
-  }
-
-  .brand-cut-button:hover::before {
-    opacity: 1;
   }
 
   .hero-text-shadow {

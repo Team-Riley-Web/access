@@ -51,6 +51,7 @@ module.exports = {
           800: 'hsl(204 100% 21%)',
           900: 'hsl(204 100% 14%)',
         },
+        ink: '#04568e',
       },
       boxShadow: {
         soft: '0 24px 70px hsl(26 18% 11% / 0.13), 0 2px 8px hsl(26 18% 11% / 0.08)',
@@ -58,10 +59,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ['-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
-        display: ['Playfair Display', 'Georgia', 'serif'],
-        playfair: ['Playfair Display', 'Georgia', 'serif'],
+        display: ['Jost', 'Avenir Next', 'Century Gothic', 'system-ui', 'sans-serif'],
         logo: ['Yellow Peas', 'Georgia', 'serif'],
-        script: ['Playfair Display', 'Georgia', 'serif'],
       },
     },
   },

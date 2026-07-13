@@ -32,8 +32,19 @@ import teamImage from '../assets/images/team.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
 import meetingImage from '../assets/images/meeting.jpeg';
 import bg2Image from '../assets/images/bg-2.png';
+import northshoresBestBadge from '../assets/images/NorthshoresBest.avif';
+import morpheus8VerifiedBadge from '../assets/images/morpheus8.png';
+import morpheus8TopProviderBadge from '../assets/images/top-morpheus8.png';
 
 const bookingUrl = 'https://www.myaestheticspro.com/';
+
+const starPath = 'M12 2l2.9 6.6 7.1.7-5.4 4.8 1.6 7-6.2-3.8-6.2 3.8 1.6-7L2 9.3l7.1-.7z';
+
+const recognitions = [
+  { image: northshoresBestBadge, alt: "The Northshore's Best 2025 seal", title: "The Northshore's Best 2025", source: 'Sophisticated Woman Magazine' },
+  { image: morpheus8TopProviderBadge, alt: 'Morpheus8 Top Provider 2025 badge', title: 'Morpheus8 Top Provider 2025', source: 'InMode' },
+  { image: morpheus8VerifiedBadge, alt: 'Morpheus8 Verified Provider badge', title: 'Morpheus8 Verified Provider', source: 'InMode' },
+];
 
 const trustItems = [
   { icon: ShieldCheck, title: 'Medical expertise', copy: 'Licensed aesthetic providers' },
@@ -113,10 +124,10 @@ const team = [
 ];
 
 const teamHotspots = [
-  { name: 'Melissa Holley', title: 'Medical Esthetician', href: '/melissa-holley', x: '18%', y: '80%' },
-  { name: 'Courtney Muller', title: 'MSN, APRN, FNP-C', href: '/courtney-miller', x: '41%', y: '80%' },
-  { name: 'Amanda Clementi', title: 'Director of Aesthetics & Health and Wellness', href: '/amanda-clementi', x: '60%', y: '80%' },
-  { name: 'Harley Lonardo', title: 'Advanced Medical Esthetician', href: '/harley-lonardo', x: '81%', y: '80%' },
+  { name: 'Melissa Holley', title: 'Medical Esthetician', href: '/about#melissa-holley', x: '18%', y: '80%' },
+  { name: 'Courtney Muller', title: 'MSN, APRN, FNP-C', href: '/about#courtney-miller', x: '41%', y: '80%' },
+  { name: 'Amanda Clementi', title: 'Director of Aesthetics & Health and Wellness', href: '/about#amanda-clementi', x: '60%', y: '80%' },
+  { name: 'Harley Lonardo', title: 'Advanced Medical Esthetician', href: '/about#harley-lonardo', x: '81%', y: '80%' },
 ];
 
 const transformations = [
@@ -157,6 +168,13 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
             priority
           />
         </div>
+        <Image
+          src={northshoresBestBadge}
+          alt="The Northshore's Best 2025 award — Sophisticated Woman"
+          class="absolute right-8 top-8 z-10 hidden w-28 drop-shadow-[0_10px_24px_rgba(0,61,102,0.35)] lg:block"
+          widths={[108, 160]}
+          sizes="112px"
+        />
         <svg
           class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[62%] text-brand-300 [mask-image:linear-gradient(to_right,black_0%,black_52%,transparent_78%)] lg:block"
           viewBox="0 0 800 760"
@@ -171,10 +189,10 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
 
         <div class="relative z-10 mx-auto flex lg:min-h-[calc(100vh-12rem)] max-w-[calc(1280px+8rem)] items-center px-5 py-10 sm:px-8 lg:px-16 lg:py-22">
           <div class="w-full max-w-[56rem] text-center lg:text-left">
-            <p class="mb-7 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+            <p class="mb-7 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">
               Medical aesthetics. Personalized for you.
             </p>
-            <h1 class="hero-text-shadow font-script text-[clamp(4rem,8vw,8.5rem)] font-normal leading-[0.82] tracking-normal text-[#141820]">
+            <h1 class="hero-text-shadow font-display text-[clamp(4rem,8vw,8.5rem)] font-normal leading-[0.82] tracking-normal text-ink">
               Radiance Redefined
             </h1>
             <p class="mt-6 text-lg leading-[1.7] text-[#5a6070]">
@@ -199,13 +217,20 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
         </div>
       </div>
 
-      <div class="overflow-hidden lg:hidden">
+      <div class="relative overflow-hidden lg:hidden">
         <Image
           src={homeHeroImage}
           alt="Client receiving an injectable aesthetic treatment"
           class="h-72 w-full object-cover object-[55%_25%] sm:h-96"
           widths={[720, 960]}
           sizes="100vw"
+        />
+        <Image
+          src={northshoresBestBadge}
+          alt="The Northshore's Best 2025 award — Sophisticated Woman"
+          class="absolute right-4 top-4 z-10 w-20 drop-shadow-[0_10px_24px_rgba(0,61,102,0.35)]"
+          widths={[88, 132]}
+          sizes="80px"
         />
       </div>
 
@@ -258,7 +283,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           <div class="absolute -right-24 top-20 h-72 w-72 rounded-full bg-brand-500/18 blur-3xl"></div>
           <div class="absolute bottom-0 left-12 h-56 w-56 rounded-full bg-brand-300/10 blur-3xl"></div>
           <div data-reveal class="relative mx-auto max-w-2xl">
-            <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">Welcome To Access Aesthetics</p>
+            <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">Welcome To Access Aesthetics</p>
             <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
               Where innovation meets beauty.
             </h2>
@@ -290,10 +315,10 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
       <div class="absolute inset-0 bg-gradient-to-b from-white/58 via-white/32 to-[#eef7fb]/38"></div>
       <div class="relative mx-auto max-w-7xl" x-data="{ active: 0, _tx: 0 }">
         <div data-reveal class="mb-12">
-          <p class="mb-3.5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">
+          <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">
             Treatments for skin, structure, and glow.
           </p>
-          <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.01em] text-[#141820]">
+          <h2 class="font-display text-[clamp(2.25rem,3.4vw,3.75rem)] font-normal leading-[1.05] tracking-[-0.01em] text-ink">
             Premier Aesthetic Experience
           </h2>
           <p class="mt-6 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
@@ -313,6 +338,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
                   x-bind:aria-selected={`active === ${index}`}
                   role="tab"
                   @click={`active = ${index}`}
+                  @mouseenter={`active = ${index}`}
                 >
                   <span>{service.kicker}</span>
                   <span
@@ -359,8 +385,8 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
                   </div>
 
                   <div class="flex flex-col justify-center p-7 sm:p-9 lg:p-14 xl:p-16">
-                    <p class="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
-                    <h3 class="font-display text-[clamp(1.625rem,2.15vw,2.5rem)] font-normal leading-[1.12] text-[#141820]">
+                    <p class="mb-3 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{service.kicker}</p>
+                    <h3 class="font-display text-[clamp(1.625rem,2.15vw,2.5rem)] font-normal leading-[1.12] text-ink">
                       {service.title}
                     </h3>
                     <p class="mt-6 max-w-[64ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">{service.copy}</p>
@@ -399,7 +425,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
       <div class="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-[#07121b]/48"></div>
       <div class="relative mx-auto max-w-7xl">
         <div data-reveal class="mx-auto mb-14 max-w-3xl text-center">
-          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">Behind The Glow</p>
+          <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">Behind The Glow</p>
           <h2 class="font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
             Meet Our Team
           </h2>
@@ -420,7 +446,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
           </div>
           <div class="mt-6 flex justify-center lg:hidden">
             <a
-              href="/team"
+              href="/about#meet-our-team"
               class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
             >
               Learn More
@@ -448,7 +474,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
                       href={hotspot.href}
                       class="block bg-white/96 p-4 text-center shadow-[0_18px_50px_rgba(5,17,28,0.22),0_1px_4px_rgba(5,17,28,0.12)] backdrop-blur transition hover:bg-white focus:outline-none focus:ring-4 focus:ring-brand-300/50"
                     >
-                      <p class="font-display text-2xl leading-none text-[#141820]">{hotspot.name}</p>
+                      <p class="font-display text-2xl leading-none text-ink">{hotspot.name}</p>
                       <p class="mt-2 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-brand-600">{hotspot.title}</p>
                       <p class="mt-3 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-brand-700 underline decoration-brand-300 decoration-2 underline-offset-4">Learn More</p>
                     </a>
@@ -516,8 +542,8 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
       >
         <div data-reveal class="mb-12 flex flex-col gap-8 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p class="text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-500">Before and After</p>
-            <h2 class="mt-3.5 max-w-[28ch] font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-[#141820]">
+            <p class="text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Before and After</p>
+            <h2 class="mt-3.5 max-w-[28ch] font-display text-[clamp(2.125rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink">
               Visible change, guided by thoughtful treatment plans.
             </h2>
           </div>
@@ -695,6 +721,83 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
         </div>
       </div>
     </section>
+
+    <section id="reviews" class="border-t border-[#edebe7] bg-[#f9f8f6] px-5 py-20 sm:px-10 lg:px-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div data-reveal class="max-w-[620px]">
+          <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Reviews &amp; Recognition</p>
+          <h2 class="font-display text-[clamp(2rem,3vw,3rem)] font-normal leading-[1.12] tracking-[-0.02em] text-ink">
+            Five stars on Google. The Northshore&rsquo;s Best.
+          </h2>
+        </div>
+
+        <div data-reveal data-reveal-delay="120" class="mt-11">
+          <div class="mb-7 flex flex-wrap items-center gap-[1.125rem]">
+            <svg class="size-10 shrink-0" viewBox="0 0 24 24" aria-label="Google">
+              <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"/>
+              <path fill="#34A853" d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"/>
+              <path fill="#FBBC05" d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.14-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"/>
+              <path fill="#EA4335" d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09C6.22 6.86 8.87 4.75 12 4.75z"/>
+            </svg>
+            <p class="font-display text-[2.25rem] font-normal leading-none tracking-[-0.02em] text-ink">5.0</p>
+            <div>
+              <div class="mb-1 flex gap-0.5" aria-label="Five out of five stars">
+                {Array.from({ length: 5 }).map(() => (
+                  <svg class="size-4 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
+                ))}
+              </div>
+              <p class="text-[0.8125rem] text-[#5a6070]">
+                <a href="https://www.google.com/search?q=Access+Aesthetics+Slidell+LA+reviews" target="_blank" rel="noopener" class="text-brand-700 underline underline-offset-[3px]">
+                  Read our reviews on Google
+                </a>
+              </p>
+            </div>
+          </div>
+
+          <div class="grid gap-5 sm:grid-cols-3">
+            {Array.from({ length: 3 }).map((_, index) => (
+              <article class="bg-white p-[1.625rem_1.75rem]" data-od-id={`review-card-${index + 1}`}>
+                <div class="flex gap-0.5" aria-hidden="true">
+                  {Array.from({ length: 5 }).map(() => (
+                    <svg class="size-3.5 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
+                  ))}
+                </div>
+                <div class="my-4 flex flex-col gap-[0.55rem]" aria-label="Review text pending">
+                  <span class="h-[0.6rem] w-full rounded-sm bg-[#edebe7]"></span>
+                  <span class="h-[0.6rem] w-[92%] rounded-sm bg-[#edebe7]"></span>
+                  <span class="h-[0.6rem] w-[68%] rounded-sm bg-[#edebe7]"></span>
+                </div>
+                <div class="flex items-center gap-3">
+                  <span class="size-8 shrink-0 rounded-full bg-brand-100"></span>
+                  <div class="flex flex-1 flex-col gap-1.5">
+                    <span class="h-2 w-[55%] rounded-sm bg-[#edebe7]"></span>
+                    <span class="h-2 w-[35%] rounded-sm bg-[#edebe7]"></span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <div data-reveal data-reveal-delay="200" class="mt-14 border-t border-[#e4e0db] pt-10 text-center">
+          <p class="mb-7 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[#8b929e]">Recognized By</p>
+          <div class="flex flex-col items-center gap-7 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-0">
+            {recognitions.map((item, index) => (
+              <div
+                class={`flex items-center gap-4 px-11 py-1 text-left ${index > 0 ? 'sm:border-l sm:border-[#edebe7]' : ''}`}
+              >
+                <Image src={item.image} alt={item.alt} class="h-auto w-16 shrink-0" widths={[64, 96]} sizes="64px" />
+                <div>
+                  <p class="text-[0.9rem] font-semibold leading-[1.35] text-[#141820]">{item.title}</p>
+                  <p class="mt-0.5 text-[0.78rem] text-[#5a6070]">{item.source}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="bg-linear-to-b from-white to-[#f9f8f6] px-5 pb-12 sm:px-10 lg:px-20 lg:py-16">
       <div
         data-reveal
@@ -711,7 +814,7 @@ const transformationSlides = Array.from({ length: Math.ceil(transformations.leng
         <div class="absolute inset-0 bg-gradient-to-r from-brand-900/28 via-transparent to-brand-900/28"></div>
 
         <div class="relative flex min-h-[420px] flex-col items-center justify-center px-6 py-24 text-center sm:min-h-[480px] lg:min-h-[540px]">
-          <p class="mb-5 text-[0.67rem] font-semibold uppercase tracking-[0.22em] text-brand-300">
+          <p class="mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">
             Your next step starts here
           </p>
           <h2 class="font-display text-[clamp(2.5rem,4.5vw,5rem)] font-normal leading-[1.06] tracking-[-0.01em] text-white">

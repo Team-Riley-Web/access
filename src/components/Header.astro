@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import { ChevronDown, Menu, Phone, X } from '@lucide/astro';
 import logo from '../assets/images/logo.png';
 
-const bookingUrl = 'https://www.myaestheticspro.com/';
+const bookingUrl = 'https://www.myaestheticspro.com/BN/index.cfm?EBF1FD22984FA3B7A047FFA8B567BBDD';
 
 const navItems = [
   { label: 'Home', href: '/' },
@@ -11,11 +11,11 @@ const navItems = [
     label: 'About',
     href: '/about',
     children: [
-      { label: 'Team', href: '/team' },
-      { label: 'Amanda Clementi', href: '/amanda-clementi' },
-      { label: 'Courtney Muller', href: '/courtney-miller' },
-      { label: 'Harley Lonardo', href: '/harley-lonardo' },
-      { label: 'Melissa Holley', href: '/melissa-holley' },
+      { label: 'Team', href: '/about#meet-our-team' },
+      { label: 'Amanda Clementi', href: '/about#amanda-clementi' },
+      { label: 'Courtney Muller', href: '/about#courtney-miller' },
+      { label: 'Harley Lonardo', href: '/about#harley-lonardo' },
+      { label: 'Melissa Holley', href: '/about#melissa-holley' },
       { label: 'Access Awareness', href: '/access-awareness' },
     ],
   },
@@ -23,22 +23,22 @@ const navItems = [
     label: 'Services',
     href: '/services',
     children: [
-      { label: 'Neurotoxins', href: '/neurotoxins' },
-      { label: 'Morpheus 8 RF Microneedling', href: '/morpheus-8-microneedling' },
-      { label: 'IPL (Intense Pulsed Light Therapy)', href: '/intense-pulse-light-therapy' },
-      { label: 'Laser Hair Removal', href: '/laser-hair-removal' },
-      { label: 'Fillers', href: '/fillers' },
-      { label: 'Rejuvapen Microneedling', href: '/rejuvapen-microneedling' },
-      { label: 'Biostimulators', href: '/biostimulators' },
-      { label: 'Chemical Peels', href: '/chemical-peels' },
-      { label: 'Biofiller and PRP', href: '/biofiller-and-prp' },
-      { label: 'Facials', href: '/facials' },
-      { label: 'Lash and Brow Services', href: '/lash-and-brow-services' },
-      { label: 'Vitamin Injections', href: '/vitamin-injections' },
-      { label: 'ZO Skincare', href: '/zo-skincare' },
-      { label: 'Epicutis Skincare', href: '/epicutis-skincare' },
-      { label: 'Revision Skincare', href: '/revision-skincare' },
-      { label: 'EltaMD Sunscreen', href: '/elta-md-sunscreen' },
+      { label: 'Neurotoxins', href: '/services#neurotoxins' },
+      { label: 'Morpheus 8 RF Microneedling', href: '/services#morpheus-8-microneedling' },
+      { label: 'IPL (Intense Pulsed Light Therapy)', href: '/services#intense-pulse-light-therapy' },
+      { label: 'Laser Hair Removal', href: '/services#laser-hair-removal' },
+      { label: 'Fillers', href: '/services#fillers' },
+      { label: 'Rejuvapen Microneedling', href: '/services#rejuvapen-microneedling' },
+      { label: 'Biostimulators', href: '/services#biostimulators' },
+      { label: 'Chemical Peels', href: '/services#chemical-peels' },
+      { label: 'Biofiller and PRP', href: '/services#biofiller-and-prp' },
+      { label: 'Facials', href: '/services#facials' },
+      { label: 'Lash and Brow Services', href: '/services#lash-and-brow-services' },
+      { label: 'Vitamin Injections', href: '/services#vitamin-injections' },
+      { label: 'ZO Skincare', href: '/services#zo-skincare' },
+      { label: 'Epicutis Skincare', href: '/services#epicutis-skincare' },
+      { label: 'Revision Skincare', href: '/services#revision-skincare' },
+      { label: 'EltaMD Sunscreen', href: '/services#elta-md-sunscreen' },
     ],
   },
   { label: 'Transformations', href: '/transformations' },
@@ -108,7 +108,7 @@ const navItems = [
     <div class="ml-6 flex items-center gap-3 xl:ml-10">
       <a
         href={bookingUrl}
-        class="brand-cut-button hidden whitespace-nowrap font-normal uppercase tracking-[0.13em] text-white transition-all duration-300 hover:-translate-y-px sm:inline-flex xl:tracking-[0.14em]"
+        class="brand-cut-button hidden whitespace-nowrap font-normal uppercase tracking-[0.13em] text-white sm:inline-flex xl:tracking-[0.14em]"
         x-bind:class="scrolled ? 'px-4 py-2 text-[0.9rem] xl:px-5 xl:text-[0.98rem]' : 'px-5 py-2.5 text-[0.9rem] xl:px-6 xl:text-[0.98rem]'"
       >
         Book Now

@@ -1,12 +1,12 @@
 ---
 import { Image } from 'astro:assets';
-import { Clock, Heart, Mail, MapPin, Phone } from '@lucide/astro';
+import { Clock, Heart, Mail, Phone } from '@lucide/astro';
 import logo from '../assets/images/logo.png';
 
 const navItems = [
   { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
-  { label: 'Team', href: '/team' },
+  { label: 'Team', href: '/about#meet-our-team' },
   { label: 'Services', href: '/services' },
   { label: 'Results', href: '/transformations' },
   { label: 'Access Awareness', href: '/access-awareness' },
@@ -69,7 +69,7 @@ const navItems = [
     </div>
 
     <div class="hidden md:flex flex-col items-center text-center lg:items-start lg:text-left">
-      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Menu</p>
+      <p class="mb-5 text-[0.64rem] font-medium uppercase tracking-[0.22em] text-white/38">Menu</p>
       <div class="flex flex-col items-center gap-2.5 lg:items-start">
         {
           navItems.map((item) => (
@@ -82,12 +82,8 @@ const navItems = [
     </div>
 
     <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Contact</p>
+      <p class="mb-5 text-[0.64rem] font-medium uppercase tracking-[0.22em] text-white/38">Contact</p>
       <div class="space-y-3.5 text-sm text-white/62">
-        <p class="flex items-center justify-center gap-3 lg:justify-start">
-          <MapPin class="size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
-          <span>1411 Lindberg Dr, Slidell, LA 70548</span>
-        </p>
         <a class="flex items-center justify-center gap-3 transition hover:text-white lg:justify-start" href="tel:+19859605066">
           <Phone class="size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
           <span>985-960-5066</span>
@@ -100,7 +96,7 @@ const navItems = [
     </div>
 
     <div class="flex flex-col items-center text-center lg:items-start lg:text-left">
-      <p class="mb-5 text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-white/38">Hours</p>
+      <p class="mb-5 text-[0.64rem] font-medium uppercase tracking-[0.22em] text-white/38">Hours</p>
       <div class="flex items-center gap-2">
         <Clock class="size-4 shrink-0 text-brand-300" stroke-width={1.75} aria-hidden="true" />
         <p class="whitespace-nowrap text-sm font-medium text-white/75">Mon – Fri <span class="font-normal text-white/45">9:00 AM – 5:00 PM</span></p>
