@@ -52,6 +52,36 @@
       0 12px 32px rgba(255, 255, 255, 0.85);
   }
 
+  .shimmer-text {
+    color: #04568e;
+    background-image: linear-gradient(
+      100deg,
+      #04568e 0%,
+      #04568e 42%,
+      #9fdcff 50%,
+      #04568e 58%,
+      #04568e 100%
+    );
+    background-size: 220% 100%;
+    background-position: 200% 0;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer-sweep 7s linear infinite;
+  }
+
+  @keyframes shimmer-sweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .shimmer-text {
+      animation: none;
+      background-position: 0 0;
+    }
+  }
+
   [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
