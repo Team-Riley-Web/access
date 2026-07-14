@@ -22,9 +22,10 @@ const retiredServiceSlugs = [
 ];
 
 const retiredTeamMemberSlugs = ['amanda-clementi', 'courtney-miller', 'harley-lonardo', 'melissa-holley'];
+const siteUrl = (process.env.SITE_URL || process.env.URL || 'https://accessaesthetics.netlify.app').replace(/\/$/, '');
 
 export default defineConfig({
-  site: 'https://www.accessofla.com',
+  site: siteUrl,
   integrations: [
     alpinejs({ entrypoint: '/src/alpine' }),
   ],
