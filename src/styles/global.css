@@ -1,6 +1,11 @@
 @import "tailwindcss";
 @config "../../tailwind.config.cjs";
 
+@theme {
+  --color-ink: #04568e;
+  --color-midnight: #051725;
+}
+
 @layer base {
   @font-face {
     font-family: "Yellow Peas";

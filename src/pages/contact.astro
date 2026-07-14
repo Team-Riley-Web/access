@@ -1,0 +1,108 @@
+---
+import { ArrowRight, Check, Mail, Phone } from '@lucide/astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import contactHeroImage from '../assets/images/services/mirror.jpg';
+import { bookingUrl, contactAddenda } from '../data/site';
+
+const title = 'Contact Access Aesthetics | Access Aesthetics';
+const description = 'Book your experience or reach the Slidell team with questions about treatments and appointments.';
+const contactDetails = ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'];
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="bg-[#f9f8f6] pt-20 text-[#141820]">
+    <PageHero
+      image={contactHeroImage}
+      imageAlt="Access Aesthetics provider and client consultation with a mirror"
+      imagePosition="object-[center_34%]"
+      kicker="Visit Us"
+      title="Contact Access Aesthetics"
+      description={description}
+    >
+      <Fragment slot="actions">
+        <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+          Book Your Experience
+          <ArrowRight class="size-3.5" aria-hidden="true" />
+        </a>
+        <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
+          Explore Services
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <section class="px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.45fr] lg:gap-16">
+        <aside data-reveal class="lg:sticky lg:top-24 lg:self-start">
+          <div class="bg-white p-6 shadow-soft">
+            <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Access Aesthetics</p>
+            <div class="space-y-3 text-sm leading-relaxed text-[#5a6070]">
+              <p class="flex gap-3">
+                <Phone class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="tel:+19859605066" class="transition hover:text-brand-700">985-960-5066</a>
+              </p>
+              <p class="flex gap-3">
+                <Mail class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="mailto:info@accessofla.com" class="transition hover:text-brand-700">info@accessofla.com</a>
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div data-reveal data-reveal-delay="120">
+          <div class="space-y-6 text-[1.0625rem] leading-[1.78] text-[#5a6070]">
+            {contactDetails.map((detail) => <p>{detail}</p>)}
+          </div>
+
+          <form name="contact" method="POST" data-netlify="true" class="mt-10 bg-white p-6 shadow-soft sm:p-8">
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="grid gap-5 sm:grid-cols-2">
+              <label class="block">
+                <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Name</span>
+                <input name="name" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Email</span>
+                <input type="email" name="email" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
+              </label>
+            </div>
+            <label class="mt-5 block">
+              <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Message</span>
+              <textarea name="message" rows="5" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300"></textarea>
+            </label>
+            <button type="submit" class="brand-cut-button mt-6 inline-flex px-7 py-3.5 text-[0.875rem] font-medium text-white">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-[#edebe7] bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2">
+        {contactAddenda.map((addendum) => (
+          <div id={addendum.slug} data-reveal class="scroll-mt-28">
+            <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{addendum.kicker}</p>
+            <h2 class="font-display text-2xl leading-tight text-ink sm:text-3xl">{addendum.title}</h2>
+            <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">{addendum.summary}</p>
+            <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.75] text-[#5a6070]">
+              {addendum.copy.map((paragraph) => <p>{paragraph}</p>)}
+            </div>
+            <div class="mt-6 grid gap-3 sm:grid-cols-2">
+              {addendum.highlights.map((item) => (
+                <div class="flex items-start gap-3 bg-[#f9f8f6] p-4 shadow-[0_16px_42px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)]">
+                  <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
+                  <span class="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[#141820]">{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

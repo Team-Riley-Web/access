@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  image: ImageMetadata;
+  imageAlt: string;
+  kicker: string;
+  title: string;
+  description: string;
+  imagePosition?: string;
+}
+
+const { image, imageAlt, kicker, title, description, imagePosition = 'object-[center_30%]' } = Astro.props;
+---
+
+<section class="relative isolate border-b border-[#edebe7] bg-white lg:h-[70vh]">
+  <div class="absolute inset-y-0 right-0 -z-30 hidden h-full w-[58%] lg:block">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class:list={['h-full w-full object-cover', imagePosition]}
+      widths={[720, 960, 1280, 1600]}
+      sizes="58vw"
+      priority
+    />
+    <div class="absolute inset-y-0 left-0 w-[42%] bg-gradient-to-r from-white via-white/92 to-white/0"></div>
+  </div>
+
+  <svg
+    class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[64%] overflow-visible text-brand-300 [mask-image:linear-gradient(to_right,black_0%,black_58%,transparent_86%)] lg:block"
+    viewBox="0 0 800 760"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden="true"
+  >
+    <circle cx="370" cy="380" r="260" fill="none" stroke="currentColor" stroke-width="1" opacity="0.26" />
+    <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.22" />
+  </svg>
+
+  <div class="absolute inset-0 -z-20 hidden bg-gradient-to-r from-[#D6DEFA66] via-white from-[0%] via-white via-[55%] to-white/0 to-[84%] lg:block"></div>
+  <div class="absolute inset-x-0 bottom-0 -z-20 hidden h-32 bg-gradient-to-t from-white to-transparent lg:block"></div>
+
+  <div class="relative z-10 mx-auto flex max-w-[calc(1280px+8rem)] items-center px-5 py-14 sm:px-8 sm:py-16 lg:h-full lg:px-16 lg:py-0">
+    <div data-reveal class="w-full max-w-[46rem] text-center lg:text-left">
+      <p class="mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{kicker}</p>
+      <h1 class="font-display text-[clamp(3rem,5vw,4.75rem)] font-semibold leading-[1.04] tracking-[-0.01em] text-ink text-balance">
+        {title}
+      </h1>
+      <p class="mx-auto mt-6 max-w-[42ch] text-[1.0625rem] leading-[1.75] text-[#5a6070] lg:mx-0">
+        {description}
+      </p>
+      {
+        Astro.slots.has('actions') && (
+          <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-7 lg:justify-start">
+            <slot name="actions" />
+          </div>
+        )
+      }
+    </div>
+  </div>
+
+  <div class="relative overflow-hidden lg:hidden">
+    <Image
+      src={image}
+      alt={imageAlt}
+      class:list={['h-80 w-full object-cover sm:h-96', imagePosition]}
+      widths={[640, 960, 1280]}
+      sizes="100vw"
+      priority
+    />
+    <svg
+      class="pointer-events-none absolute inset-0 h-full w-full text-brand-300"
+      viewBox="0 0 800 700"
+      preserveAspectRatio="xMidYMid slice"
+      aria-hidden="true"
+    >
+      <circle cx="400" cy="350" r="240" fill="none" stroke="currentColor" stroke-width="1" opacity="0.24" />
+      <circle cx="400" cy="350" r="360" fill="none" stroke="currentColor" stroke-width="1" opacity="0.2" />
+    </svg>
+  </div>
+</section>

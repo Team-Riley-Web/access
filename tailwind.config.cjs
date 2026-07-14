@@ -52,6 +52,7 @@ module.exports = {
           900: 'hsl(204 100% 14%)',
         },
         ink: '#04568e',
+        midnight: '#051725',
       },
       boxShadow: {
         soft: '0 24px 70px hsl(26 18% 11% / 0.13), 0 2px 8px hsl(26 18% 11% / 0.08)',

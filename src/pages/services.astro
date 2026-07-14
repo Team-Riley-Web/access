@@ -1,0 +1,230 @@
+---
+import servicesHeroImage from '../assets/images/services-facial.jpg';
+import { ArrowRight, X } from '@lucide/astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { bookingUrl, serviceCategories, serviceCategoryOrder, servicePages } from '../data/site';
+
+const title = 'Our Services | Access Aesthetics';
+const description = 'Aesthetic treatments for skin, structure, wellness, and everyday confidence.';
+
+const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
+  'Injectables & Fillers': 'injectables-fillers',
+  'Skin Renewal & Resurfacing': 'skin-renewal',
+  'Hair & Body': 'hair-body',
+  Wellness: 'wellness',
+  'Skincare Retail': 'skincare-retail',
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main
+    class="bg-[#f9f8f6] pt-20 text-[#141820]"
+    x-data="{ selected: null, activeCat: null }"
+    x-init="
+      const h = window.location.hash.slice(1);
+      if (h && document.querySelector(`[data-modal-slug='${h}']`)) selected = h;
+      const catSections = Array.from(document.querySelectorAll('[data-cat-section]'));
+      if (catSections.length) {
+        activeCat = catSections[0].id;
+        const catObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => { if (entry.isIntersecting) activeCat = entry.target.id; });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+        catSections.forEach((section) => catObserver.observe(section));
+      }
+    "
+  >
+    <PageHero
+      image={servicesHeroImage}
+      imageAlt="A relaxing facial treatment at Access Aesthetics"
+      imagePosition="object-[center_38%]"
+      kicker="Treatments · Slidell, LA"
+      title="Our Services"
+      description={description}
+    >
+      <Fragment slot="actions">
+        <a href={bookingUrl} class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+          Book your consult
+          <ArrowRight class="size-3.5" aria-hidden="true" />
+        </a>
+        <a href={`#${categoryAnchors[serviceCategoryOrder[0]]}`} class="inline-flex items-center gap-1.5 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
+          Browse by category
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <div class="sticky top-20 z-40 -mx-5 mb-8 overflow-x-auto border-b border-[#edebe7] bg-[#f9f8f6]/95 px-5 py-3 backdrop-blur-md sm:-mx-8 sm:px-8 lg:hidden">
+      <ul class="no-scrollbar flex gap-6 whitespace-nowrap">
+        {serviceCategoryOrder.map((category) => (
+          <li>
+            <a
+              href={`#${categoryAnchors[category]}`}
+              x-bind:class={`activeCat === '${categoryAnchors[category]}' ? 'text-brand-700 font-semibold' : 'text-[#5a6070]'`}
+              class="inline-block py-1 text-[0.82rem] font-medium uppercase tracking-[0.08em] transition"
+            >
+              {category}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="mx-auto grid max-w-[calc(1280px+8rem)] gap-12 px-5 pb-24 sm:px-8 lg:grid-cols-[260px_1fr] lg:gap-16 lg:px-16">
+      <aside class="hidden lg:sticky lg:top-28 lg:block lg:self-start">
+        <p class="mb-5 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[#8b929e]">Categories</p>
+        <ul class="flex flex-col">
+          {serviceCategoryOrder.map((category, idx) => (
+            <li>
+              <a
+                href={`#${categoryAnchors[category]}`}
+                class="flex items-baseline gap-3.5 border-b border-[#edebe7] py-3.5 text-sm transition"
+                x-bind:class={`activeCat === '${categoryAnchors[category]}' ? 'text-brand-700 font-semibold' : 'text-[#5a6070] hover:text-[#141820]'`}
+              >
+                <span
+                  class="text-[0.72rem] font-medium tabular-nums transition"
+                  x-bind:class={`activeCat === '${categoryAnchors[category]}' ? 'text-brand-600' : 'text-[#8b929e]'`}
+                >
+                  {String(idx + 1).padStart(2, '0')}
+                </span>
+                <span>{category}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+        <a href={bookingUrl} class="mt-8 inline-flex items-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.85rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
+          Not sure where to start? Book a consult
+        </a>
+      </aside>
+
+      <div>
+        {serviceCategoryOrder.map((category, idx) => {
+          const services = servicePages.filter((service) => serviceCategories[service.slug] === category);
+          const isRetail = category === 'Skincare Retail';
+          return (
+            <section id={categoryAnchors[category]} data-cat-section class="scroll-mt-40 lg:scroll-mt-32">
+              {idx > 0 && <div class="mt-14 lg:mt-20" />}
+              <div class="mb-8 flex flex-wrap items-baseline gap-4 border-b border-[#edebe7] pb-5">
+                <span class="font-display text-[0.85rem] font-medium text-brand-600">{String(idx + 1).padStart(2, '0')}</span>
+                <h2 class="font-display text-[clamp(1.75rem,2.6vw,2.5rem)] leading-tight text-ink">{category}</h2>
+                <span class="ml-auto whitespace-nowrap text-[0.8125rem] text-[#8b929e]">
+                  {services.length} {isRetail ? (services.length === 1 ? 'product line' : 'product lines') : services.length === 1 ? 'treatment' : 'treatments'}
+                </span>
+              </div>
+
+              <div class="grid gap-5 sm:grid-cols-2">
+                {services.map((service) =>
+                  isRetail ? (
+                    <article class="bg-brand-50 p-7 ring-1 ring-brand-100 transition hover:ring-brand-300">
+                      <p class="mb-2.5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-600">{service.kicker}</p>
+                      <h3 class="font-display text-xl leading-snug text-ink">{service.title}</h3>
+                      <p class="mt-2.5 text-[0.9rem] leading-[1.65] text-[#5a6070]">{service.summary}</p>
+                    </article>
+                  ) : (
+                    <article
+                      role="button"
+                      tabindex="0"
+                      x-on:click={`selected = '${service.slug}'`}
+                      x-on:keydown.enter.prevent={`selected = '${service.slug}'`}
+                      x-on:keydown.space.prevent={`selected = '${service.slug}'`}
+                      class="group flex cursor-pointer flex-col bg-white p-7 shadow-[0_16px_40px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)] transition hover:-translate-y-1 hover:shadow-soft focus:outline-none focus:ring-2 focus:ring-brand-300 focus:ring-offset-4 focus:ring-offset-[#f9f8f6]"
+                    >
+                      <p class="mb-2.5 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-600">{service.kicker}</p>
+                      <h3 class="font-display text-xl leading-snug text-ink">{service.title}</h3>
+                      <p class="mt-2.5 flex-1 text-[0.9rem] leading-[1.65] text-[#5a6070]">{service.summary}</p>
+                      <div class="mt-5 flex items-center justify-between gap-4 border-t border-[#edebe7] pt-4">
+                        <span class="inline-flex items-center gap-1.5 text-[0.72rem] font-semibold uppercase tracking-[0.12em] text-[#141820] underline decoration-brand-300 decoration-2 underline-offset-4 transition group-hover:text-brand-700">
+                          Learn more
+                          <ArrowRight class="size-3 transition group-hover:translate-x-0.5" aria-hidden="true" />
+                        </span>
+                        <a href={bookingUrl} x-on:click.stop class="text-[0.8rem] text-[#8b929e] transition hover:text-brand-600">Book &rarr;</a>
+                      </div>
+                    </article>
+                  )
+                )}
+              </div>
+
+              {isRetail && (
+                <p class="mt-6 text-[0.8125rem] text-[#8b929e]">
+                  Product lines are available in-studio &mdash; ask your provider for a personalized regimen at your next visit.
+                </p>
+              )}
+            </section>
+          );
+        })}
+      </div>
+    </div>
+
+    <section class="bg-brand-800">
+      <div class="mx-auto flex max-w-[calc(1280px+8rem)] flex-col items-start gap-8 px-5 py-16 sm:px-8 sm:py-20 lg:flex-row lg:items-center lg:justify-between lg:px-16">
+        <div>
+          <h2 class="font-display max-w-xl text-[clamp(1.875rem,3vw,2.75rem)] leading-tight text-white">
+            Not sure which treatment fits your goals?
+          </h2>
+          <p class="mt-3 max-w-lg text-[0.95rem] text-white/60">
+            Start with a consultation &mdash; your provider will build a plan around your skin, your timeline, and your comfort level.
+          </p>
+        </div>
+        <a
+          href={bookingUrl}
+          class="inline-flex shrink-0 items-center gap-2 whitespace-nowrap bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-800 transition hover:bg-brand-50 hover:-translate-y-px"
+        >
+          Book your consult
+          <ArrowRight class="size-3.5" aria-hidden="true" />
+        </a>
+      </div>
+    </section>
+
+    <div x-show="selected !== null" x-cloak class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6">
+      <div
+        x-show="selected !== null"
+        x-transition.opacity
+        x-on:click="selected = null"
+        class="absolute inset-0 bg-black/50"
+      >
+      </div>
+
+      {servicePages.map((service) => (
+        <div
+          data-modal-slug={service.slug}
+          x-show={`selected === '${service.slug}'`}
+          x-cloak
+          x-transition:enter="transition ease-out duration-200"
+          x-transition:enter-start="opacity-0 scale-95"
+          x-transition:enter-end="opacity-100 scale-100"
+          x-transition:leave="transition ease-in duration-150"
+          x-transition:leave-start="opacity-100 scale-100"
+          x-transition:leave-end="opacity-0 scale-95"
+          class="relative max-h-[85vh] w-full max-w-2xl overflow-y-auto bg-white p-7 shadow-lift sm:p-10"
+        >
+          <button
+            type="button"
+            x-on:click="selected = null"
+            class="absolute right-5 top-5 flex size-9 items-center justify-center rounded-full bg-[#f9f8f6] text-[#5a6070] transition hover:bg-[#eceae7]"
+            aria-label="Close"
+          >
+            <X class="size-4" aria-hidden="true" />
+          </button>
+
+          <p class="text-[0.64rem] font-semibold uppercase tracking-[0.2em] text-brand-500">{service.kicker}</p>
+          <h2 class="mt-2 font-display text-3xl leading-tight text-ink">{service.title}</h2>
+          <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.75] text-[#5a6070]">
+            {service.copy.map((paragraph) => (
+              <p>{paragraph}</p>
+            ))}
+          </div>
+          <a
+            href={bookingUrl}
+            class="brand-cut-button mt-7 inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+          >
+            Book Now
+            <ArrowRight class="size-3.5" aria-hidden="true" />
+          </a>
+        </div>
+      ))}
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

@@ -10,15 +10,10 @@ import beforeAfter9 from '../assets/images/before-after-9.jpg';
 import serviceImage from '../assets/images/service.png';
 import service2Image from '../assets/images/service2.png';
 import service3Image from '../assets/images/service-3.jpeg';
-import servicesFacialImage from '../assets/images/services-facial.jpg';
-import teamImage from '../assets/images/team.jpg';
 import teamAmanda from '../assets/images/team-amanda.jpg';
 import teamCourtney from '../assets/images/team-courtney.jpg';
 import teamHarley from '../assets/images/team-harley.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
-import aboutHeroImage from '../assets/images/services/smile.jpg';
-import transformationsHeroImage from '../assets/images/services/peak.jpg';
-import contactHeroImage from '../assets/images/services/mirror.jpg';
 import accessAwarenessImage from '../assets/images/services/man.jpg';
 
 export const bookingUrl = 'https://www.myaestheticspro.com/';
@@ -332,75 +327,6 @@ export const transformations = [
   { image: beforeAfter9, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
 ] as const;
 
-export const contentPages = [
-  {
-    slug: 'about',
-    title: 'About Access Aesthetics',
-    kicker: 'Our Mission',
-    summary:
-      'A refined, welcoming medical spa where advanced aesthetic treatments are guided by personalized care.',
-    image: aboutHeroImage,
-    imageAlt: 'Access Aesthetics provider treating a client',
-    copy: [
-      'Access Aesthetics exists to elevate natural beauty with cutting-edge treatments delivered in a refined and comfortable environment. The team focuses on personal care, thoughtful education, and results that help clients feel confident at every step.',
-      'As an InMode Center of Excellence, Access brings advanced treatment technology together with a team that values listening first. Every plan is shaped around individual goals because beauty is never one-size-fits-all.',
-    ],
-    highlights: ['Exceptional team of experts', 'Advanced treatment technology', 'Personalized plans', 'Welcoming, judgment-free care'],
-  },
-  {
-    slug: 'team',
-    title: 'Meet Our Team',
-    kicker: 'Behind The Glow',
-    summary:
-      'Clinical expertise, personalized care, and a shared commitment to helping every client feel confident.',
-    image: teamImage,
-    imageAlt: 'Access Aesthetics clinical team',
-    copy: [
-      'The Access Aesthetics team brings together clinical skill and a passion for individualized care. Each provider helps create a welcoming environment where confidence, self-care, and wellness stay at the center of every visit.',
-      'Explore the team below to learn more about the people behind the treatments.',
-    ],
-    type: 'team',
-  },
-  {
-    slug: 'services',
-    title: 'Our Services',
-    kicker: 'Treatments',
-    summary:
-      'Aesthetic treatments for skin, structure, wellness, and everyday confidence.',
-    imageAlt: 'Access Aesthetics facial treatment',
-    copy: [
-      'At Access Aesthetics, our signature treatments combine cutting-edge technology with expert clinical artistry to deliver natural, transformative results. From advanced injectables and skin rejuvenation to personalized treatment plans, each service is designed to enhance your unique features while supporting long-term skin health and confidence.',
-      'Experience the perfect blend of innovation, precision, and care where modern aesthetics meet timeless beauty.',
-    ],
-    image: servicesFacialImage,
-    type: 'services',
-  },
-  {
-    slug: 'transformations',
-    title: 'Transformations',
-    kicker: 'Before and After',
-    summary:
-      'Visible change guided by thoughtful aesthetic treatment plans.',
-    image: transformationsHeroImage,
-    imageAlt: 'Aesthetic laser treatment in progress at Access Aesthetics',
-    copy: [
-      'Every transformation begins with a conversation about your goals, timeline, and comfort level. These results show the kind of refreshed, confidence-building changes possible with a personalized plan.',
-    ],
-    type: 'transformations',
-  },
-  {
-    slug: 'contact',
-    title: 'Contact Access Aesthetics',
-    kicker: 'Visit Us',
-    summary:
-      'Book your experience or reach the Slidell team with questions about treatments and appointments.',
-    image: contactHeroImage,
-    imageAlt: 'Access Aesthetics provider and client consultation with a mirror',
-    copy: ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'],
-    type: 'contact',
-  },
-] as const;
-
 export const aboutAddenda = [
   {
     slug: 'access-awareness',
@@ -444,20 +370,3 @@ export const contactAddenda = [
     highlights: ['Bring current skincare and medication details', 'Avoid guessing about treatment restrictions', 'Ask questions before treatment begins', 'Follow provider-specific aftercare'],
   },
 ] as const;
-
-export const allPages = [
-  ...contentPages.map((page) => ({ type: 'standard' as const, ...page })),
-  ...servicePages.map((page) => ({ ...page, type: 'service' as const })),
-  ...teamMembers.map((member) => ({
-    slug: member.slug,
-    title: member.name,
-    kicker: 'Team',
-    summary: member.summary,
-    image: member.image,
-    imageAlt: member.imageAlt,
-    copy: member.copy,
-    type: 'team-member' as const,
-    role: member.title,
-    email: member.email,
-  })),
-];

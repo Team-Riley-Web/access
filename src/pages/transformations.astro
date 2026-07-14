@@ -1,0 +1,81 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight, Mail, Phone } from '@lucide/astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import PageHero from '../components/PageHero.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import transformationsHeroImage from '../assets/images/services/peak.jpg';
+import { bookingUrl, transformations } from '../data/site';
+
+const title = 'Transformations | Access Aesthetics';
+const description = 'Visible change guided by thoughtful aesthetic treatment plans.';
+const introCopy = [
+  'Every transformation begins with a conversation about your goals, timeline, and comfort level. These results show the kind of refreshed, confidence-building changes possible with a personalized plan.',
+];
+---
+
+<BaseLayout title={title} description={description}>
+  <Header />
+  <main class="bg-[#f9f8f6] pt-20 text-[#141820]">
+    <PageHero
+      image={transformationsHeroImage}
+      imageAlt="Aesthetic laser treatment in progress at Access Aesthetics"
+      imagePosition="object-[center_42%]"
+      kicker="Before and After"
+      title="Transformations"
+      description={description}
+    >
+      <Fragment slot="actions">
+        <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+          Book Your Experience
+          <ArrowRight class="size-3.5" aria-hidden="true" />
+        </a>
+        <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
+          Explore Services
+        </a>
+      </Fragment>
+    </PageHero>
+
+    <section class="px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.45fr] lg:gap-16">
+        <aside data-reveal class="lg:sticky lg:top-24 lg:self-start">
+          <div class="bg-white p-6 shadow-soft">
+            <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Access Aesthetics</p>
+            <div class="space-y-3 text-sm leading-relaxed text-[#5a6070]">
+              <p class="flex gap-3">
+                <Phone class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="tel:+19859605066" class="transition hover:text-brand-700">985-960-5066</a>
+              </p>
+              <p class="flex gap-3">
+                <Mail class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
+                <a href="mailto:info@accessofla.com" class="transition hover:text-brand-700">info@accessofla.com</a>
+              </p>
+            </div>
+          </div>
+        </aside>
+
+        <div data-reveal data-reveal-delay="120">
+          <div class="space-y-6 text-[1.0625rem] leading-[1.78] text-[#5a6070]">
+            {introCopy.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {transformations.map((item, index) => (
+          <figure class="bg-[#f9f8f6] p-3 shadow-[0_18px_48px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.04)]">
+            <Image src={item.image} alt={item.alt} class="aspect-square w-full object-cover" widths={[420, 640, 960]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+            <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
+              <span>{item.label}</span>
+              <span>{String(index + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>
