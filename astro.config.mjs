@@ -24,7 +24,7 @@ const retiredServiceSlugs = [
 const retiredTeamMemberSlugs = ['amanda-clementi', 'courtney-miller', 'harley-lonardo', 'melissa-holley'];
 
 export default defineConfig({
-  site: 'https://accessofla.com',
+  site: 'https://www.accessofla.com',
   integrations: [
     alpinejs({ entrypoint: '/src/alpine' }),
   ],
