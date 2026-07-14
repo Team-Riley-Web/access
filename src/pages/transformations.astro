@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { ArrowRight, Check, Sparkles } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
+import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import PreFooterCTA from '../components/PreFooterCTA.astro';
@@ -38,10 +39,10 @@ const storyPoints = [
       flushBottom
     >
       <Fragment slot="actions">
-        <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+        <GradientButton href={bookingUrl} class="px-7 py-3.5 text-[0.875rem] font-medium">
           Book Your Experience
           <ArrowRight class="size-3.5" aria-hidden="true" />
-        </a>
+        </GradientButton>
         <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
           Explore Services
         </a>
@@ -102,13 +103,13 @@ const storyPoints = [
             ))}
           </div>
 
-          <a
+          <GradientButton
             href={bookingUrl}
-            class="brand-cut-button mt-9 inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+            class="mt-9 px-7 py-3.5 text-[0.875rem] font-medium"
           >
             Start your plan
             <ArrowRight class="size-3.5" aria-hidden="true" />
-          </a>
+          </GradientButton>
         </div>
 
         <figure data-reveal data-reveal-delay="140" class="bg-white p-3 shadow-[0_28px_80px_rgba(20,24,32,0.13),0_2px_8px_rgba(20,24,32,0.06)] ring-1 ring-[#e8e4de]">

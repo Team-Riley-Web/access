@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import { ArrowRight, Check, Mail, X } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
+import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import PreFooterCTA from '../components/PreFooterCTA.astro';
@@ -42,10 +43,10 @@ const awareness = aboutAddenda[0];
       flushBottom
     >
       <Fragment slot="actions">
-        <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+        <GradientButton href={bookingUrl} class="px-7 py-3.5 text-[0.875rem] font-medium">
           Book your experience
           <ArrowRight class="size-3.5" aria-hidden="true" />
-        </a>
+        </GradientButton>
         <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
           Explore treatments
           <ArrowRight class="size-3.5" aria-hidden="true" />
@@ -92,13 +93,13 @@ const awareness = aboutAddenda[0];
         </div>
 
         <div class="mt-8 flex justify-center">
-          <a
+          <GradientButton
             href="#meet-our-team"
-            class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+            class="px-7 py-3.5 text-[0.9375rem] font-medium"
           >
             Meet the team
             <ArrowRight class="size-3.5" aria-hidden="true" />
-          </a>
+          </GradientButton>
         </div>
       </div>
     </section>
@@ -246,13 +247,13 @@ const awareness = aboutAddenda[0];
               <Mail class="size-4" aria-hidden="true" />
               Email {member.name.split(' ')[0]}
             </a>
-            <a
+            <GradientButton
               href={bookingUrl}
-              class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+              class="px-7 py-3.5 text-[0.875rem] font-medium"
             >
               Book Now
               <ArrowRight class="size-3.5" aria-hidden="true" />
-            </a>
+            </GradientButton>
           </div>
         </div>
       ))}

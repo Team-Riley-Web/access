@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { ChevronDown, Menu, Phone, X } from '@lucide/astro';
+import GradientButton from './GradientButton.astro';
 import logo from '../assets/images/logo.png';
 
 const bookingUrl = 'https://www.myaestheticspro.com/BN/index.cfm?EBF1FD22984FA3B7A047FFA8B567BBDD';
@@ -111,13 +112,13 @@ const navItems = [
     </nav>
 
     <div class="ml-6 flex items-center gap-3 xl:ml-10">
-      <a
+      <GradientButton
         href={bookingUrl}
-        class="brand-cut-button hidden whitespace-nowrap font-normal uppercase tracking-[0.13em] text-white sm:inline-flex xl:tracking-[0.14em]"
+        class="hidden whitespace-nowrap font-normal sm:inline-flex xl:tracking-[0.14em]"
         x-bind:class="scrolled ? 'px-4 py-2 text-[0.9rem] xl:px-5 xl:text-[0.98rem]' : 'px-5 py-2.5 text-[0.9rem] xl:px-6 xl:text-[0.98rem]'"
       >
         Book Now
-      </a>
+      </GradientButton>
       <a
         href="tel:+19859605066"
         class="inline-flex size-11 items-center justify-center border border-brand-200 text-brand-700 transition hover:border-brand-400 hover:text-brand-500 xl:hidden"
@@ -125,16 +126,16 @@ const navItems = [
       >
         <Phone class="size-4" stroke-width={1.75} aria-hidden="true" />
       </a>
-      <button
+      <GradientButton
         type="button"
-        class="brand-cut-button inline-flex size-11 items-center justify-center text-white xl:hidden"
+        class="size-11 xl:hidden"
         aria-label="Toggle menu"
         :aria-expanded="open.toString()"
         @click="open = !open"
       >
         <Menu class="size-5" x-show="!open" aria-hidden="true" />
         <X class="size-5" x-show="open" x-cloak aria-hidden="true" />
-      </button>
+      </GradientButton>
     </div>
   </div>
 
@@ -187,12 +188,12 @@ const navItems = [
         ))
       }
       <div class="px-5 py-4">
-        <a
+        <GradientButton
           href={bookingUrl}
-          class="brand-cut-button flex items-center justify-center px-5 py-3 font-logo text-base font-normal uppercase tracking-[0.14em] text-white"
+          class="flex px-5 py-3 font-logo text-base font-normal"
         >
           Book your consult
-        </a>
+        </GradientButton>
       </div>
     </nav>
   </div>

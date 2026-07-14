@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import { ArrowRight } from '@lucide/astro';
+import GradientButton from './GradientButton.astro';
 import bg2Image from '../assets/images/bg-2.png';
 
 interface Props {
@@ -47,13 +48,13 @@ const { eyebrow, titleLines, copy, href, cta, fromWhite = false, showArrow = fal
         {copy}
       </p>
       <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row">
-        <a
+        <GradientButton
           href={href}
-          class="brand-cut-button inline-flex items-center gap-2 px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+          class="px-8 py-4 text-[0.9375rem] font-medium"
         >
           {cta}
           {showArrow && <ArrowRight class="size-3.5" aria-hidden="true" />}
-        </a>
+        </GradientButton>
       </div>
     </div>
   </div>

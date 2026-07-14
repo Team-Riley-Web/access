@@ -2,12 +2,13 @@
 import { Image } from 'astro:assets';
 import { ArrowRight, Check, Clock, Mail, MapPin, Phone } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
+import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import contactHeroImage from '../assets/images/team-1.jpeg';
 import membershipImage from '../assets/images/store.avif';
-import appointmentImage from '../assets/images/meeting.jpeg';
+import appointmentImage from '../assets/images/services/smile3.jpg';
 import { bookingUrl, contactAddenda } from '../data/site';
 
 const title = 'Contact Access Aesthetics | Access Aesthetics';
@@ -44,7 +45,7 @@ const addendaImages = [
       dark
     >
       <Fragment slot="actions">
-        <a href={bookingUrl} class="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:-translate-y-px hover:bg-brand-50">
+        <a href={bookingUrl} class="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:bg-brand-50">
           Book Your Experience
           <ArrowRight class="size-3.5" aria-hidden="true" />
         </a>
@@ -136,7 +137,7 @@ const addendaImages = [
             <textarea name="message" rows="8" required class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300"></textarea>
           </label>
           <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
-            <button type="submit" class="inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-700">
+            <button type="submit" class="inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:bg-brand-700">
               Send message
               <ArrowRight class="size-4" aria-hidden="true" />
             </button>
@@ -191,16 +192,20 @@ const addendaImages = [
                         </div>
                       ))}
                     </div>
-                    <a
-                      href={bookingUrl}
-                      class:list={[
-                        'mt-8 inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium transition hover:-translate-y-px',
-                        darkPanel ? 'bg-white text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] hover:bg-brand-50' : 'brand-cut-button text-white',
-                      ]}
-                    >
-                      Book Now
-                      <ArrowRight class="size-3.5" aria-hidden="true" />
-                    </a>
+                    {darkPanel ? (
+                      <a
+                        href={bookingUrl}
+                        class="mt-8 inline-flex items-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:bg-brand-50"
+                      >
+                        Book Now
+                        <ArrowRight class="size-3.5" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <GradientButton href={bookingUrl} class="mt-8 px-7 py-3.5 text-[0.875rem] font-medium">
+                        Book Now
+                        <ArrowRight class="size-3.5" aria-hidden="true" />
+                      </GradientButton>
+                    )}
                   </div>
                 </div>
               </div>

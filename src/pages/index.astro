@@ -9,6 +9,7 @@ import {
   UsersRound,
 } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
+import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
 import PreFooterCTA from '../components/PreFooterCTA.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
@@ -260,12 +261,12 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               Evidence based treatments. Expert care. Results that look like you,<br class="sm:hidden" /> only refreshed.
             </p>
             <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
-              <a
+              <GradientButton
                 href={bookingUrl}
-                class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+                class="px-7 py-3.5 text-[0.9375rem] font-medium"
               >
                 Book your consult
-              </a>
+              </GradientButton>
               <a
                 href="/services"
                 class="group inline-flex items-center gap-1.5 border-b border-[#e4e0db] pb-0.5 text-[0.9375rem] text-[#141820] transition hover:border-brand-500 hover:text-brand-700"
@@ -355,12 +356,12 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
             </p>
             <div class="pt-8">
-              <a
+              <GradientButton
                 href={bookingUrl}
-                class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+                class="px-7 py-3.5 text-[0.9375rem] font-medium"
               >
                 Book your consult
-              </a>
+              </GradientButton>
             </div>
           </div>
         </div>
@@ -460,13 +461,13 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
                       ))}
                     </div>
 
-                    <a
+                    <GradientButton
                       href={bookingUrl}
-                      class="brand-cut-button mt-9 inline-flex self-center lg:self-start items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+                      class="mt-9 self-center px-7 py-3.5 text-[0.875rem] font-medium lg:self-start"
                     >
                       Book This Treatment
                       <ArrowRight class="size-3.5" aria-hidden="true" />
-                    </a>
+                    </GradientButton>
                   </div>
                 </div>
               </article>
@@ -506,13 +507,13 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
             />
           </div>
           <div class="mt-6 flex justify-center lg:hidden">
-            <a
+            <GradientButton
               href="/about#meet-our-team"
-              class="brand-cut-button inline-flex items-center gap-2 px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+              class="px-7 py-3.5 text-[0.9375rem] font-medium"
             >
               Learn More
               <ArrowRight class="size-3.5" aria-hidden="true" />
-            </a>
+            </GradientButton>
           </div>
 
           <div class="pointer-events-none absolute inset-0 z-10 hidden lg:block">
@@ -608,13 +609,13 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               Visible change, guided by thoughtful treatment plans.
             </h2>
           </div>
-          <a
+          <GradientButton
             href={bookingUrl}
-            class="brand-cut-button hidden sm:inline-flex shrink-0 items-center gap-2 self-start whitespace-nowrap px-7 py-3.5 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px sm:self-auto"
+            class="hidden shrink-0 self-start whitespace-nowrap px-7 py-3.5 text-[0.9375rem] font-medium sm:inline-flex sm:self-auto"
           >
             Start Yours
             <ArrowRight class="size-3.5" aria-hidden="true" />
-          </a>
+          </GradientButton>
         </div>
 
         <div

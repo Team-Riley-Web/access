@@ -2,6 +2,7 @@
 import servicesHeroImage from '../assets/images/services/eye.jpg';
 import { ArrowRight, X } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
+import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import PreFooterCTA from '../components/PreFooterCTA.astro';
@@ -48,7 +49,7 @@ const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
       dark
     >
       <Fragment slot="actions">
-        <a href={bookingUrl} class="inline-flex items-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:-translate-y-px hover:bg-brand-50">
+        <a href={bookingUrl} class="inline-flex items-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:bg-brand-50">
           Book your consult
           <ArrowRight class="size-3.5" aria-hidden="true" />
         </a>
@@ -117,7 +118,7 @@ const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
             </li>
           ))}
         </ul>
-        <a href={bookingUrl} class="mt-8 inline-flex w-full items-center justify-center gap-2 bg-ink px-5 py-3 text-center text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(4,86,142,0.18),0_1px_4px_rgba(20,24,32,0.06)] transition hover:-translate-y-0.5 hover:bg-brand-700">
+        <a href={bookingUrl} class="mt-8 inline-flex w-full items-center justify-center gap-2 bg-ink px-5 py-3 text-center text-[0.78rem] font-semibold uppercase tracking-[0.12em] text-white shadow-[0_16px_36px_rgba(4,86,142,0.18),0_1px_4px_rgba(20,24,32,0.06)] transition hover:bg-brand-700">
           Book a consult
           <ArrowRight class="size-3.5" aria-hidden="true" />
         </a>
@@ -230,13 +231,13 @@ const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
               <p>{paragraph}</p>
             ))}
           </div>
-          <a
+          <GradientButton
             href={bookingUrl}
-            class="brand-cut-button mt-7 inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px"
+            class="mt-7 px-7 py-3.5 text-[0.875rem] font-medium"
           >
             Book Now
             <ArrowRight class="size-3.5" aria-hidden="true" />
-          </a>
+          </GradientButton>
         </div>
       ))}
     </div>
