@@ -9,26 +9,32 @@ interface Props {
   title: string;
   description: string;
   imagePosition?: string;
+  dark?: boolean;
+  flushBottom?: boolean;
 }
 
-const { image, imageAlt, kicker, title, description, imagePosition = 'object-[center_30%]' } = Astro.props;
+const { image, imageAlt, kicker, title, description, imagePosition = 'object-[center_30%]', dark = false, flushBottom = false } = Astro.props;
 ---
 
-<section class="relative isolate border-b border-[#edebe7] bg-white lg:h-[70vh]">
-  <div class="absolute inset-y-0 right-0 -z-30 hidden h-full w-[58%] lg:block">
+<section class:list={['relative isolate overflow-hidden lg:h-[70vh]', !flushBottom && 'border-b', dark ? 'border-brand-700/30 bg-brand-900' : 'border-[#edebe7] bg-white']}>
+  <div class="absolute inset-y-0 right-0 -z-30 hidden h-full w-[64%] lg:block">
     <Image
       src={image}
       alt={imageAlt}
       class:list={['h-full w-full object-cover', imagePosition]}
       widths={[720, 960, 1280, 1600]}
-      sizes="58vw"
+      sizes="64vw"
       priority
     />
-    <div class="absolute inset-y-0 left-0 w-[42%] bg-gradient-to-r from-white via-white/92 to-white/0"></div>
+    <div class:list={['absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r', dark ? 'from-brand-900 via-brand-900/88 to-brand-900/0' : 'from-white via-white/88 to-white/0']}></div>
+    {dark && <div class="absolute inset-0 bg-brand-900/18"></div>}
   </div>
 
   <svg
-    class="pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[64%] overflow-visible text-brand-300 [mask-image:linear-gradient(to_right,black_0%,black_58%,transparent_86%)] lg:block"
+    class:list={[
+      'pointer-events-none absolute inset-y-0 right-0 z-0 hidden h-full w-[68%] overflow-visible [mask-image:linear-gradient(to_right,black_0%,black_64%,transparent_90%)] lg:block',
+      dark ? 'text-white/45' : 'text-brand-300',
+    ]}
     viewBox="0 0 800 760"
     preserveAspectRatio="xMidYMid slice"
     aria-hidden="true"
@@ -37,16 +43,37 @@ const { image, imageAlt, kicker, title, description, imagePosition = 'object-[ce
     <circle cx="370" cy="380" r="380" fill="none" stroke="currentColor" stroke-width="1" opacity="0.22" />
   </svg>
 
-  <div class="absolute inset-0 -z-20 hidden bg-gradient-to-r from-[#D6DEFA66] via-white from-[0%] via-white via-[55%] to-white/0 to-[84%] lg:block"></div>
-  <div class="absolute inset-x-0 bottom-0 -z-20 hidden h-32 bg-gradient-to-t from-white to-transparent lg:block"></div>
+  <div
+    class:list={[
+      'absolute inset-0 -z-20 hidden bg-gradient-to-r lg:block',
+      dark
+        ? 'from-brand-900 from-[0%] via-[#07121b] via-[48%] to-brand-900/0 to-[78%]'
+        : 'from-[#D6DEFA66] via-white from-[0%] via-white via-[49%] to-white/0 to-[78%]',
+    ]}
+  >
+  </div>
+  <div class:list={['absolute inset-x-0 bottom-0 -z-20 hidden h-32 bg-gradient-to-t lg:block', dark ? 'from-brand-900 to-transparent' : 'from-white to-transparent']}></div>
+  {dark && <div class="absolute -left-24 top-12 -z-10 hidden h-96 w-96 rounded-full bg-brand-500/16 blur-3xl lg:block"></div>}
+
+  <svg
+    class:list={[
+      'pointer-events-none absolute -right-[16.5rem] top-8 z-0 h-[46rem] w-[25rem] overflow-visible lg:hidden',
+      dark ? 'text-white/30' : 'text-brand-200',
+    ]}
+    viewBox="0 0 520 520"
+    aria-hidden="true"
+  >
+    <circle cx="260" cy="260" r="165" fill="none" stroke="currentColor" stroke-width="1" opacity="0.32" />
+    <circle cx="260" cy="260" r="245" fill="none" stroke="currentColor" stroke-width="1" opacity="0.24" />
+  </svg>
 
   <div class="relative z-10 mx-auto flex max-w-[calc(1280px+8rem)] items-center px-5 py-14 sm:px-8 sm:py-16 lg:h-full lg:px-16 lg:py-0">
     <div data-reveal class="w-full max-w-[46rem] text-center lg:text-left">
-      <p class="mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{kicker}</p>
-      <h1 class="font-display text-[clamp(3rem,5vw,4.75rem)] font-semibold leading-[1.04] tracking-[-0.01em] text-ink text-balance">
+      <p class:list={['mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em]', dark ? 'text-brand-300' : 'text-brand-500']}>{kicker}</p>
+      <h1 class:list={['font-display text-[clamp(3rem,5vw,4.75rem)] font-semibold leading-[1.04] tracking-[-0.01em] text-balance', dark ? 'text-white' : 'text-ink']}>
         {title}
       </h1>
-      <p class="mx-auto mt-6 max-w-[42ch] text-[1.0625rem] leading-[1.75] text-[#5a6070] lg:mx-0">
+      <p class:list={['mx-auto mt-6 max-w-[42ch] text-[1.0625rem] leading-[1.75] lg:mx-0', dark ? 'text-[#d6e3ea]' : 'text-[#5a6070]']}>
         {description}
       </p>
       {
@@ -60,6 +87,7 @@ const { image, imageAlt, kicker, title, description, imagePosition = 'object-[ce
   </div>
 
   <div class="relative overflow-hidden lg:hidden">
+    {dark && <div class="absolute inset-0 z-10 bg-gradient-to-t from-brand-900/52 via-transparent to-brand-900/8"></div>}
     <Image
       src={image}
       alt={imageAlt}
@@ -69,7 +97,7 @@ const { image, imageAlt, kicker, title, description, imagePosition = 'object-[ce
       priority
     />
     <svg
-      class="pointer-events-none absolute inset-0 h-full w-full text-brand-300"
+      class:list={['pointer-events-none absolute inset-0 z-20 h-full w-full', dark ? 'text-white/45' : 'text-brand-300']}
       viewBox="0 0 800 700"
       preserveAspectRatio="xMidYMid slice"
       aria-hidden="true"

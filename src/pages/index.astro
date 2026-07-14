@@ -10,6 +10,7 @@ import {
 } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
+import PreFooterCTA from '../components/PreFooterCTA.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import beforeAfter1 from '../assets/images/before-after-1.jpg';
 import beforeAfter2 from '../assets/images/before-after-2.jpg';
@@ -31,7 +32,6 @@ import teamHarley from '../assets/images/team-harley.jpg';
 import teamImage from '../assets/images/team.jpg';
 import teamMelissa from '../assets/images/team-melissa.jpg';
 import meetingImage from '../assets/images/meeting.jpeg';
-import bg2Image from '../assets/images/bg-2.png';
 import northshoresBestBadge from '../assets/images/NorthshoresBest.avif';
 import morpheus8VerifiedBadge from '../assets/images/morpheus8.png';
 import morpheus8TopProviderBadge from '../assets/images/top-morpheus8.png';
@@ -256,8 +256,8 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
             <h1 class="shimmer-text font-display text-[clamp(4rem,8vw,8.5rem)] font-[500] leading-[0.82] tracking-normal lg:-translate-x-2.5">
               Radiance Redefined
             </h1>
-            <p class="mt-6 text-lg leading-[1.7] text-[#5a6070]">
-              Evidence based treatments. Expert care. Results that look like you, only refreshed.
+            <p class="mx-auto mt-6 max-w-[34ch] text-lg leading-[1.7] text-[#5a6070] lg:mx-0 lg:max-w-none">
+              Evidence based treatments. Expert care. Results that look like you,<br class="sm:hidden" /> only refreshed.
             </p>
             <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row sm:justify-center lg:justify-start">
               <a
@@ -282,7 +282,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
         <Image
           src={homeHeroImage}
           alt="Client receiving an injectable aesthetic treatment"
-          class="h-72 w-full object-cover object-[55%_25%] sm:h-96"
+          class="h-[23rem] w-full object-cover object-[55%_25%] sm:h-96"
           widths={[720, 960]}
           sizes="100vw"
         />
@@ -414,14 +414,13 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
           </div>
         </div>
 
-        <div data-reveal data-reveal-delay="220" class="grid pt-12 bg-white"
-          @touchstart.passive="_tx = $event.touches[0].clientX"
-          @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 50) active = dx < 0 ? Math.min(active + 1, 2) : Math.max(active - 1, 0)"
-        >
+        <div data-reveal data-reveal-delay="220" class="grid pt-12 bg-white">
           {
             serviceGroups.map((service, index) => (
               <article
                 class="col-start-1 row-start-1 overflow-hidden bg-[radial-gradient(circle_at_66%_32%,rgba(255,255,255,0.88),rgba(255,255,255,0.42)_28%,transparent_52%),radial-gradient(circle_at_6%_96%,rgba(214,222,250,0.72),transparent_42%),radial-gradient(circle_at_86%_14%,rgba(98,196,243,0.24),transparent_32%),linear-gradient(135deg,rgba(98,196,243,0.14)_0%,rgba(238,247,251,0.9)_42%,rgba(214,222,250,0.48)_100%)] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
+                @touchstart.passive="_tx = $event.touches[0].clientX"
+                @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 50) active = dx < 0 ? Math.min(active + 1, 2) : Math.max(active - 1, 0)"
                 x-show={`active === ${index}`}
                 x-transition:enter="transition-opacity ease-out duration-700"
                 x-transition:enter-start="opacity-0"
@@ -625,10 +624,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
           x-data="{ mActive: 0, mPaused: false, _tx: 0 }"
           x-init="setInterval(() => { if (!mPaused) mActive = (mActive + 1) % 9 }, 4200)"
         >
-          <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false"
-            @touchstart.passive="_tx = $event.touches[0].clientX"
-            @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % 9 : (mActive - 1 + 9) % 9"
-          >
+          <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false">
             <div
               class="flex transition-transform duration-[1200ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
               x-bind:style="`transform: translateX(-${mActive * 100}%)`"
@@ -636,7 +632,10 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               {
                 transformations.map((item, index) => (
                   <div class="min-w-full">
-                    <figure>
+                    <figure
+                      @touchstart.passive="_tx = $event.touches[0].clientX"
+                      @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % 9 : (mActive - 1 + 9) % 9"
+                    >
                       <Image
                         src={item.image}
                         alt={item.alt}
@@ -789,7 +788,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
         <div data-reveal class="max-w-[620px]">
           <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Reviews &amp; Recognition</p>
           <h2 class="font-display text-[clamp(2rem,3vw,3rem)] font-medium leading-[1.12] tracking-[-0.02em] text-ink">
-            Five stars on Google.<br class="hidden sm:block" /> The Northshore&rsquo;s Best.
+            Five stars on Google.<br /> The Northshore&rsquo;s Best.
           </h2>
         </div>
 
@@ -833,17 +832,18 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
             x-data="{ mActive: 0, mPaused: false, _tx: 0 }"
             x-init={`setInterval(() => { if (!mPaused) mActive = (mActive + 1) % ${googleReviews.length} }, 9500)`}
           >
-            <div class="overflow-hidden" @mouseenter="mPaused = true" @mouseleave="mPaused = false"
-              @touchstart.passive="_tx = $event.touches[0].clientX"
-              @touchend.passive={`let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % ${googleReviews.length} : (mActive - 1 + ${googleReviews.length}) % ${googleReviews.length}`}
-            >
+            <div class="-mx-3 overflow-hidden px-3 py-4" @mouseenter="mPaused = true" @mouseleave="mPaused = false">
               <div
                 class="flex transition-transform duration-[1600ms] ease-[cubic-bezier(0.22,1,0.36,1)]"
                 x-bind:style="`transform: translateX(-${mActive * 100}%)`"
               >
                 {googleReviews.map((review, index) => (
-                  <div class="min-w-full">
-                    <article class="flex h-full flex-col shadow-lg overflow-visible bg-white p-[1.625rem_1.75rem]" data-od-id={`review-card-mobile-${index + 1}`}>
+                  <div
+                    class="min-w-full px-1"
+                    @touchstart.passive="_tx = $event.touches[0].clientX"
+                    @touchend.passive={`let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 40) mActive = dx < 0 ? (mActive + 1) % ${googleReviews.length} : (mActive - 1 + ${googleReviews.length}) % ${googleReviews.length}`}
+                  >
+                    <article class="flex h-full flex-col bg-white p-[1.625rem_1.75rem] shadow-[0_18px_48px_rgba(20,24,32,0.1),0_1px_4px_rgba(20,24,32,0.05)]" data-od-id={`review-card-mobile-${index + 1}`}>
                       <div class="flex gap-0.5" aria-hidden="true">
                         {Array.from({ length: 5 }).map(() => (
                           <svg class="size-3.5 fill-[#FBBC04]" viewBox="0 0 24 24"><path d={starPath} /></svg>
@@ -948,7 +948,20 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
 
         <div data-reveal data-reveal-delay="200" class="mt-14 border-t border-[#e4e0db] pt-10 text-center">
           <p class="mb-7 text-[0.7rem] font-medium uppercase tracking-[0.22em] text-[#8b929e]">Recognized By</p>
-          <div class="flex flex-col items-center gap-7 sm:flex-row sm:flex-wrap sm:justify-center sm:gap-0">
+          <div class="overflow-hidden sm:hidden">
+            <div class="animate-marquee flex w-max">
+              {[...recognitions, ...recognitions].map((item) => (
+                <div class="flex items-center gap-4 px-8 py-1 text-left whitespace-nowrap">
+                  <Image src={item.image} alt={item.alt} class="h-auto w-16 shrink-0" widths={[64, 96]} sizes="64px" />
+                  <div>
+                    <p class="text-[0.9rem] font-semibold leading-[1.35] text-[#141820]">{item.title}</p>
+                    <p class="mt-0.5 text-[0.78rem] text-[#5a6070]">{item.source}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div class="hidden items-center gap-7 sm:flex sm:flex-row sm:flex-wrap sm:justify-center sm:gap-0">
             {recognitions.map((item, index) => (
               <div
                 class={`flex items-center gap-4 px-11 py-1 text-left ${index > 0 ? 'sm:border-l sm:border-[#edebe7]' : ''}`}
@@ -965,42 +978,14 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
       </div>
     </section>
 
-    <section class="bg-linear-to-b from-white to-[#f9f8f6] px-5 pb-12 sm:px-10 lg:px-20 lg:py-16">
-      <div
-        data-reveal
-        class="relative overflow-hidden rounded-3xl shadow-[0_40px_110px_rgba(5,17,28,0.28),0_3px_12px_rgba(5,17,28,0.12)]"
-      >
-        <Image
-          src={bg2Image}
-          alt="Access Aesthetics medical spa interior"
-          class="absolute inset-0 h-full w-full object-cover object-center"
-          widths={[720, 960, 1280, 1600]}
-          sizes="(min-width: 1024px) calc(100vw - 10rem), 100vw"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-[#07121b]/82 via-[#07121b]/46 to-[#07121b]/18"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-brand-900/28 via-transparent to-brand-900/28"></div>
-
-        <div class="relative flex min-h-[420px] flex-col items-center justify-center px-6 py-24 text-center sm:min-h-[480px] lg:min-h-[540px]">
-          <p class="mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">
-            Your next step starts here
-          </p>
-          <h2 class="font-display text-[clamp(2.5rem,4.5vw,5rem)] font-normal leading-[1.06] tracking-[-0.01em] text-white">
-            Begin Your Journey<br class="hidden sm:block" /> to Radiance
-          </h2>
-          <p class="mx-auto mt-6 max-w-[52ch] text-[1.0625rem] leading-[1.75] text-white/72">
-            A complimentary consultation is where every transformation begins. Meet with our team, share your goals, and leave with a personalized plan built entirely around you.
-          </p>
-          <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row">
-            <a
-              href={bookingUrl}
-              class="brand-cut-button inline-flex items-center gap-2 px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
-            >
-              Book Your Consultation
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
+    <PreFooterCTA
+      eyebrow="Your next step starts here"
+      titleLines={['Begin Your Journey', 'to Radiance']}
+      copy="A complimentary consultation is where every transformation begins. Meet with our team, share your goals, and leave with a personalized plan built entirely around you."
+      href={bookingUrl}
+      cta="Book Your Consultation"
+      fromWhite
+    />
   </main>
   <Footer />
 </BaseLayout>

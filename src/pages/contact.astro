@@ -1,15 +1,34 @@
 ---
-import { ArrowRight, Check, Mail, Phone } from '@lucide/astro';
+import { Image } from 'astro:assets';
+import { ArrowRight, Check, Clock, Mail, MapPin, Phone } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import PageHero from '../components/PageHero.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import contactHeroImage from '../assets/images/services/mirror.jpg';
+import contactHeroImage from '../assets/images/team-1.jpeg';
+import membershipImage from '../assets/images/store.avif';
+import appointmentImage from '../assets/images/meeting.jpeg';
 import { bookingUrl, contactAddenda } from '../data/site';
 
 const title = 'Contact Access Aesthetics | Access Aesthetics';
 const description = 'Book your experience or reach the Slidell team with questions about treatments and appointments.';
-const contactDetails = ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9:00 AM-5:00 PM'];
+const contactMethods = [
+  { label: 'Call', value: '985-960-5066', href: 'tel:+19859605066', icon: Phone },
+  { label: 'Email', value: 'info@accessofla.com', href: 'mailto:info@accessofla.com', icon: Mail },
+  { label: 'Hours', value: 'Monday-Friday', secondary: '9:00 AM-5:00 PM', icon: Clock },
+  { label: 'Visit', value: '1411 Lindberg Dr', secondary: 'Slidell, LA 70458', href: 'https://maps.google.com/?q=1411+Lindberg+Dr+Slidell+LA+70458', cta: 'Get directions', icon: MapPin },
+];
+
+const addendaImages = [
+  {
+    image: membershipImage,
+    alt: 'Skincare products and retail at Access Aesthetics',
+  },
+  {
+    image: appointmentImage,
+    alt: 'Access Aesthetics team meeting with a client',
+  },
+];
 ---
 
 <BaseLayout title={title} description={description}>
@@ -17,90 +36,177 @@ const contactDetails = ['985-960-5066', 'info@accessofla.com', 'Monday-Friday: 9
   <main class="bg-[#f9f8f6] pt-20 text-[#141820]">
     <PageHero
       image={contactHeroImage}
-      imageAlt="Access Aesthetics provider and client consultation with a mirror"
-      imagePosition="object-[center_34%]"
+      imageAlt="Close-up aesthetic facial treatment at Access Aesthetics"
+      imagePosition="object-[center_40%]"
       kicker="Visit Us"
-      title="Contact Access Aesthetics"
+      title="Contact Us"
       description={description}
+      dark
     >
       <Fragment slot="actions">
-        <a href={bookingUrl} class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium text-white transition hover:-translate-y-px">
+        <a href={bookingUrl} class="inline-flex items-center justify-center gap-2 bg-white px-7 py-3.5 text-[0.875rem] font-medium text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] transition hover:-translate-y-px hover:bg-brand-50">
           Book Your Experience
           <ArrowRight class="size-3.5" aria-hidden="true" />
         </a>
-        <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-[#e4e0db] pb-1 text-[0.9375rem] text-[#141820] transition hover:border-brand-400 hover:text-brand-700">
+        <a href="/services" class="inline-flex items-center justify-center gap-2 border-b border-white/30 pb-1 text-[0.9375rem] text-white/86 transition hover:border-brand-200 hover:text-white">
           Explore Services
         </a>
       </Fragment>
     </PageHero>
 
-    <section class="px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
-      <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.95fr_1.45fr] lg:gap-16">
-        <aside data-reveal class="lg:sticky lg:top-24 lg:self-start">
-          <div class="bg-white p-6 shadow-soft">
-            <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Access Aesthetics</p>
-            <div class="space-y-3 text-sm leading-relaxed text-[#5a6070]">
-              <p class="flex gap-3">
-                <Phone class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
-                <a href="tel:+19859605066" class="transition hover:text-brand-700">985-960-5066</a>
-              </p>
-              <p class="flex gap-3">
-                <Mail class="mt-0.5 size-4 shrink-0 text-brand-600" aria-hidden="true" />
-                <a href="mailto:info@accessofla.com" class="transition hover:text-brand-700">info@accessofla.com</a>
-              </p>
-            </div>
-          </div>
-        </aside>
+    <section class="bg-[#fbfaf8] px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+      <div class="mx-auto grid max-w-[calc(1280px+8rem)] items-stretch gap-12 lg:grid-cols-[0.82fr_1.08fr] lg:gap-16">
+        <div data-reveal class="flex h-full flex-col">
+          <p class="mb-4 text-[0.67rem] font-semibold uppercase tracking-[0.24em] text-brand-500">Start The Conversation</p>
+          <h2 class="font-display max-w-2xl text-[clamp(2.125rem,3vw,3.5rem)] font-normal leading-[1.08] tracking-[-0.01em] text-ink text-balance">
+            Tell us what you are hoping to change.
+          </h2>
+          <p class="mt-5 max-w-[52ch] text-[1rem] leading-[1.75] text-[#5a6070]">
+            Send a note to the Access team, ask about services, or request guidance before booking. A provider can help you choose the best next step.
+          </p>
 
-        <div data-reveal data-reveal-delay="120">
-          <div class="space-y-6 text-[1.0625rem] leading-[1.78] text-[#5a6070]">
-            {contactDetails.map((detail) => <p>{detail}</p>)}
+          <div class="mt-8 max-w-2xl divide-y divide-[#e8e4de] lg:mt-10">
+            {contactMethods.map(({ label, value, secondary, href, cta, icon: Icon }) => (
+              <div class="flex gap-4 py-4 first:pt-0 lg:py-5">
+                <div class="flex size-12 shrink-0 items-center justify-center bg-brand-50 text-brand-700">
+                  <Icon class="size-[1.125rem]" aria-hidden="true" />
+                </div>
+                <div>
+                  <p class="text-[0.64rem] font-semibold uppercase tracking-[0.22em] text-[#8b929e]">{label}</p>
+                  {
+                    href && !cta ? (
+                      <a href={href} class="mt-1.5 block text-[1.02rem] font-semibold text-[#141820] transition hover:text-brand-700">
+                        {value}
+                      </a>
+                    ) : (
+                      <p class="mt-1.5 text-[1.02rem] font-semibold leading-snug text-[#141820]">{value}</p>
+                    )
+                  }
+                  {secondary && <p class="mt-0.5 text-[0.9rem] leading-relaxed text-[#5a6070]">{secondary}</p>}
+                  {
+                    cta && href && (
+                      <a href={href} class="mt-2 inline-flex items-center gap-1.5 border-b border-brand-300 pb-1 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#141820] transition hover:border-brand-600 hover:text-brand-700">
+                        {cta}
+                        <ArrowRight class="size-3 rotate-[-45deg]" aria-hidden="true" />
+                      </a>
+                    )
+                  }
+                </div>
+              </div>
+            ))}
           </div>
 
-          <form name="contact" method="POST" data-netlify="true" class="mt-10 bg-white p-6 shadow-soft sm:p-8">
-            <input type="hidden" name="form-name" value="contact" />
-            <div class="grid gap-5 sm:grid-cols-2">
-              <label class="block">
-                <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Name</span>
-                <input name="name" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
-              </label>
-              <label class="block">
-                <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Email</span>
-                <input type="email" name="email" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300" />
-              </label>
-            </div>
-            <label class="mt-5 block">
-              <span class="mb-2 block text-[0.68rem] font-semibold uppercase tracking-[0.16em] text-[#5a6070]">Message</span>
-              <textarea name="message" rows="5" required class="w-full bg-[#f4f8fa] px-4 py-3 text-[#141820] outline-none ring-1 ring-transparent transition focus:ring-brand-300"></textarea>
-            </label>
-            <button type="submit" class="brand-cut-button mt-6 inline-flex px-7 py-3.5 text-[0.875rem] font-medium text-white">
-              Send Message
-            </button>
-          </form>
+          <div class="mt-8 max-w-2xl bg-brand-50/78 p-5 shadow-[0_16px_42px_rgba(4,86,142,0.07),0_1px_4px_rgba(20,24,32,0.04)] ring-1 ring-brand-100 lg:mt-auto">
+            <p class="text-[0.95rem] leading-[1.7] text-[#5a6070]">
+              <strong class="font-semibold text-[#141820]">Ready to book?</strong> Skip the form and schedule directly through our
+              <a href={bookingUrl} class="font-semibold text-brand-700 underline decoration-brand-300 decoration-2 underline-offset-4 transition hover:text-brand-500">online booking portal</a>.
+            </p>
+          </div>
         </div>
+
+        <form name="contact" method="POST" data-netlify="true" data-reveal data-reveal-delay="120" class="bg-white p-6 shadow-[0_24px_80px_rgba(20,24,32,0.1),0_2px_8px_rgba(20,24,32,0.05)] ring-1 ring-[#e8e4de] sm:p-8 lg:p-12">
+          <input type="hidden" name="form-name" value="contact" />
+          <div class="grid gap-6 sm:grid-cols-2">
+            <label class="block">
+              <span class="mb-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#5a6070]">Name</span>
+              <input name="name" required class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300" />
+            </label>
+            <label class="block">
+              <span class="mb-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#5a6070]">Phone</span>
+              <input type="tel" name="phone" required class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300" />
+            </label>
+          </div>
+          <label class="mt-6 block">
+            <span class="mb-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#5a6070]">Email</span>
+            <input type="email" name="email" required class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300" />
+          </label>
+          <label class="mt-6 block">
+            <span class="mb-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#5a6070]">What are you interested in?</span>
+            <select name="interest" class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300">
+              <option>Not sure yet - help me choose</option>
+              <option>Injectables and fillers</option>
+              <option>Skin renewal and resurfacing</option>
+              <option>Hair and body treatments</option>
+              <option>Wellness services</option>
+              <option>Memberships</option>
+            </select>
+          </label>
+          <label class="mt-6 block">
+            <span class="mb-3 block text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-[#5a6070]">Message</span>
+            <textarea name="message" rows="8" required class="w-full bg-[#fbfaf8] px-4 py-4 text-[#141820] outline-none ring-1 ring-[#e8e4de] transition focus:ring-brand-300"></textarea>
+          </label>
+          <div class="mt-8 flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+            <button type="submit" class="inline-flex items-center justify-center gap-2 bg-ink px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px hover:bg-brand-700">
+              Send message
+              <ArrowRight class="size-4" aria-hidden="true" />
+            </button>
+            <p class="max-w-xs text-[0.9rem] leading-[1.55] text-[#8b929e]">
+              We'll only use your details to reply - never for marketing lists.
+            </p>
+          </div>
+        </form>
       </div>
     </section>
 
-    <section class="border-t border-[#edebe7] bg-white px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
-      <div class="mx-auto grid max-w-7xl gap-14 lg:grid-cols-2">
-        {contactAddenda.map((addendum) => (
-          <div id={addendum.slug} data-reveal class="scroll-mt-28">
-            <p class="mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">{addendum.kicker}</p>
-            <h2 class="font-display text-2xl leading-tight text-ink sm:text-3xl">{addendum.title}</h2>
-            <p class="mt-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">{addendum.summary}</p>
-            <div class="mt-5 space-y-4 text-[0.9375rem] leading-[1.75] text-[#5a6070]">
-              {addendum.copy.map((paragraph) => <p>{paragraph}</p>)}
-            </div>
-            <div class="mt-6 grid gap-3 sm:grid-cols-2">
-              {addendum.highlights.map((item) => (
-                <div class="flex items-start gap-3 bg-[#f9f8f6] p-4 shadow-[0_16px_42px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)]">
-                  <Check class="mt-0.5 size-4 shrink-0 text-brand-600" stroke-width={2.5} aria-hidden="true" />
-                  <span class="text-[0.78rem] font-semibold uppercase tracking-[0.1em] text-[#141820]">{item}</span>
+    <section class="bg-white">
+      <div>
+        {contactAddenda.map((addendum, index) => {
+          const media = addendaImages[index];
+          const reverse = index % 2 === 1;
+          const darkPanel = index === 0;
+          return (
+            <section
+              id={addendum.slug}
+              data-reveal
+              class:list={[
+                'scroll-mt-28 overflow-hidden shadow-[0_24px_70px_rgba(20,24,32,0.1),0_2px_8px_rgba(20,24,32,0.05)]',
+                darkPanel ? 'bg-[#07121b]' : 'bg-[#f9f8f6]',
+              ]}
+            >
+              <div class="grid lg:grid-cols-2">
+                <div class:list={['relative min-h-[320px] overflow-hidden lg:min-h-[560px]', reverse && 'lg:order-2']}>
+                  <Image
+                    src={media.image}
+                    alt={media.alt}
+                    class="absolute inset-0 h-full w-full object-cover"
+                    widths={[640, 960, 1280]}
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                  />
+                  <div class:list={['absolute inset-0 bg-gradient-to-t via-transparent to-transparent', darkPanel ? 'from-[#07121b]/64' : 'from-[#07121b]/38']}></div>
                 </div>
-              ))}
-            </div>
-          </div>
-        ))}
+
+                <div class="flex items-center px-6 py-12 sm:px-10 lg:px-20 lg:py-16">
+                  <div class="max-w-2xl lg:mx-auto">
+                    <p class:list={['mb-3.5 text-[0.67rem] font-medium uppercase tracking-[0.22em]', darkPanel ? 'text-brand-300' : 'text-brand-500']}>{addendum.kicker}</p>
+                    <h2 class:list={['font-display text-[clamp(2rem,3vw,3.25rem)] font-normal leading-[1.1] tracking-[-0.01em] text-balance', darkPanel ? 'text-white' : 'text-ink']}>{addendum.title}</h2>
+                    <p class:list={['mt-5 text-[1.0625rem] leading-[1.75]', darkPanel ? 'text-[#d6e3ea]' : 'text-[#5a6070]']}>{addendum.summary}</p>
+                    <div class:list={['mt-5 space-y-4 text-[0.9375rem] leading-[1.75]', darkPanel ? 'text-white/68' : 'text-[#5a6070]']}>
+                      {addendum.copy.map((paragraph) => <p>{paragraph}</p>)}
+                    </div>
+                    <div class="mt-7 grid gap-3 sm:grid-cols-2">
+                      {addendum.highlights.map((item) => (
+                        <div class:list={['flex items-start gap-3 p-4 shadow-[0_16px_42px_rgba(20,24,32,0.06),0_1px_4px_rgba(20,24,32,0.03)]', darkPanel ? 'bg-white/[0.08] ring-1 ring-white/10' : 'bg-white']}>
+                          <Check class:list={['mt-0.5 size-4 shrink-0', darkPanel ? 'text-brand-300' : 'text-brand-600']} stroke-width={2.5} aria-hidden="true" />
+                          <span class:list={['text-[0.78rem] font-semibold uppercase tracking-[0.1em]', darkPanel ? 'text-white/86' : 'text-[#141820]']}>{item}</span>
+                        </div>
+                      ))}
+                    </div>
+                    <a
+                      href={bookingUrl}
+                      class:list={[
+                        'mt-8 inline-flex items-center gap-2 px-7 py-3.5 text-[0.875rem] font-medium transition hover:-translate-y-px',
+                        darkPanel ? 'bg-white text-brand-900 shadow-[0_18px_44px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] hover:bg-brand-50' : 'brand-cut-button text-white',
+                      ]}
+                    >
+                      Book Now
+                      <ArrowRight class="size-3.5" aria-hidden="true" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </section>
+          );
+        })}
       </div>
     </section>
   </main>

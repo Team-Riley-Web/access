@@ -1,0 +1,60 @@
+---
+import { Image } from 'astro:assets';
+import { ArrowRight } from '@lucide/astro';
+import bg2Image from '../assets/images/bg-2.png';
+
+interface Props {
+  eyebrow: string;
+  titleLines: string[];
+  copy: string;
+  href: string;
+  cta: string;
+  fromWhite?: boolean;
+  showArrow?: boolean;
+}
+
+const { eyebrow, titleLines, copy, href, cta, fromWhite = false, showArrow = false } = Astro.props;
+---
+
+<section class:list={['bg-linear-to-b px-5 pb-12 sm:px-10 lg:px-20 lg:py-16', fromWhite ? 'from-white to-[#f9f8f6]' : 'from-[#f9f8f6] to-[#f9f8f6]']}>
+  <div
+    data-reveal
+    class="relative overflow-hidden rounded-3xl shadow-[0_40px_110px_rgba(5,17,28,0.28),0_3px_12px_rgba(5,17,28,0.12)]"
+  >
+    <Image
+      src={bg2Image}
+      alt="Access Aesthetics medical spa interior"
+      class="absolute inset-0 h-full w-full object-cover object-center"
+      widths={[720, 960, 1280, 1600]}
+      sizes="(min-width: 1024px) calc(100vw - 10rem), 100vw"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-[#07121b]/82 via-[#07121b]/46 to-[#07121b]/18"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-900/28 via-transparent to-brand-900/28"></div>
+
+    <div class="relative flex min-h-[420px] flex-col items-center justify-center px-6 py-24 text-center sm:min-h-[480px] lg:min-h-[540px]">
+      <p class="mb-5 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">
+        {eyebrow}
+      </p>
+      <h2 class="font-display text-[clamp(2.5rem,4.5vw,5rem)] font-normal leading-[1.06] tracking-[-0.01em] text-white">
+        {titleLines.map((line, index) => (
+          <>
+            {index > 0 && <br class="hidden sm:block" />}
+            {line}
+          </>
+        ))}
+      </h2>
+      <p class="mx-auto mt-6 max-w-[52ch] text-[1.0625rem] leading-[1.75] text-white/72">
+        {copy}
+      </p>
+      <div class="mt-10 flex flex-col items-center gap-5 sm:flex-row">
+        <a
+          href={href}
+          class="brand-cut-button inline-flex items-center gap-2 px-8 py-4 text-[0.9375rem] font-medium text-white transition hover:-translate-y-px"
+        >
+          {cta}
+          {showArrow && <ArrowRight class="size-3.5" aria-hidden="true" />}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

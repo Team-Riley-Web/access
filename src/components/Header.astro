@@ -69,13 +69,18 @@ const navItems = [
       />
     </a>
 
-    <nav class="ml-auto hidden items-center gap-4 xl:flex 2xl:gap-5" aria-label="Primary navigation">
+    <nav
+      class="ml-auto hidden items-center transition-all duration-300 xl:flex"
+      x-bind:class="scrolled ? 'gap-3 2xl:gap-4' : 'gap-4 2xl:gap-5'"
+      aria-label="Primary navigation"
+    >
       {
         navItems.map((item) => (
           <div class="group relative">
             <a
               href={item.href}
-              class="inline-flex items-center gap-1.5 whitespace-nowrap text-[0.9rem] font-normal uppercase tracking-[0.13em] text-[#5a6070] transition hover:text-[#141820] xl:text-[0.98rem] xl:tracking-[0.14em]"
+              class="inline-flex items-center gap-1.5 whitespace-nowrap font-normal uppercase text-[#5a6070] transition-all duration-300 hover:text-[#141820]"
+              x-bind:class="scrolled ? 'text-[0.78rem] tracking-[0.105em] 2xl:text-[0.84rem] 2xl:tracking-[0.12em]' : 'text-[0.9rem] tracking-[0.13em] xl:text-[0.98rem] xl:tracking-[0.14em]'"
             >
               <span>{item.label}</span>
               {item.children && (
