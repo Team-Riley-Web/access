@@ -53,28 +53,21 @@ const navItems = [
 ---
 
 <header
-  class="fixed inset-x-0 top-0 z-50 bg-white/94 backdrop-blur-xl transition-all duration-300"
-  x-bind:class="scrolled ? 'h-14 shadow-[0_10px_30px_rgba(20,24,32,0.08),0_1px_0_rgba(98,196,243,0.22)]' : 'h-20 shadow-none'"
-  x-data="{ open: false, scrolled: false }"
-  x-init="
-    scrolled = window.scrollY > 24;
-    window.addEventListener('scroll', () => { scrolled = window.scrollY > 24 }, { passive: true });
-  "
+  class="fixed inset-x-0 top-0 z-50 h-20 bg-white/94 shadow-[0_10px_30px_rgba(20,24,32,0.08),0_1px_0_rgba(98,196,243,0.22)] backdrop-blur-xl"
+  x-data="{ open: false }"
 >
   <div class="mx-auto flex h-full max-w-[calc(1280px+8rem)] items-center justify-between px-5 sm:px-8 lg:px-16">
     <a href="/" class="flex w-40 items-center sm:w-44" aria-label="Access Aesthetics home">
       <Image
         src={logo}
         alt="Access Aesthetics"
-        class="h-auto transition-all duration-300"
-        x-bind:class="scrolled ? 'w-28 sm:w-32' : 'w-40 sm:w-44'"
+        class="h-auto w-40 sm:w-44"
         widths={[180, 220, 320, 420]}
       />
     </a>
 
     <nav
-      class="ml-auto hidden items-center transition-all duration-300 xl:flex"
-      x-bind:class="scrolled ? 'gap-3 2xl:gap-4' : 'gap-4 2xl:gap-5'"
+      class="ml-auto hidden items-center gap-4 transition-all duration-300 xl:flex 2xl:gap-5"
       aria-label="Primary navigation"
     >
       {
@@ -82,8 +75,7 @@ const navItems = [
           <div class="group relative">
             <a
               href={item.href}
-              class="inline-flex items-center gap-1.5 whitespace-nowrap font-normal uppercase text-[#5a6070] transition-all duration-300 hover:text-[#141820]"
-              x-bind:class="scrolled ? 'text-[0.78rem] tracking-[0.105em] 2xl:text-[0.84rem] 2xl:tracking-[0.12em]' : 'text-[0.9rem] tracking-[0.13em] xl:text-[0.98rem] xl:tracking-[0.14em]'"
+              class="inline-flex items-center gap-1.5 whitespace-nowrap text-[0.9rem] font-normal uppercase tracking-[0.13em] text-[#5a6070] transition-all duration-300 hover:text-[#141820] xl:text-[0.98rem] xl:tracking-[0.14em]"
             >
               <span>{item.label}</span>
               {item.children && (
@@ -116,8 +108,7 @@ const navItems = [
     <div class="ml-6 flex items-center gap-3 xl:ml-10">
       <GradientButton
         href={bookingUrl}
-        class="hidden whitespace-nowrap font-normal sm:inline-flex xl:tracking-[0.14em]"
-        x-bind:class="scrolled ? 'px-4 py-2 text-[0.9rem] xl:px-5 xl:text-[0.98rem]' : 'px-5 py-2.5 text-[0.9rem] xl:px-6 xl:text-[0.98rem]'"
+        class="hidden whitespace-nowrap px-5 py-2.5 text-[0.9rem] font-normal sm:inline-flex xl:px-6 xl:text-[0.98rem] xl:tracking-[0.14em]"
       >
         Book Now
       </GradientButton>
