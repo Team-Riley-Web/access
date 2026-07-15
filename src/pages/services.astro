@@ -10,7 +10,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { bookingUrl, serviceCategories, serviceCategoryOrder, servicePages } from '../data/site';
 
 const title = 'Our Services | Access Aesthetics';
-const description = 'Aesthetic treatments for skin, structure, wellness, and everyday confidence.';
+const description = 'Where advanced technology meets personalized care.';
 
 const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
   'Injectables & Fillers': 'injectables-fillers',
@@ -66,11 +66,19 @@ const categoryAnchors: Record<(typeof serviceCategoryOrder)[number], string> = {
         <div data-reveal class="mx-auto max-w-3xl text-center">
           <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">Treatment Menu</p>
           <h2 class="font-display text-[clamp(2rem,3.2vw,3.375rem)] font-normal leading-[1.1] tracking-[-0.01em] text-ink text-balance">
-            Choose a category, then open any treatment for details.
+            Where advanced technology meets personalized care.
           </h2>
-          <p class="mx-auto mt-5 max-w-[58ch] text-[1.0625rem] leading-[1.75] text-[#5a6070]">
-            Start with the area that matches your goals. Each service card opens into a concise treatment overview, and a consultation can help refine the right plan.
-          </p>
+          <div class="mx-auto mt-5 max-w-[66ch] space-y-4 text-[1.0625rem] leading-[1.75] text-[#5a6070]">
+            <p>
+              At Access Aesthetics, we help you look and feel your best through personalized treatment plans, exceptional care, and advanced aesthetic technology.
+            </p>
+            <p>
+              From customized facials and skin rejuvenation to injectables, Morpheus8 Burst, Lumecca IPL, Plexr Plasma, and fractional CO2 laser resurfacing, every treatment is tailored to your goals.
+            </p>
+            <p>
+              Whether you want to restore, refresh, or completely transform your skin, our team will guide you toward natural-looking results with the latest innovations in aesthetic medicine.
+            </p>
+          </div>
         </div>
       </div>
     </section>

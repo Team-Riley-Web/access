@@ -34,29 +34,55 @@ export const servicePages = [
   },
   {
     slug: 'morpheus-8-microneedling',
-    title: 'Morpheus8 RF Microneedling',
+    title: 'Morpheus8 Burst RF Microneedling',
     kicker: 'Skin Tightening',
     summary:
-      'This advanced treatment combines microneedling with radiofrequency energy to tighten skin, reduce wrinkles, improve texture, and contour the face or body.',
+      'Morpheus8 Burst combines microneedling with radiofrequency energy to tighten skin, smooth texture, soften wrinkles, and contour the face or body.',
     copy: [
-      'Morpheus8 combines microneedling with radiofrequency energy to remodel skin from within and encourage fresh collagen and elastin. It can help improve texture, tone, fine lines, acne scarring, enlarged pores, and mild laxity.',
+      'Morpheus8 Burst combines microneedling with radiofrequency energy to remodel skin from within and encourage fresh collagen and elastin. It can help improve texture, tone, fine lines, acne scarring, enlarged pores, and mild laxity.',
       'Treatments can be customized for the face, neck, and body. Your provider will walk through goals, downtime, and the recommended series so the plan feels clear and supportive from the start.',
     ],
     image: serviceImage,
-    imageAlt: 'Morpheus8 RF microneedling treatment room',
+    imageAlt: 'Morpheus8 Burst RF microneedling treatment room',
   },
   {
     slug: 'intense-pulse-light-therapy',
-    title: 'IPL Intense Pulsed Light Therapy',
+    title: 'Lumecca IPL Intense Pulsed Light Therapy',
     kicker: 'Brightening',
     summary:
-      'This non-invasive light-based therapy safely penetrates the skin to improve clarity and restore a more even, youthful complexion over a series of treatments.',
+      'Lumecca IPL uses advanced light-based technology to improve visible discoloration, redness, sun damage, and uneven tone.',
     copy: [
-      'IPL uses precise pulses of light to target visible discoloration, age spots, redness, and uneven tone while supporting smoother, brighter-looking skin. It is a strong option for clients who want visible radiance with minimal disruption.',
+      'Lumecca IPL uses precise pulses of light to target visible discoloration, age spots, redness, and uneven tone while supporting smoother, brighter-looking skin. It is a strong option for clients who want visible radiance with minimal disruption.',
       'Each treatment is tailored to your skin and goals. Your provider will explain preparation, aftercare, and realistic expectations before treatment begins.',
     ],
     image: service3Image,
     imageAlt: 'IPL skin treatment at Access Aesthetics',
+  },
+  {
+    slug: 'plexr-plasma',
+    title: 'Plexr Plasma',
+    kicker: 'Plasma Skin Renewal',
+    summary:
+      'Plexr Plasma is an advanced skin rejuvenation treatment used to refresh targeted areas, support firmness, and refine texture without traditional surgery.',
+    copy: [
+      'Plexr Plasma uses focused plasma energy to support visible skin renewal in precise treatment areas. It can be part of a plan for clients looking to refresh skin, improve texture, and address localized laxity with a personalized approach.',
+      'Your provider will review your goals, skin condition, expected downtime, and aftercare so the treatment plan feels clear before moving forward.',
+    ],
+    image: serviceImage,
+    imageAlt: 'Plexr Plasma skin rejuvenation treatment at Access Aesthetics',
+  },
+  {
+    slug: 'fractional-co2-laser-resurfacing',
+    title: 'Fractional CO2 Laser Resurfacing',
+    kicker: 'Advanced Resurfacing',
+    summary:
+      'Fractional CO2 laser resurfacing helps improve texture, sun damage, fine lines, and overall skin quality with a customized treatment plan.',
+    copy: [
+      'Fractional CO2 laser resurfacing uses advanced laser technology to renew the skin in a controlled way. It can help address visible texture concerns, sun damage, fine lines, and uneven skin quality depending on your candidacy and goals.',
+      'Because resurfacing strength and downtime vary, your provider will guide preparation, expectations, aftercare, and timing around your skin and lifestyle.',
+    ],
+    image: service3Image,
+    imageAlt: 'Fractional CO2 laser resurfacing consultation at Access Aesthetics',
   },
   {
     slug: 'laser-hair-removal',
@@ -245,6 +271,8 @@ export const serviceCategories: Record<(typeof servicePages)[number]['slug'], (t
   'morpheus-8-microneedling': 'Skin Renewal & Resurfacing',
   'rejuvapen-microneedling': 'Skin Renewal & Resurfacing',
   'intense-pulse-light-therapy': 'Skin Renewal & Resurfacing',
+  'plexr-plasma': 'Skin Renewal & Resurfacing',
+  'fractional-co2-laser-resurfacing': 'Skin Renewal & Resurfacing',
   'chemical-peels': 'Skin Renewal & Resurfacing',
   facials: 'Skin Renewal & Resurfacing',
   'laser-hair-removal': 'Hair & Body',

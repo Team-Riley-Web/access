@@ -113,13 +113,13 @@ const trustItems = [
 
 const serviceGroups = [
   {
-    kicker: 'Glowing Skin',
-    title: 'Professional care for refreshed skin.',
+    kicker: 'Advanced Skin Technology',
+    title: 'Modern devices for skin renewal.',
     copy:
-      'Aesthetic skin treatments support confidence, self-care, and long-term skin health by addressing tone, texture, acne, fine lines, and loss of elasticity.',
+      'Morpheus8 Burst, Lumecca IPL, Plexr Plasma, and fractional CO2 resurfacing support personalized plans for texture, tone, firmness, sun damage, and visible skin renewal.',
     image: serviceImage,
     imageAlt: 'Access Aesthetics treatment room',
-    items: ['Morpheus 8 RF Microneedling', 'Rejuvapen Microneedling', 'Laser Hair Removal', 'Chemical Peels & Facials'],
+    items: ['Morpheus8 Burst', 'Lumecca IPL', 'Plexr Plasma', 'Fractional CO2 Laser'],
   },
   {
     kicker: 'Restorative Beauty',
@@ -133,14 +133,16 @@ const serviceGroups = [
   },
   {
     kicker: 'Balanced Radiance',
-    title: 'Aesthetic wellness for lasting confidence.',
+    title: 'Skin health and wellness for lasting confidence.',
     copy:
-      'From advanced rejuvenation to hydration and therapeutic therapies, full-body care supports outer radiance and a renewed sense of vitality.',
+      'From customized facials and peels to hair removal, lashes, brows, skincare, and wellness support, each service is shaped around your goals and comfort.',
     image: service3Image,
     imageAlt: 'Calming facial treatment at Access Aesthetics',
-    items: ['Vitamin Injections', 'Lash & Brow Services', 'Biostimulators', 'Skin Care'],
+    items: ['Custom Facials', 'Chemical Peels', 'Laser Hair Removal', 'Wellness & Skincare'],
   },
 ];
+
+const serviceGroupCount = serviceGroups.length;
 
 const team = [
   {
@@ -350,10 +352,10 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               Where innovation meets beauty.
             </h2>
             <p class="mt-6 text-lg leading-[1.75] text-[#d6e3ea]">
-              From Plexr Plasma and Botox to injectable fillers and transformative spa therapies, licensed experts curate minimally invasive experiences that elevate your beauty with thoughtful, personalized service.
+              From customized facials and skin rejuvenation to injectables, Morpheus8 Burst, Lumecca IPL, Plexr Plasma, and fractional CO2 laser resurfacing, every treatment is tailored to your goals.
             </p>
             <p class="mt-4 text-lg leading-[1.75] text-[#b9cbd5]">
-              At Access, appearances are only part of the story. The goal is a renewed sense of self supported by care, comfort, and modern aesthetic technology.
+              At Access, your confidence is the priority. The goal is natural-looking change supported by exceptional care, modern aesthetic technology, and a plan built around you.
             </p>
             <div class="pt-8">
               <GradientButton
@@ -421,7 +423,7 @@ const reviewSlides = Array.from({ length: Math.ceil(googleReviews.length / 3) },
               <article
                 class="col-start-1 row-start-1 overflow-hidden bg-[radial-gradient(circle_at_66%_32%,rgba(255,255,255,0.88),rgba(255,255,255,0.42)_28%,transparent_52%),radial-gradient(circle_at_6%_96%,rgba(214,222,250,0.72),transparent_42%),radial-gradient(circle_at_86%_14%,rgba(98,196,243,0.24),transparent_32%),linear-gradient(135deg,rgba(98,196,243,0.14)_0%,rgba(238,247,251,0.9)_42%,rgba(214,222,250,0.48)_100%)] shadow-[0_22px_70px_rgba(20,24,32,0.08),0_1px_4px_rgba(20,24,32,0.05)]"
                 @touchstart.passive="_tx = $event.touches[0].clientX"
-                @touchend.passive="let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 50) active = dx < 0 ? Math.min(active + 1, 2) : Math.max(active - 1, 0)"
+                @touchend.passive={`let dx = $event.changedTouches[0].clientX - _tx; if (Math.abs(dx) > 50) active = dx < 0 ? Math.min(active + 1, ${serviceGroupCount - 1}) : Math.max(active - 1, 0)`}
                 x-show={`active === ${index}`}
                 x-transition:enter="transition-opacity ease-out duration-700"
                 x-transition:enter-start="opacity-0"
