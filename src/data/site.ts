@@ -1,12 +1,3 @@
-import beforeAfter1 from '../assets/images/before-after-1.jpg';
-import beforeAfter2 from '../assets/images/before-after-2.jpg';
-import beforeAfter3 from '../assets/images/before-after-3.jpg';
-import beforeAfter4 from '../assets/images/before-after-4.jpg';
-import beforeAfter5 from '../assets/images/before-after-5.jpg';
-import beforeAfter6 from '../assets/images/before-after-6.jpg';
-import beforeAfter7 from '../assets/images/before-after-7.jpg';
-import beforeAfter8 from '../assets/images/before-after-8.jpg';
-import beforeAfter9 from '../assets/images/before-after-9.jpg';
 import serviceImage from '../assets/images/service.png';
 import service2Image from '../assets/images/service2.png';
 import service3Image from '../assets/images/service-3.jpeg';
@@ -341,18 +332,6 @@ export const teamMembers = [
       'She helps clients identify what bothers them most about their skin and build a clear path toward improvement through professional treatments and consistent care.',
     ],
   },
-] as const;
-
-export const transformations = [
-  { image: beforeAfter1, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
-  { image: beforeAfter2, alt: 'Before and after neck treatment result', label: 'Neck Transformation' },
-  { image: beforeAfter3, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
-  { image: beforeAfter4, alt: 'Before and after skin rejuvenation result', label: 'Skin Transformation' },
-  { image: beforeAfter5, alt: 'Before and after eye treatment result', label: 'Eye Transformation' },
-  { image: beforeAfter6, alt: 'Before and after eyebrow treatment result', label: 'Eyebrow Transformation' },
-  { image: beforeAfter7, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
-  { image: beforeAfter8, alt: 'Before and after skin treatment result', label: 'Skin Transformation' },
-  { image: beforeAfter9, alt: 'Before and after lip treatment result', label: 'Lip Transformation' },
 ] as const;
 
 export const aboutAddenda = [

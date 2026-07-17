@@ -143,7 +143,7 @@
     to   { transform: translateX(-50%); }
   }
   .animate-marquee {
-    animation: marquee 40s linear infinite;
+    animation: marquee 240s linear infinite;
     will-change: transform;
   }
 }

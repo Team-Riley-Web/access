@@ -1,6 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-import { ArrowRight, Check, Sparkles } from '@lucide/astro';
+import { ArrowRight, Check, ChevronLeft, ChevronRight, Maximize2, Sparkles, X } from '@lucide/astro';
 import Footer from '../components/Footer.astro';
 import GradientButton from '../components/GradientButton.astro';
 import Header from '../components/Header.astro';
@@ -8,7 +8,11 @@ import PageHero from '../components/PageHero.astro';
 import PreFooterCTA from '../components/PreFooterCTA.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import transformationsHeroImage from '../assets/images/services/mirror.jpg';
-import { bookingUrl, transformations } from '../data/site';
+import { bookingUrl } from '../data/site';
+
+type GalleryImage = {
+  default: ImageMetadata;
+};
 
 const title = 'Transformations | Access Aesthetics';
 const description = 'Visible change guided by thoughtful aesthetic treatment plans.';
@@ -17,7 +21,33 @@ const introCopy = [
   'Every result shown here began with a personalized plan. Some transformations are subtle and progressive; others are more visible quickly. The goal is always the same: refreshed, confident, natural-looking change.',
 ];
 
-const storyTransformation = transformations[1];
+const galleryImages = import.meta.glob<GalleryImage>('../assets/images/before-afters/*.{jpg,jpeg,png,JPG,JPEG,PNG}', {
+  eager: true,
+});
+
+const collator = new Intl.Collator('en', { numeric: true, sensitivity: 'base' });
+const allResults = Object.entries(galleryImages)
+  .sort(([firstPath], [secondPath]) => collator.compare(firstPath, secondPath))
+  .map(([path, image], index) => ({
+    image: image.default,
+    alt: `Before and after treatment result ${index + 1}`,
+    label: `Result ${String(index + 1).padStart(2, '0')}`,
+    path,
+  }));
+
+const squareResults = allResults.filter(({ image }) => image.width === image.height);
+const horizontalResults = allResults.filter(({ image }) => image.width > image.height);
+const storyTransformation = (squareResults[1] ?? squareResults[0] ?? allResults[0])!;
+const storyModalIndex = Math.max(0, squareResults.indexOf(storyTransformation));
+const modalResults = [...squareResults, ...horizontalResults].map((item, index) => ({
+  src: item.image.src,
+  width: item.image.width,
+  height: item.image.height,
+  alt: item.alt,
+  label: item.label,
+  number: `${String(index + 1).padStart(2, '0')} / ${String(squareResults.length + horizontalResults.length).padStart(2, '0')}`,
+}));
+const horizontalModalOffset = squareResults.length;
 
 const storyPoints = [
   'Started with a focused consultation around skin texture, laxity, and profile goals',
@@ -28,7 +58,13 @@ const storyPoints = [
 
 <BaseLayout title={title} description={description}>
   <Header />
-  <main class="bg-[#f9f8f6] pt-20 text-[#141820]">
+  <main
+    x-data={`transformationGallery(${JSON.stringify(modalResults)})`}
+    x-on:keydown.escape.window="closeModal()"
+    x-on:keydown.arrow-left.window="if (modalOpen) previousModal()"
+    x-on:keydown.arrow-right.window="if (modalOpen) nextModal()"
+    class="bg-[#f9f8f6] pt-20 text-[#141820]"
+  >
     <PageHero
       image={transformationsHeroImage}
       imageAlt="Aesthetic laser treatment in progress at Access Aesthetics"
@@ -113,16 +149,25 @@ const storyPoints = [
         </div>
 
         <figure data-reveal data-reveal-delay="140" class="bg-white p-3 shadow-[0_28px_80px_rgba(20,24,32,0.13),0_2px_8px_rgba(20,24,32,0.06)] ring-1 ring-[#e8e4de]">
-          <Image
-            src={storyTransformation.image}
-            alt={storyTransformation.alt}
-            class="aspect-[5/4] w-full object-cover"
-            widths={[640, 960, 1280]}
-            sizes="(min-width: 1024px) 48vw, 100vw"
-          />
+          <button
+            type="button"
+            x-on:click={`openModal(${storyModalIndex})`}
+            class="group relative block w-full overflow-hidden bg-[#eef5f8] text-left"
+            aria-label="Open featured before and after result"
+          >
+            <Image
+              src={storyTransformation.image}
+              alt={storyTransformation.alt}
+              class="aspect-[5/4] w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+              widths={[640, 960, 1280]}
+              sizes="(min-width: 1024px) 48vw, 100vw"
+            />
+            <span class="absolute bottom-4 right-4 inline-flex size-10 items-center justify-center bg-white/92 text-[#07121b] shadow-[0_14px_34px_rgba(7,18,27,0.18),0_1px_4px_rgba(7,18,27,0.12)] transition group-hover:-translate-y-0.5">
+              <Maximize2 class="size-4" aria-hidden="true" />
+            </span>
+          </button>
           <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-[#8b929e]">
-            <span>{storyTransformation.label}</span>
-            <span>Featured Story</span>
+            <span>Featured Client Story</span>
           </figcaption>
         </figure>
       </div>
@@ -132,26 +177,60 @@ const storyPoints = [
       <div data-reveal class="mx-auto mb-12 max-w-3xl text-center">
         <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-300">Before & After Gallery</p>
         <h2 class="font-display text-[clamp(2rem,3vw,3.25rem)] font-normal leading-[1.1] tracking-[-0.01em] text-white">
-          Results worth looking closer at.
+          Results worth looking at.
         </h2>
         <p class="mx-auto mt-5 max-w-[58ch] text-[1.0625rem] leading-[1.75] text-[#d6e3ea]">
           Browse visible changes across skin, lips, brows, eyes, and contour-focused treatment plans.
         </p>
       </div>
       <div class="mx-auto grid max-w-7xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {transformations.map((item, index) => (
-          <figure class="group bg-white/[0.07] p-3 shadow-[0_22px_70px_rgba(0,0,0,0.24),0_1px_5px_rgba(0,0,0,0.16)] ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/[0.1]">
-            <Image src={item.image} alt={item.alt} class="aspect-square w-full object-cover" widths={[420, 640, 960]} sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw" />
+        {squareResults.map((item, index) => (
+          <figure
+            x-show={`visibleSquares > ${index}`}
+            x-transition.opacity.duration.300ms
+            class="group bg-white/[0.07] p-3 shadow-[0_22px_70px_rgba(0,0,0,0.24),0_1px_5px_rgba(0,0,0,0.16)] ring-1 ring-white/10 transition hover:-translate-y-1 hover:bg-white/[0.1]"
+          >
+            <button
+              type="button"
+              x-on:click={`openModal(${index})`}
+              class="relative block w-full overflow-hidden bg-[#0d2231] text-left"
+              aria-label={`Open ${item.label}`}
+            >
+              <Image
+                src={item.image}
+                alt={item.alt}
+                class="aspect-square w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+                widths={[420, 640, 960]}
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              />
+              <span class="absolute bottom-4 right-4 inline-flex size-10 items-center justify-center bg-white/92 text-[#07121b] opacity-0 shadow-[0_14px_34px_rgba(0,0,0,0.2),0_1px_4px_rgba(0,0,0,0.14)] transition group-hover:-translate-y-0.5 group-hover:opacity-100 group-focus-visible:opacity-100">
+                <Maximize2 class="size-4" aria-hidden="true" />
+              </span>
+            </button>
             <figcaption class="flex items-center justify-between gap-4 px-1.5 pb-1 pt-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-white/56">
               <span>{item.label}</span>
-              <span>{String(index + 1).padStart(2, '0')} / {String(transformations.length).padStart(2, '0')}</span>
+              <span>{String(index + 1).padStart(2, '0')} / {String(squareResults.length).padStart(2, '0')}</span>
             </figcaption>
           </figure>
         ))}
       </div>
+      {squareResults.length > 9 && (
+        <div class="mt-10 flex justify-center">
+          <button
+            type="button"
+            x-show={`visibleSquares < ${squareResults.length}`}
+            x-on:click="loadMoreSquares()"
+            class="brand-cut-button inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[0.78rem] font-semibold text-white"
+          >
+            Load more
+            <ArrowRight class="size-3.5" aria-hidden="true" />
+          </button>
+        </div>
+      )}
+
     </section>
 
-    <section class="bg-linear-to-b from-white via-brand-50/35 to-[#f9f8f6] px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+    <section class="bg-linear-to-b from-white via-brand-50/35 to-[#f9f8f6] pt-16 lg:pt-24">
       <div class="mx-auto grid max-w-7xl gap-4 lg:grid-cols-[0.75fr_1.25fr] lg:items-start">
         <div data-reveal>
           <p class="mb-4 text-[0.67rem] font-medium uppercase tracking-[0.22em] text-brand-500">What Happens Next</p>
@@ -172,6 +251,41 @@ const storyPoints = [
           ))}
         </div>
       </div>
+
+      {horizontalResults.length > 0 && (
+        <div data-reveal class="mx-auto mt-14 overflow-hidden">
+          <div class="relative -mx-5 sm:-mx-8 lg:-mx-16">
+            <div class="flex w-max gap-5 animate-marquee px-5 [animation-duration:160s] hover:[animation-play-state:paused] sm:px-8 lg:px-16">
+              {[...horizontalResults, ...horizontalResults].map((item, index) => {
+                const resultIndex = index % horizontalResults.length;
+
+                return (
+                  <button
+                    type="button"
+                    x-on:click={`openModal(${horizontalModalOffset + resultIndex})`}
+                    class="group relative w-[78vw] shrink-0 overflow-hidden bg-transparent text-left shadow-[0_22px_64px_rgba(20,24,32,0.1),0_1px_5px_rgba(20,24,32,0.06)] transition hover:-translate-y-1 sm:w-[46vw] lg:w-[34vw] xl:w-[30rem]"
+                    aria-label={`Open ${item.label}`}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.alt}
+                      class="aspect-[16/9] w-full object-cover transition duration-700 group-hover:scale-[1.025]"
+                      widths={[640, 960, 1280]}
+                      sizes="(min-width: 1280px) 30rem, (min-width: 1024px) 34vw, (min-width: 640px) 46vw, 78vw"
+                    />
+                    <span class="absolute bottom-5 left-5 bg-[#07121b]/78 px-4 py-2 text-xs font-semibold uppercase tracking-[0.16em] text-white backdrop-blur">
+                      {item.label}
+                    </span>
+                    <span class="absolute bottom-5 right-5 inline-flex size-10 items-center justify-center bg-white/92 text-[#07121b] shadow-[0_14px_34px_rgba(20,24,32,0.16),0_1px_4px_rgba(20,24,32,0.1)] transition group-hover:-translate-y-0.5">
+                      <Maximize2 class="size-4" aria-hidden="true" />
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      )}
     </section>
 
     <PreFooterCTA
@@ -182,6 +296,95 @@ const storyPoints = [
       cta="Book your consult"
       showArrow
     />
+
+    <div
+      x-cloak
+      x-show="modalOpen"
+      x-transition.opacity.duration.250ms
+      class="fixed inset-0 z-50 flex items-center justify-center bg-[#03080d]/92 px-4 py-6 backdrop-blur-sm sm:px-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Before and after image viewer"
+    >
+      <button
+        type="button"
+        x-on:click="closeModal()"
+        class="absolute inset-0 cursor-default"
+        aria-label="Close image viewer"
+      ></button>
+
+      <div class="relative z-10 grid w-full max-w-6xl gap-4">
+        <div class="flex items-center justify-between gap-4 text-white">
+          <div>
+            <p class="text-[0.67rem] font-semibold uppercase tracking-[0.18em] text-brand-200" x-text="activeModalItem()?.number"></p>
+            <p class="mt-1 font-display text-2xl leading-tight" x-text="activeModalItem()?.label"></p>
+          </div>
+          <button
+            type="button"
+            x-on:click="closeModal()"
+            class="inline-flex size-11 items-center justify-center bg-white/10 text-white shadow-[0_14px_34px_rgba(0,0,0,0.2),0_1px_4px_rgba(0,0,0,0.14)] ring-1 ring-white/10 transition hover:bg-white/16"
+            aria-label="Close image viewer"
+          >
+            <X class="size-5" aria-hidden="true" />
+          </button>
+        </div>
+
+        <div class="relative bg-white/[0.06] p-2 shadow-[0_32px_92px_rgba(0,0,0,0.36),0_2px_8px_rgba(0,0,0,0.18)] ring-1 ring-white/10">
+          <img
+            x-bind:src="activeModalItem()?.src"
+            x-bind:alt="activeModalItem()?.alt"
+            class="mx-auto max-h-[72vh] w-full object-contain"
+          />
+
+          <button
+            type="button"
+            x-on:click="previousModal()"
+            class="absolute left-3 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#07121b]/78 text-white shadow-[0_14px_34px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] ring-1 ring-white/10 backdrop-blur transition hover:bg-[#07121b]"
+            aria-label="Previous result"
+          >
+            <ChevronLeft class="size-5" aria-hidden="true" />
+          </button>
+          <button
+            type="button"
+            x-on:click="nextModal()"
+            class="absolute right-3 top-1/2 inline-flex size-11 -translate-y-1/2 items-center justify-center bg-[#07121b]/78 text-white shadow-[0_14px_34px_rgba(0,0,0,0.22),0_1px_4px_rgba(0,0,0,0.16)] ring-1 ring-white/10 backdrop-blur transition hover:bg-[#07121b]"
+            aria-label="Next result"
+          >
+            <ChevronRight class="size-5" aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </div>
   </main>
   <Footer />
 </BaseLayout>
+
+<script is:inline>
+  window.transformationGallery = (items) => ({
+    items,
+    visibleSquares: 9,
+    modalOpen: false,
+    activeModal: 0,
+    loadMoreSquares() {
+      this.visibleSquares += 9;
+    },
+    openModal(index) {
+      this.activeModal = index;
+      this.modalOpen = true;
+      document.documentElement.classList.add('overflow-hidden');
+    },
+    closeModal() {
+      this.modalOpen = false;
+      document.documentElement.classList.remove('overflow-hidden');
+    },
+    activeModalItem() {
+      return this.items[this.activeModal];
+    },
+    previousModal() {
+      this.activeModal = this.activeModal === 0 ? this.items.length - 1 : this.activeModal - 1;
+    },
+    nextModal() {
+      this.activeModal = this.activeModal === this.items.length - 1 ? 0 : this.activeModal + 1;
+    },
+  });
+</script>
